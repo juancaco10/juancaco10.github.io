@@ -1,19 +1,19 @@
-<h1>Portfólio Lwkas Carvalho</h1>
+<h1>Portafolio Juan Carlos de León Silva</h1>
 
-<h2>📘 Sobre o projeto</h2>
-<p>O objetivo principal deste projeto é fornecer um espaço onde posso mostrar quem sou, destacar minhas habilidades, competências e colocar em prática o que tenho aprendido.<br>
-O projeto conta com as seções: <strong>Inicio, Sobre, Formações, Projetos</strong> e <strong>Contato.</strong></p>
+<h2>📘 Sobre el proyecto</h2>
+<p>El objetivo principal de este proyecto es proporcionar un espacio donde puedo mostrar quién soy, destacar mis habilidades, competencias y poner en práctica lo que he aprendido.<br>
+El proyecto consta de las secciones: <strong>Inicio, Sobre, Formaciones, Proyectos</strong> y <strong>Contacto.</strong></p>
 
-<h2>⚙️ Tecnologias Utilizadas</h2>
+<h2>⚙️ Tecnologías Utilizadas</h2>
 <ul>
-    <li> HTML5 e CSS3 para a estrutura e estilo do site.</li>
-    <li> JavaScript para aprimoramento da experiência do usuário.</li>
-    <li> Utilização de media queries para responsividade do site.</li>
-    <li> Versionamento de código usando o GitHub Desktop para controle de versão.</li>
+    <li> HTML5 y CSS3 para la estructura y estilo del sitio.</li>
+    <li> JavaScript para mejorar la experiencia del usuario.</li>
+    <li> Uso de media queries para la responsividad del sitio.</li>
+    <li> Control de versiones utilizando GitHub Desktop.</li>
 </ul>
 
-<h2>💡 Contribuições</h2>
-<p>Fique a vontade para analisar o código-fonte desse projeto e também para entrar em contato pra sugerir melhorias ou funcionalidades que podem ser adicionadas.</p>
+<h2>💡 Contribuciones</h2>
+<p>Siéntase libre de analizar el código fuente de este proyecto y también de ponerse en contacto para sugerir mejoras o funcionalidades que se puedan agregar.</p>
 
-<h2>🔗 Ficou curioso(a) ?</h2>
-<p>Esse projeto pode ser visualizado clicando <a href="https://llwkascarvalho.github.io/Portfolio/" target="_blank">aqui</a>.</p>
+<h2>🔗 ¿Curioso(a)?</h2>
+<p>Este proyecto se puede visualizar haciendo clic <a href="" target="_blank">aquí</a>.</p>
