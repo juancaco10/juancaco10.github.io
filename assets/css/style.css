@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Saira:wght@300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font_principal);
+}
+
+:root {
+    --branco_claro: #f5f5f5;
+    --cinzaclaro: #ffffff80;
+    --sombra: #5992ab1a;
+    --azul1: #6C6CEC;
+    --azul2: #2D2BA6;
+    --azul3: #000069;
+    --black: #00000a;
+
+
+    --font_principal: 'Saira', sans-serif;
+    --font_diferente: 'Saira Stencil One', cursive;
+}
+
+body {
+    background-color: var(--black);
+    min-width: 320px;
+    max-width: 1400px;
+    margin: auto;
+}
+
+hr {
+    max-width: 100%;
+    margin: auto;
+    color: var(--branco_claro);
+}
+
+.hr {
+    max-width: 70%;
+    margin: auto;
+    color: var(--branco_claro);
+}
+
+.botao-topo {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--azul2);
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--black);
+}
+
+@media (max-width: 1400px) {
+
+    .titulo__sobre,
+    .titulo__formacoes,
+    .titulo__projetos,
+    .titulo__contato {
+        text-align: center;
+    }
+}

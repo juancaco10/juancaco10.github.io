@@ -1,0 +1,18 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1400px;
+  background-color: var(--azul2);
+  border-top-left-radius: 2em;
+  border-top-right-radius: 2em;
+  padding: 1em 2em;
+}
+
+.p__footer {
+  color: var(--branco_claro);
+}
+
+.span__footer {
+  color: #ffc55a;
+}
