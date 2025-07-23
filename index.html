@@ -21,61 +21,64 @@
   <link rel="stylesheet" href="assets/css/contacto/contacto.css" />
   <link rel="stylesheet" href="assets/css/contacto/contacto__RWD.css" />
   <link rel="stylesheet" href="assets/css/footer/footer.css" />
-  <link rel="shortcut icon" href="./assets/imagens/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon" />
 
   <title>Portfolio</title>
 </head>
 
 <body>
-  <header class="encabezado">
-    <a class="link__encabezado" href="index.html">
-      <p class="nombre__encabezado">Juan Carlos <span>de León</span></p>
-    </a>
-    <nav class="menu">
-      <ul class="menu__lista">
-        <li class="menu__item">
-          <a class="menu__link ativo" href="#">Inicio</a>
-        </li>
-        <li class="menu__item">
-          <a class="menu__link" href="#2">Sobre</a>
-        </li>
-        <li class="menu__item">
-          <a class="menu__link" href="#3">Formación </a>
-        </li>
-        <li class="menu__item">
-          <a class="menu__link" href="#4">Proyectos</a>
-        </li>
-        <li class="menu__item">
-          <a class="menu__link" href="#5">Contacto</a>
-        </li>
-      </ul>
-    </nav>
+  
+  <header class="header">
+    <div class="container header__container">
+      <a href="index.html" class="header__brand">
+        <img src="assets/img/logo.png" alt="Logo Juan Carlos de León" class="header__logo" />
+      </a>
+
+      <nav class="nav">
+        <ul class="nav__list">
+          <li class="nav__item"><a href="#" class="nav__link active">Inicio</a></li>
+          <li class="nav__item"><a href="#2" class="nav__link">Sobre</a></li>
+          <li class="nav__item"><a href="#3" class="nav__link">Formación</a></li>
+          <li class="nav__item"><a href="#4" class="nav__link">Proyectos</a></li>
+          <li class="nav__item"><a href="#5" class="nav__link">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <section class="inicio">
-      <div class="bloco__sociais">
-        <a href="https://github.com/juancaco10" target="_blank">
-          <img class="sociais__imagem" src="assets/imagens/icon-contato/icons8-github (1).svg" alt="GitHub" />
-        </a>
-        <a href="https://www.linkedin.com/in/juandeleonsilva/" target="_blank">
-          <img class="sociais__imagem" src="assets/imagens/icon-contato/icons8-linkedin (1).svg" alt="Linkedin" />
-        </a>
-      </div>
-      <div class="bloco__inicio">
-        <img class="imagem__inicio" src="assets/imagens/foto.png" alt="" />
-        <h1 class="h1__inicio">Hola, soy Juan Carlos</h1>
-        <p class="sobre__inicio">
-          Estudiante de la carrera Análisis y Desarrollo de Sistemas
-        </p>
-        <a href="#4">
-          <button class="button projetos__inicio" type="button">
-            Mis proyectos
-          </button>
-        </a>
+    <section class="intro">
+      <div class="container intro__container">
+
+        <div class="intro__socials">
+          <a href="https://github.com/juancaco10" target="_blank" aria-label="GitHub">
+            <img class="social__icon" src="assets/img/icono-contacto/ico-github.svg" alt="GitHub" />
+          </a>
+          <a href="https://www.linkedin.com/in/juandeleonsilva/" target="_blank" aria-label="LinkedIn">
+            <img class="social__icon" src="assets/img/icono-contacto/ico-linkedin.svg" alt="LinkedIn" />
+          </a>
+          <a href="https://w.app/jcInformaticaa" target="_blank" aria-label="Whatsapp">
+            <img class="social__icon" src="assets/img/icono-contacto/ico-whatsapp.svg" alt="Whatsapp" />
+          </a>
+        </div>
+
+        <div class="intro__content">
+          <img class="intro__image" src="assets/img/perfil.jpg" alt="Foto de perfil de Juan Carlos de León" />
+          <p class="header__name">Juan Carlos <span>de León Silva</span></p>
+          <p class="intro__description">
+            Desarrollador y Analista de Sistemas <br />
+            Técnico Informático
+          </p>
+          <a href="#4" class="intro__button-link">
+            <button class="button">Ver proyectos</button>
+          </a>
+        </div>
+
       </div>
     </section>
-    <img id="btnTopo" class="botao-topo" src="assets/imagens/icones/up arrow.png" alt="Ir ao topo da página" />
+
+
+    <img id="btnTopo" class="botao-topo" src="assets/img/iconos/up arrow.png" alt="Ir ao topo da página" />
 
     <hr class="hr" />
 
@@ -204,19 +207,18 @@
             <div class="redes__sociales">
               <div class="bloque__redes">
                 <a class="redes__sociales--link" href="https://github.com/juancaco10" target="_blank">
-                  <img class="social__imagen" src="assets/imagens/icon-contato/icons8-github (1).svg" alt="GitHub" />
+                  <img class="social__imagen" src="assets/img/icono-contacto/ico-github.svg" alt="GitHub" />
                 </a>
                 <a class="redes__sociaile--link" href="https://www.linkedin.com/in/juandeleonsilva/" target="_blank">
-                  <img class="sociales__imagen" src="assets/imagens/icon-contato/icons8-linkedin (1).svg"
-                    alt="Linkedin" />
+                  <img class="sociales__imagen" src="assets/img/icono-contacto/ico-linkedin.svg" alt="Linkedin" />
                 </a>
                 <a class="redes__sociaile--link" href="https://w.app/jcInformaticaa" target="_blank">
-                  <img class="sociales__imagen" src="assets/imagens/icon-contato/icons8-whatsapp.svg" alt="Linkedin" />
+                  <img class="sociales__imagen" src="assets/img/icono-contacto/ico-whatsapp.svg" alt="Linkedin" />
                 </a>
               </div>
             </div>
           </div>
-          <img class="imagen__front" src="assets/imagens/icones/contacto.jpg" alt="contactame" />
+          <img class="imagen__front" src="assets/img/iconos/contacto.jpg" alt="contactame" />
         </div>
       </section>
   </main>
@@ -228,7 +230,7 @@
     </p>
   </footer>
 
-  <script src="script.js" defer></script>
+  <script src="assets/js/script.js" defer></script>
 </body>
 
 </html>
