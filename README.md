@@ -9,11 +9,6 @@ El proyecto consta de las secciones: <strong>Inicio, Sobre, Formaciones, Proyect
     <li> HTML5 y CSS3 para la estructura y estilo del sitio.</li>
     <li> JavaScript para mejorar la experiencia del usuario.</li>
     <li> Uso de media queries para la responsividad del sitio.</li>
-    <li> Control de versiones utilizando GitHub Desktop.</li>
+    <li> Control de versiones utilizando GitHub.</li>
 </ul>
 
-<h2>💡 Contribuciones</h2>
-<p>Siéntase libre de analizar el código fuente de este proyecto y también de ponerse en contacto para sugerir mejoras o funcionalidades que se puedan agregar.</p>
-
-<h2>🔗 ¿Curioso(a)?</h2>
-<p>Este proyecto se puede visualizar haciendo clic <a href="" target="_blank">aquí</a>.</p>

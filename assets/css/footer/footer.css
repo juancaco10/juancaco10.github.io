@@ -2,11 +2,29 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  text-align: center;
   max-width: 1400px;
+  width: 100%;
   background-color: var(--azul2);
-  border-top-left-radius: 2em;
-  border-top-right-radius: 2em;
-  padding: 1em 2em;
+  border-top-left-radius: 3em;
+  border-top-right-radius: 3em;
+  padding: 0.2em 0.2em;
+}
+
+.footer__nav {
+  margin-top: 0.5em;
+  font-size: 1.1rem;
+}
+
+.footer__nav a {
+  color: var(--branco_claro);
+  text-decoration: none;
+  margin: 0 0.1em;
+}
+
+.footer__nav a:hover {
+  color: #ffc55a;
 }
 
 .p__footer {
@@ -15,4 +33,5 @@
 
 .span__footer {
   color: #ffc55a;
+  font-weight: bold;
 }
