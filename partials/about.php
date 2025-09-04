@@ -1,39 +1,60 @@
- <section id="2" class="sobre">
-     <section class="seccion__sobre">
-         <div class="contenido__sobre">
-             <h2 class="titulo__sobre">Sobre mi</h2>
-             <ul class="lista__sobre">
-                 <li class="item__sobre">
-                     Welcome. I want to tell you a little about myself. My name is Juan Carlos de León, and I am 31 years old.
-                     I have over 10 years of experience providing services in computer and printer repair. Currently, I am in
-                     the fourth semester of the Technologist - Systems Analysis and Development program at UTEC - IFSUL,
-                     located in Rivera, Uruguay, and Santana do Livramento, Brazil.
-                 </li>
-                 <li class="item__sobre">
-                     Mi pasión por la tecnología y mi estudio actual en desarrollo de sistemas me impulsan a buscar
-                     oportunidades en el área de la programación. Aunque aún no cuento con experiencia previa en este campo,
-                     tengo un gran deseo de aprender y la disposición para hacerlo. Estoy emocionado por dar mis primeros pasos
-                     en el mundo del software y confío en que podré aportar un gran valor con mis habilidades y conocimientos.
+<section id="about" class="about">
+    <div class="container">
+        <h2 class="about__title">Sobre mí</h2>
+        <div class="about__content">
 
-                 </li>
-                 <li class="item__sobre">
+            <div class="about__intro">
+                <p class="about__text">
+                    Bienvenido. Mi nombre es Juan Carlos de León, tengo 33 años y cuento con
+                    <strong>12 años de experiencia</strong> en reparación de computadoras e impresoras
+                    desde 2013. Recientemente finalicé la carrera de <strong>Tecnólogo en Análisis y
+                        Desarrollo de Sistemas</strong> en UTEC - IFSUL, ubicado en Rivera, Uruguay,
+                    y Santana do Livramento, Brasil.
+                </p>
+            </div>
 
-                     Busco una oportunidad:<br />
+            <div class="about__passion">
+                <h3 class="about__subtitle">Mi pasión por la tecnología</h3>
+                <p class="about__text">
+                    Mi formación en desarrollo de sistemas me impulsa a buscar oportunidades
+                    en programación. Aunque aún no cuento con experiencia profesional en este campo,
+                    tengo un <strong>gran deseo de aprender</strong> y la disposición para hacerlo.
+                    Estoy emocionado por dar mis primeros pasos en el mundo del software.
+                </p>
+            </div>
 
-                     Me encantaría que alguna empresa me brindara la oportunidad de iniciar mi carrera en el ámbito del
-                     desarrollo de software. Estoy seguro de que esta oportunidad no solo me permitiría crecer
-                     profesionalmente, sino también desarrollar mi creatividad y habilidades técnicas.
+            <div class="about__opportunity">
+                <h3 class="about__subtitle">Busco una oportunidad</h3>
+                <p class="about__text">
+                    Me encantaría que alguna empresa me brindara la oportunidad de iniciar
+                    mi carrera en desarrollo de software. Estoy seguro de que esta oportunidad
+                    me permitiría crecer profesionalmente y desarrollar mi creatividad y
+                    habilidades técnicas.
+                </p>
+                <p class="about__text">
+                    Agradezco sinceramente la consideración de mi perfil. Estoy ansioso
+                    por aprender y contribuir con dedicación y compromiso.
+                </p>
+            </div>
 
-                     Agradezco sinceramente la consideración de mi perfil y la oportunidad que puedan brindarme. Estoy ansioso
-                     por aprender y contribuir a su empresa con dedicación y compromiso.
-                 </li>
-                 <li class="item__sobre">
-                     Idiomas:<br />
+            <div class="about__languages">
+                <h3 class="about__subtitle">Idiomas</h3>
+                <ul class="languages__list">
+                    <li class="language__item">
+                        <span class="language__flag">🇺🇾</span>
+                        <strong>Español:</strong> Nativo
+                    </li>
+                    <li class="language__item">
+                        <span class="language__flag">🇧🇷</span>
+                        <strong>Portugués:</strong> Lengua materna (ciudad fronteriza)
+                    </li>
+                    <li class="language__item">
+                        <span class="language__flag">🇺🇸</span>
+                        <strong>Inglés:</strong> Actualmente estudiando
+                    </li>
+                </ul>
+            </div>
 
-                     Español: Nativo<br />
-                     Portugués: Lengua materna debido a mi crianza en una ciudad fronteriza<br />
-                     Inglés: (Currently studying - Actualmente estudiando)
-                 </li>
-             </ul>
-         </div>
-     </section>
+        </div>
+    </div>
+</section>

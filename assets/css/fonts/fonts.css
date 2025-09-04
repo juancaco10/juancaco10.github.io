@@ -1,0 +1,75 @@
+/* 🔹 Pacifico */
+@font-face {
+  font-family: "Pacifico";
+  src: url("../../fonts/Pacifico/Pacifico-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 🔹 Poppins */
+@font-face {
+  font-family: "Poppins";
+  src: url("../../fonts/Poppins/Poppins-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../../fonts/Poppins/Poppins-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../../fonts/Poppins/Poppins-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 🔹 Saira Stencil One */
+@font-face {
+  font-family: "Saira Stencil One";
+  src: url("../../fonts/Saira_Stencil_One/SairaStencilOne-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 🔹 Saira */
+@font-face {
+  font-family: "Saira";
+  src: url("../../fonts/Saira/static/Saira-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Saira";
+  src: url("../../fonts/Saira/static/Saira-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Saira";
+  src: url("../../fonts/Saira/static/Saira-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Saira";
+  src: url("../../fonts/Saira/static/Saira-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}

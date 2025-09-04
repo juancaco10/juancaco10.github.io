@@ -1,0 +1,127 @@
+/* 🔹 Contact Section */
+.contact {
+    max-width: 1000px;
+    margin: auto;
+    padding: var(--spacing);
+}
+
+.contact__title {
+    color: var(--color-primary);
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    margin-bottom: 1.5rem;
+    font-family: var(--font-title);
+    text-align: center;
+}
+
+.contact__content {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.contact__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+}
+
+.contact__description {
+    color: var(--color-text-light);
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    font-family: var(--font-primary);
+}
+
+.contact__socials {
+    background: rgba(89, 146, 171, 0.1);
+    border: 2px solid var(--color-shadow-blue);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    width: fit-content;
+    transition: all 0.3s ease;
+}
+
+.contact__socials:hover {
+    box-shadow: 0 0 15px var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.socials__container {
+    display: flex;
+    gap: 1rem;
+}
+
+.social__link {
+    display: flex;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.social__icon {
+    width: 40px;
+    height: 40px;
+    transition: filter 0.3s ease;
+}
+
+.social__link:hover .social__icon {
+    filter: brightness(1.2) drop-shadow(0 0 4px var(--color-primary));
+}
+
+.contact__image {
+    width: 45%;
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(108, 108, 236, 0.3);
+}
+
+/* 📱 Responsive */
+@media (max-width: 968px) {
+    .contact__content {
+        flex-direction: column;
+        gap: 2.5rem;
+        text-align: center;
+    }
+    
+    .contact__info {
+        align-items: center;
+    }
+    
+    .contact__image {
+        width: 70%;
+        order: -1; 
+    }
+}
+
+@media (max-width: 640px) {
+    .contact {
+        padding: var(--spacing) 1rem;
+    }
+    
+    .contact__image {
+        width: 85%;
+    }
+    
+    .socials__container {
+        gap: 0.8rem;
+    }
+    
+    .social__icon {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact__image {
+        width: 100%;
+    }
+    
+    .contact__socials {
+        padding: 1rem;
+    }
+    
+    .socials__container {
+        gap: 0.5rem;
+    }
+}

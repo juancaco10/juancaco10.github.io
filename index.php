@@ -9,9 +9,7 @@
 
   <main>
 
-    <?php include 'partials/introduction.php'; ?>
-
-    <img id="btnTopo" class="botao-topo" src="assets/img/iconos/up arrow.png" alt="Go to top of page" />
+    <?php include 'partials/intro.php'; ?>
 
     <hr class="hr" />
 
@@ -32,6 +30,10 @@
   </main>
 
   <?php include 'partials/footer.php'; ?>
+
+  <button id="backToTop" class="back-to-top" aria-label="Back to top">
+    <img src="assets/img/icons/up.png" alt="Back to top" />
+  </button>
 
   <script src="assets/js/script.js" defer></script>
 </body>

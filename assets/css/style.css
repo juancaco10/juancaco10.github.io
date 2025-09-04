@@ -1,71 +1,84 @@
-@import url("https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap");
+/* 🔹 Global Styles */
 
-@import url("https://fonts.googleapis.com/css2?family=Pacifico&family=Saira:wght@300;400;500;600&display=swap");
+:root {
+  --color-white: #f5f5f5;
+  --color-white-translucent: #ffffff80;
+  --color-shadow-blue: #5992ab1a;
+  --color-blue-light: #6c6cec;
+  --color-blue-medium: #2d2ba6;
+  --color-blue-dark: #000069;
+  --color-black: #00000a;
+  --color-text-light: #f4f4f4;
+  --color-primary: #6c6cec;
+  --color-background: #00000a;
+
+  --spacing: 2rem;
+  --font-title: "Saira Stencil One", sans-serif;
+  --font-primary: "Saira", sans-serif;
+  --font-accent: "Pacifico", cursive;
+}
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: var(--font_principal);
-}
-
-:root {
-  --branco_claro: #f5f5f5;
-  --cinzaclaro: #ffffff80;
-  --sombra: #5992ab1a;
-  --azul1: #6c6cec;
-  --azul2: #2d2ba6;
-  --azul3: #000069;
-  --black: #00000a;
-
-  --font-title: "Saira Stencil One", cursive;
-  --color-light: #f4f4f4;
-  --color-primary: #6c6cec;
-  --color-bg: #00000a;
-  --spacing: 2rem;
-
-  --font_principal: "Saira", sans-serif;
-  --font_diferente: "Saira Stencil One", cursive;
+  font-family: var(--font-primary);
 }
 
 body {
-  background-color: var(--color-bg);
+  background-color: var(--color-background);
   min-width: 320px;
   max-width: 1400px;
   margin: auto;
+  color: var(--color-text-light);
 }
 
 hr {
   max-width: 100%;
   margin: auto;
-  color: var(--branco_claro);
+  color: var(--color-white);
 }
 
 .hr {
   max-width: 70%;
   margin: auto;
-  color: var(--branco_claro);
+  color: var(--color-white);
 }
 
-.botao-topo {
+.back-to-top {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  color: #fff;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
   border: none;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
-::-webkit-scrollbar {
-  width: 10px;
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
 }
 
-::-webkit-scrollbar-thumb {
-  background-color: var(--azul2);
+.back-to-top:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(108, 108, 236, 0.6);
 }
 
-::-webkit-scrollbar-track {
-  background-color: var(--black);
+.back-to-top img {
+  width: 45px;
+  height: 45px;
+  filter: brightness(0) invert(1);
 }
 
 @media (max-width: 1400px) {
