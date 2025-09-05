@@ -11,7 +11,7 @@
             <h2 class="intro__subtitle">Desarrollador y Analista de Sistemas</h2>
             <p class="intro__description">Técnico Informático</p>
 
-            <a href="#4" class="intro__button-link">
+            <a href="#projects" class="intro__button-link">
                 <button class="button">Ver proyectos</button>
             </a>
         </div>

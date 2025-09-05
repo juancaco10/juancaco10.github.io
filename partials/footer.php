@@ -5,8 +5,7 @@
                 <p class="footer__copyright">
                     &copy; <?php echo date('Y'); ?>
                     <span class="footer__name">Juan Carlos de León Silva</span>.
-                    All rights reserved.
-                </p>
+                                </p>
                 <p class="footer__tagline">Desarrollador y Analista de Sistemas</p>
             </div>
 
@@ -32,11 +31,5 @@
                 </a>
             </div>
         </div>
-
-        <div class="footer__bottom">
-            <p class="footer__made-with">
-                Hecho con ❤️ usando HTML, CSS & PHP
-            </p>
-        </div>
-    </div>
+         </div>
 </footer>

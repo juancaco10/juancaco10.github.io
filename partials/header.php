@@ -6,10 +6,10 @@
 
         <nav class="nav">
             <ul class="nav__list">
-                <li class="nav__item"><a href="#2" class="nav__link">Sobre</a></li>
-                <li class="nav__item"><a href="#3" class="nav__link">Formación</a></li>
-                <li class="nav__item"><a href="#4" class="nav__link">Proyectos</a></li>
-                <li class="nav__item"><a href="#5" class="nav__link">Contacto</a></li>
+                <li class="nav__item"><a href="#about" class="nav__link">Sobre</a></li>
+                <li class="nav__item"><a href="#education" class="nav__link">Formación</a></li>
+                <li class="nav__item"><a href="#projects" class="nav__link">Proyectos</a></li>
+                <li class="nav__item"><a href="#contact" class="nav__link">Contacto</a></li>
             </ul>
         </nav>
 

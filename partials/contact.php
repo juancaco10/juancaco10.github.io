@@ -1,6 +1,6 @@
 <section id="contact" class="contact">
   <div class="container">
-    <h2 class="contact__title">Contact</h2>
+    <h2 class="contact__title">Contacto</h2>
     <div class="contact__content">
       <div class="contact__info">
         <p class="contact__description">
