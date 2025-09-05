@@ -1,4 +1,30 @@
 document.addEventListener("DOMContentLoaded", function () {
+  const backToTopBtn = document.getElementById("backToTop");
+
+  // Función para mostrar/ocultar el botón "Back to Top"
+  function toggleBackToTop() {
+    if (backToTopBtn) {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.add("visible");
+      } else {
+        backToTopBtn.classList.remove("visible");
+      }
+    }
+  }
+
+  // Event listener para el botón "Back to Top"
+  if (backToTopBtn) {
+    backToTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
+  // Mostrar/ocultar botón al hacer scroll
+  window.addEventListener("scroll", toggleBackToTop);
+
+  // Verificar estado inicial del botón
+  toggleBackToTop();
+
   // Cerrar modales al hacer clic fuera del contenido
   window.addEventListener('click', function (event) {
     // Para modales de proyecto
@@ -19,8 +45,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// Variables globales para el control de slides
-let slideIndex = 1;
+// Variables para controlar slides de cada galería por separado
+let slideIndexes = {};
 
 // Funciones globales para modales
 function openModal(id) {
@@ -55,8 +81,11 @@ function openGallery(id) {
     }, 10);
     document.body.style.overflow = 'hidden';
 
-    // Reiniciar el slide al abrir la galería
-    showSlides(slideIndex = 1);
+    // Inicializar el índice para esta galería si no existe
+    if (slideIndexes[id] === undefined) {
+      slideIndexes[id] = 1;
+    }
+    showSlides(slideIndexes[id], id);
   }
 }
 
@@ -72,37 +101,45 @@ function closeGallery(id) {
 }
 
 // Funciones para controlar los slides
-function plusSlides(n) {
-  showSlides(slideIndex += n);
+function plusSlides(n, galleryId) {
+  showSlides((slideIndexes[galleryId] || 1) + n, galleryId);
 }
 
-function currentSlide(n) {
-  showSlides(slideIndex = n);
+function currentSlide(n, galleryId) {
+  showSlides(n, galleryId);
 }
 
-function showSlides(n) {
-  let i;
-  const slides = document.getElementsByClassName("mySlides");
-  const dots = document.getElementsByClassName("thumbnail");
-  const captionText = document.getElementById("caption");
+function showSlides(n, galleryId) {
+  const gallery = document.getElementById("gallery-" + galleryId);
+  if (!gallery) return;
+
+  const slides = gallery.getElementsByClassName("mySlides");
+  const dots = gallery.getElementsByClassName("thumbnail");
+  const caption = gallery.querySelector(".caption-container p");
 
   if (slides.length === 0) return;
 
-  if (n > slides.length) { slideIndex = 1 }
-  if (n < 1) { slideIndex = slides.length }
+  if (n > slides.length) { slideIndexes[galleryId] = 1; }
+  else if (n < 1) { slideIndexes[galleryId] = slides.length; }
+  else { slideIndexes[galleryId] = n; }
 
-  for (i = 0; i < slides.length; i++) {
+  // Ocultar todos los slides
+  for (let i = 0; i < slides.length; i++) {
     slides[i].classList.remove("active");
   }
 
-  for (i = 0; i < dots.length; i++) {
+  // Desactivar todos los dots
+  for (let i = 0; i < dots.length; i++) {
     dots[i].classList.remove("active");
   }
 
-  slides[slideIndex - 1].classList.add("active");
+  // Mostrar el slide actual
+  slides[slideIndexes[galleryId] - 1].classList.add("active");
+
+  // Resaltar el dot actual
   if (dots.length > 0) {
-    dots[slideIndex - 1].classList.add("active");
-    captionText.innerHTML = dots[slideIndex - 1].alt;
+    dots[slideIndexes[galleryId] - 1].classList.add("active");
+    if (caption) caption.innerHTML = dots[slideIndexes[galleryId] - 1].alt;
   }
 }
 
@@ -125,10 +162,11 @@ document.addEventListener('keydown', function (event) {
   // Navegación con teclado en la galería
   const galleryOpen = document.querySelector('.gallery-modal.show');
   if (galleryOpen) {
+    const galleryId = galleryOpen.id.replace('gallery-', '');
     if (event.key === "ArrowLeft") {
-      plusSlides(-1);
+      plusSlides(-1, galleryId);
     } else if (event.key === "ArrowRight") {
-      plusSlides(1);
+      plusSlides(1, galleryId);
     }
   }
 });

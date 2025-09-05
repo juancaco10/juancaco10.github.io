@@ -19,20 +19,30 @@
                     Mi formación en desarrollo de sistemas me impulsa a buscar oportunidades
                     en programación. Aunque aún no cuento con experiencia profesional en este campo,
                     tengo un <strong>gran deseo de aprender</strong> y la disposición para hacerlo.
-                    Estoy emocionado por dar mis primeros pasos en el mundo del software.
                 </p>
             </div>
 
             <div class="about__opportunity">
                 <h3 class="about__subtitle">Buscando mi camino</h3>
                 <p class="about__text">
-                    Si bien me encantaría poder trabajar en una empresa de desarrollo de software,
-                    actualmente también estoy enfocado en seguir aprendiendo y en desarrollar mis
-                    propios proyectos de manera independiente. Mi objetivo es seguir creciendo como
-                    profesional, ya sea aportando en un equipo de trabajo o creando soluciones por
-                    cuenta propia, siempre con dedicación y pasión por la tecnología.
+                    Actualmente colaboro con un equipo de compañeros egresados en el desarrollo
+                    de diversos proyectos, entre los que se incluye un Sistema de Gestión de Llaves
+                    para el IFSUL (Instituto Federal Sul Riograndense). Además, estamos desarrollando
+                    un sistema integrado de Solicitud, Análisis y Gestión de Servicios para la
+                    Intendencia de Rivera.
                 </p>
 
+                <p class="about__text">
+                    De forma independiente, también me encuentro desarrollando dos proyectos propios:
+                    una página web para JC Papelería, que consiste en una tienda online de productos
+                    de papelería, y un Sistema de Gestión de Ventas y Control de Stock para el mismo negocio.
+                </p>
+
+                <p class="about__text">
+                    Mi objetivo es seguir creciendo profesionalmente, tanto en entornos de equipo
+                    como en proyectos independientes, siempre con dedicación y pasión por la
+                    tecnología y el desarrollo de soluciones que generen impacto positivo.
+                </p>
             </div>
 
             <div class="about__languages">
