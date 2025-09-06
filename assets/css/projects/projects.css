@@ -387,6 +387,53 @@
   margin-top: 10px;
 }
 
+.team-section {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.team-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.team-member {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  border-radius: 1rem;
+  width: 180px;
+}
+
+.team-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 0.5rem;
+  border: 2px solid var(--color-primary);
+}
+
+.team-name {
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-text-light);
+}
+
+.team-links a {
+  margin: 0 0.3rem;
+  color: var(--color-primary);
+  font-size: 1.2rem;
+  transition: color 0.3s;
+}
+
+.team-links a:hover {
+  color: var(--color-blue-light);
+}
+
 /* 📱 Responsive */
 @media (max-width: 1000px) {
   .projects__grid {

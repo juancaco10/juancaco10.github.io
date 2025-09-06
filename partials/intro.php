@@ -3,7 +3,7 @@
         <!-- Contenedor de imagen y contenido principal -->
         <div class="intro__content">
             <div class="intro__image-container">
-                <img class="intro__image intro__image-primary" src="assets/img/perfil.jpg" alt="Juan Carlos de León profesional" />
+                <img class="intro__image intro__image-primary" src="assets/img/juan.jpg" alt="Juan Carlos de León profesional" />
                 <img class="intro__image intro__image-secondary" src="assets/img/perfil2.jpg" alt="Juan Carlos de León casual" />
             </div>
 
