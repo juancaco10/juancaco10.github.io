@@ -25,21 +25,16 @@ document.addEventListener("DOMContentLoaded", function () {
   // Verificar estado inicial del botón
   toggleBackToTop();
 
-  // Cerrar modales al hacer clic fuera del contenido
-  window.addEventListener('click', function (event) {
-    // Para modales de proyecto
-    document.querySelectorAll('.modal').forEach(modal => {
-      if (event.target === modal) {
-        const id = modal.id.replace('modal-', '');
-        closeModal(id);
-      }
-    });
+  // Event listeners para las tarjetas de educación
+  const educationCards = document.querySelectorAll('.education__card');
 
-    // Para modales de galería
-    document.querySelectorAll('.gallery-modal').forEach(modal => {
-      if (event.target === modal) {
-        const id = modal.id.replace('gallery-', '');
-        closeGallery(id);
+  educationCards.forEach((card, index) => {
+    card.addEventListener('click', function () {
+      // Asigna diferentes modales según la tarjeta clickeada
+      const modalIds = ['modal-degree', 'modal-bootcamp', 'modal-bootcamp', 'modal-bootcamp', 'modal-bootcamp', 'modal-bootcamp'];
+
+      if (index < modalIds.length) {
+        openEducationModal(modalIds[index]);
       }
     });
   });
@@ -143,10 +138,52 @@ function showSlides(n, galleryId) {
   }
 }
 
+// Función para abrir modal de educación
+function openEducationModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    console.log('Modal abierto:', modalId);
+  } else {
+    console.error('Modal no encontrado:', modalId);
+  }
+}
+
+// Función para cerrar modal de educación
+function closeEducationModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+}
+
+// Event listener unificado para cerrar modales al hacer clic fuera
+document.addEventListener('click', function (event) {
+  // Modales de proyecto
+  if (event.target.classList.contains('modal')) {
+    const id = event.target.id.replace('modal-', '');
+    closeModal(id);
+  }
+
+  // Modales de galería
+  if (event.target.classList.contains('gallery-modal')) {
+    const id = event.target.id.replace('gallery-', '');
+    closeGallery(id);
+  }
+
+  // Modales de educación
+  if (event.target.classList.contains('education-modal')) {
+    const id = event.target.id;
+    closeEducationModal(id);
+  }
+});
+
 // Cerrar con tecla Escape
 document.addEventListener('keydown', function (event) {
   if (event.key === "Escape") {
-    // Cerrar modales de información
+    // Cerrar modales de proyecto
     document.querySelectorAll('.modal.show').forEach(modal => {
       const id = modal.id.replace('modal-', '');
       closeModal(id);
@@ -156,6 +193,13 @@ document.addEventListener('keydown', function (event) {
     document.querySelectorAll('.gallery-modal.show').forEach(modal => {
       const id = modal.id.replace('gallery-', '');
       closeGallery(id);
+    });
+
+    // Cerrar modales de educación
+    document.querySelectorAll('.education-modal').forEach(modal => {
+      if (modal.style.display === 'block') {
+        closeEducationModal(modal.id);
+      }
     });
   }
 
@@ -169,4 +213,98 @@ document.addEventListener('keydown', function (event) {
       plusSlides(1, galleryId);
     }
   }
+
+  let gallerySlideIndexes = {};
+
+  // Función para abrir la galería
+  function openGallery(galleryId) {
+    const gallery = document.getElementById(`gallery-${galleryId}`);
+    if (gallery) {
+      gallery.style.display = 'block';
+      setTimeout(() => {
+        gallery.classList.add('show');
+      }, 10);
+      document.body.style.overflow = 'hidden';
+
+      // Inicializar el índice para esta galería si no existe
+      if (gallerySlideIndexes[galleryId] === undefined) {
+        gallerySlideIndexes[galleryId] = 1;
+      }
+      showGallerySlides(gallerySlideIndexes[galleryId], galleryId);
+    }
+  }
+
+  // Función para cerrar la galería
+  function closeGallery(galleryId) {
+    const gallery = document.getElementById(`gallery-${galleryId}`);
+    if (gallery) {
+      gallery.classList.remove('show');
+      setTimeout(() => {
+        gallery.style.display = 'none';
+      }, 300);
+      document.body.style.overflow = 'auto';
+    }
+  }
+
+  // Función para navegar entre slides
+  function plusSlides(n, galleryId) {
+    showGallerySlides((gallerySlideIndexes[galleryId] || 1) + n, galleryId);
+  }
+
+  // Función para ir a un slide específico
+  function currentSlide(n, galleryId) {
+    showGallerySlides(n, galleryId);
+  }
+
+  // Función para mostrar el slide actual
+  function showGallerySlides(n, galleryId) {
+    const gallery = document.getElementById(`gallery-${galleryId}`);
+    if (!gallery) return;
+
+    const slides = gallery.querySelectorAll('.gallery-slide');
+    const thumbs = gallery.querySelectorAll('.gallery-thumb');
+
+    if (slides.length === 0) return;
+
+    if (n > slides.length) { gallerySlideIndexes[galleryId] = 1; }
+    else if (n < 1) { gallerySlideIndexes[galleryId] = slides.length; }
+    else { gallerySlideIndexes[galleryId] = n; }
+
+    // Ocultar todos los slides
+    slides.forEach(slide => slide.classList.remove('active'));
+
+    // Desactivar todos los thumbs
+    thumbs.forEach(thumb => thumb.classList.remove('active'));
+
+    // Mostrar el slide actual
+    slides[gallerySlideIndexes[galleryId] - 1].classList.add('active');
+
+    // Resaltar el thumb actual
+    if (thumbs.length > 0) {
+      thumbs[gallerySlideIndexes[galleryId] - 1].classList.add('active');
+    }
+  }
+
+  // Cerrar galería al hacer clic fuera de la imagen
+  document.addEventListener('click', function (event) {
+    if (event.target.classList.contains('gallery-modal')) {
+      const galleryId = event.target.id.replace('gallery-', '');
+      closeGallery(galleryId);
+    }
+  });
+
+  // Navegación con teclado
+  document.addEventListener('keydown', function (event) {
+    const galleryOpen = document.querySelector('.gallery-modal.show');
+    if (galleryOpen) {
+      const galleryId = galleryOpen.id.replace('gallery-', '');
+      if (event.key === "Escape") {
+        closeGallery(galleryId);
+      } else if (event.key === "ArrowLeft") {
+        plusSlides(-1, galleryId);
+      } else if (event.key === "ArrowRight") {
+        plusSlides(1, galleryId);
+      }
+    }
+  });
 });
