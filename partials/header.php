@@ -9,6 +9,7 @@
                 <li class="nav__item"><a href="#about" class="nav__link">Sobre</a></li>
                 <li class="nav__item"><a href="#education" class="nav__link">Formación</a></li>
                 <li class="nav__item"><a href="#projects" class="nav__link">Proyectos</a></li>
+                <li class="nav__item"><a href="#" class="nav__link" id="navEvents">Eventos</a></li>
                 <li class="nav__item"><a href="#contact" class="nav__link">Contacto</a></li>
             </ul>
         </nav>

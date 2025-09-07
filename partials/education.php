@@ -347,21 +347,21 @@
 
         <div class="event-content">
           <p>
-            Los días 12 y 13 de septiembre se conmemora el Día del Programador,
-            una fecha especial que celebra a quienes, a través del código,
-            dan vida a soluciones tecnológicas. Este día se elige porque
-            el 256º día del año (el 13 de septiembre o 12 en años bisiestos)
-            es significativo en la programación, ya que 256 es el mayor número
-            que puede representarse con 8 bits.
+            Los días 12 o 13 de septiembre se celebra el Día del Programador,
+            una fecha que honra a quienes, con código y creatividad, crean soluciones tecnológicas.
+            Se elige el 256º día del año (13 de septiembre o 12 en años bisiestos)
+            porque 256 es el mayor número que puede representarse con 8 bits.
           </p>
           <p>
-            En 2023 📅, mi Instituto organizó una competición de programación con
-            desafíos de código entre todos los estudiantes. Los problemas fueron
-            presentados mediante diagramas UML, y cada equipo debía seleccionar uno
+            En 2023 📅, el Instituto organizó una competición de programación con desafíos entre todos los estudiantes
+            del primer al sexto semestre. Cada equipo debía elegir un problema presentado mediante diagramas UML
             y desarrollar una solución que sería evaluada por los jurados.
           </p>
           <p>
-            Mi equipo y yo obtuvimos el primer lugar del certamen 🏆.
+            Mi equipo y yo logramos el primer lugar 🏆 con nuestro sistema de gestión de llaves.
+            Desarrollamos la solución en Java utilizando Eclipse, gestionamos el código con Git y GitHub,
+            y todo el proyecto se completó en un intenso plazo de solo 24 horas,
+            demostrando nuestra capacidad de trabajo en equipo, organización y creatividad.
           </p>
 
           <div class="gallery-preview">
@@ -393,20 +393,33 @@
 
         <div class="event-content">
           <p>
-            En 2024 📅, nuevamente celebramos el Día del Programador con una edición especial
-            de <strong>CodeDay</strong>. Esta vez los desafíos incluyeron no solo
-            resolución de problemas con UML, sino también pruebas de algoritmos,
-            optimización de código y trabajo con APIs reales.
+            🚀 <strong>Code Day 2024:</strong> Un nuevo desafío
           </p>
           <p>
-            La competencia fue más exigente que en años anteriores y reunió a equipos
-            de distintos niveles. Tuvimos que organizarnos, planificar bien la estrategia
-            y distribuir las tareas para cumplir con los tiempos.
+            En 2024 📅, celebramos nuevamente el Día del Programador con una nueva edición de <strong>Code Day</strong>.
+            Esta vez los desafíos incluyeron no solo resolución de problemas mediante diagramas UML, sino también pruebas de algoritmos, optimización de código y trabajo con APIs reales.
           </p>
           <p>
-            Mi equipo logró destacarse y alcanzamos el segundo lugar del certamen 🥈,
-            una experiencia valiosa que reforzó nuestras habilidades de colaboración y
-            creatividad bajo presión.
+            La competencia fue más exigente que el año anterior y reunió a más equipos de distintos niveles.
+            Mi equipo y yo tuvimos que organizarnos cuidadosamente, planificar la estrategia y distribuir tareas para cumplir con los tiempos establecidos.
+          </p>
+          <p>
+            Decidimos enfrentar el reto de desarrollar una aplicación móvil de alerta en tiempo real para desastres naturales.
+            Durante los tres días de la competencia, trabajamos intensamente utilizando:
+          </p>
+          <ul>
+            <li><strong>Java para Android</strong> para el desarrollo de la aplicación.</li>
+            <li><strong>Google Maps API</strong> para visualizar áreas de riesgo y rutas seguras.</li>
+            <li><strong>Firebase</strong> para notificaciones en tiempo real y manejo de datos.</li>
+            <li><strong>Git y GitHub</strong> para coordinar nuestro trabajo colaborativo y controlar versiones.</li>
+          </ul>
+          <p>
+            Aplicamos metodologías ágiles, trabajando en ciclos iterativos de desarrollo, pruebas y mejoras,
+            lo que nos permitió resolver problemas rápidamente y avanzar de manera eficiente hacia la solución final.
+          </p>
+          <p>
+            El resultado: ¡una aplicación funcional y el primer lugar del certamen nuevamente! 🎉
+            ¡Vamos por más!
           </p>
 
           <div class="gallery-preview">

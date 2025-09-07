@@ -139,16 +139,27 @@ function showSlides(n, galleryId) {
 }
 
 // Función para abrir modal de educación
-function openEducationModal(modalId) {
+function openEducationModal(modalId, seccionNombre = null) {
   const modal = document.getElementById(modalId);
-  if (modal) {
-    modal.style.display = 'block';
-    document.body.style.overflow = 'hidden';
-    console.log('Modal abierto:', modalId);
-  } else {
-    console.error('Modal no encontrado:', modalId);
+  if (!modal) return;
+
+  // Abrir modal
+  modal.style.display = 'block';
+  document.body.style.overflow = 'hidden';
+  console.log('Modal abierto:', modalId);
+
+  // Si se pasa un nombre de sección, hacer scroll hasta esa sección
+  if (seccionNombre) {
+    const secciones = modal.querySelectorAll('.education-modal__section.full-modal');
+    secciones.forEach(section => {
+      const h3 = section.querySelector('h3');
+      if (h3 && h3.textContent.includes(seccionNombre)) {
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
   }
 }
+
 
 // Función para cerrar modal de educación
 function closeEducationModal(modalId) {
@@ -177,6 +188,15 @@ document.addEventListener('click', function (event) {
   if (event.target.classList.contains('education-modal')) {
     const id = event.target.id;
     closeEducationModal(id);
+  }
+});
+document.addEventListener("DOMContentLoaded", function () {
+  const navEvents = document.getElementById("navEvents");
+  if (navEvents) {
+    navEvents.addEventListener("click", function (e) {
+      e.preventDefault(); // evita que el link navegue
+      openEducationModal("modal-degree", "Reconocimientos y Eventos");
+    });
   }
 });
 
