@@ -118,6 +118,12 @@
             <div class="mySlides">
               <img src="assets/img/projects/chaves/chaves.png" style="width:100%">
             </div>
+            <div class="mySlides">
+              <img src="assets/img/projects/chaves/7.png" style="width:100%">
+            </div>
+            <div class="mySlides">
+              <img src="assets/img/projects/chaves/8.png" style="width:100%">
+            </div>
 
             <!-- Botones de anterior/siguiente -->
             <a class="prev" onclick="plusSlides(-1, 'ifsul1')">&#10094;</a>
@@ -137,6 +143,9 @@
             <img class="thumbnail" src="assets/img/projects/chaves/salas.png" onclick="currentSlide(4, 'ifsul1')" alt="Gestión de salas">
             <img class="thumbnail" src="assets/img/projects/chaves/usuarios.png" onclick="currentSlide(5, 'ifsul1')" alt="Gestión de usuarios">
             <img class="thumbnail" src="assets/img/projects/chaves/chaves.png" onclick="currentSlide(6, 'ifsul1')" alt="Control de llaves">
+            <img class="thumbnail" src="assets/img/projects/chaves/7.png" onclick="currentSlide(5, 'ifsul1')" alt="Gestión de usuarios">
+            <img class="thumbnail" src="assets/img/projects/chaves/8.png" onclick="currentSlide(6, 'ifsul1')" alt="Control de llaves">
+
           </div>
         </div>
       </div>
@@ -251,10 +260,10 @@
               <img src="assets/img/projects/idr/idr4.png" style="width:100%">
             </div>
             <div class="mySlides">
-              <img src="assets/img/projects/idr/idrapp.jpeg" style="width:100%">
+              <img src="assets/img/projects/idr/5.png" style="width:100%">
             </div>
             <div class="mySlides">
-              <img src="assets/img/projects/idr/idrapp2.jpeg" style="width:100%">
+              <img src="assets/img/projects/idr/6.png" style="width:100%">
             </div>
 
             <!-- Botones de navegación -->
@@ -273,10 +282,9 @@
             <img class="thumbnail" src="assets/img/projects/idr/idr1.png" onclick="currentSlide(2, 'idr')" alt="Plataforma web administrativa">
             <img class="thumbnail" src="assets/img/projects/idr/idr2.png" onclick="currentSlide(3, 'idr')" alt="App móvil para ciudadanos">
             <img class="thumbnail" src="assets/img/projects/idr/idr3.jpeg" onclick="currentSlide(4, 'idr')" alt="App móvil para capataces">
-            <img class="thumbnail" src="assets/img/projects/idr/idr3.jpeg" onclick="currentSlide(4, 'idr')" alt="App móvil para capataces">
             <img class="thumbnail" src="assets/img/projects/idr/idr4.png" onclick="currentSlide(4, 'idr')" alt="App móvil para capataces">
-            <img class="thumbnail" src="assets/img/projects/idr/idrapp.jpeg" onclick="currentSlide(4, 'idr')" alt="App móvil para capataces">
-            <img class="thumbnail" src="assets/img/projects/idr/idrapp2.jpeg" onclick="currentSlide(4, 'idr')" alt="App móvil para capataces">
+            <img class="thumbnail" src="assets/img/projects/idr/5.png" onclick="currentSlide(4, 'idr')" alt="App móvil para capataces">
+            <img class="thumbnail" src="assets/img/projects/idr/6.png" onclick="currentSlide(4, 'idr')" alt="App móvil para capataces">
 
           </div>
         </div>
