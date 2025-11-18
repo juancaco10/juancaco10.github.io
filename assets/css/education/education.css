@@ -30,7 +30,6 @@
   transition: all 0.3s ease;
   background: rgba(13, 17, 28, 0.6);
   backdrop-filter: blur(10px);
-  cursor: pointer;
 }
 
 .education__card:hover {
@@ -73,11 +72,34 @@
   font-weight: 600;
   text-align: center;
   transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
 }
 
-.education__card:hover .education__view-more {
-  transform: translateX(5px);
+/* ✨ Animación elegante */
+.education__view-more:hover {
+  color: #fff;
+  transform: scale(1.05);
+  text-shadow: 0 0 8px var(--color-primary);
 }
+
+/* 🔥 Subrayado animado */
+.education__view-more::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0%;
+  height: 2px;
+  background: var(--color-primary);
+  transition: width 0.3s ease;
+}
+
+.education__view-more:hover::after {
+  width: 70%;
+}
+
 
 /* ===========================
    🎓 Education Modal

@@ -12,7 +12,7 @@
           <img src="assets/img/projects/chaves/ifs.png" style="width:100%">
           <div class="project__image-overlay">
             <div class="project__zoom-icon">
-              <i class="fas fa-images"></i>
+              <span class="zoom-text">Ver imágenes</span>
             </div>
           </div>
         </div>
@@ -101,28 +101,28 @@
           <div class="slideshow-container">
             <!-- Imágenes completas - SOLO UNA active -->
             <div class="mySlides active">
-              <img src="assets/img/projects/chaves/ifs.png" style="width:100%">
+              <img src="assets/img/projects/chaves/ifs.png" ">
             </div>
             <div class="mySlides">
-              <img src="assets/img/projects/chaves/dashboard.png" style="width:100%">
+              <img src="assets/img/projects/chaves/dashboard.png" >
             </div>
             <div class="mySlides">
-              <img src="assets/img/projects/chaves/login.png" style="width:100%">
+              <img src="assets/img/projects/chaves/login.png" >
             </div>
             <div class="mySlides">
-              <img src="assets/img/projects/chaves/salas.png" style="width:100%">
+              <img src="assets/img/projects/chaves/salas.png">
             </div>
             <div class="mySlides">
-              <img src="assets/img/projects/chaves/usuarios.png" style="width:100%">
+              <img src="assets/img/projects/chaves/usuarios.png" >
             </div>
             <div class="mySlides">
-              <img src="assets/img/projects/chaves/chaves.png" style="width:100%">
+              <img src="assets/img/projects/chaves/chaves.png" >
             </div>
             <div class="mySlides">
-              <img src="assets/img/projects/chaves/7.png" style="width:100%">
+              <img src="assets/img/projects/chaves/7.png" >
             </div>
             <div class="mySlides">
-              <img src="assets/img/projects/chaves/8.png" style="width:100%">
+              <img src="assets/img/projects/chaves/8.png" >
             </div>
 
             <!-- Botones de anterior/siguiente -->
@@ -159,7 +159,7 @@
           <img src="assets/img/projects/idr/idr.png" alt="Sistema IDR" style="width:100%">
           <div class="project__image-overlay">
             <div class="project__zoom-icon">
-              <i class="fas fa-images"></i>
+              <span class="zoom-text">Ver imágenes</span>
             </div>
           </div>
         </div>
@@ -245,25 +245,25 @@
           <!-- Slideshow container -->
           <div class="slideshow-container">
             <div class="mySlides active">
-              <img src="assets/img/projects/idr/idr.png" style="width:100%">
+              <img src="assets/img/projects/idr/idr.png" >
             </div>
             <div class="mySlides">
-              <img src="assets/img/projects/idr/idr1.png" style="width:100%">
+              <img src="assets/img/projects/idr/idr1.png">
             </div>
             <div class="mySlides">
-              <img src="assets/img/projects/idr/idr2.png" style="width:100%">
+              <img src="assets/img/projects/idr/idr2.png">
             </div>
             <div class="mySlides">
-              <img src="assets/img/projects/idr/idr3.jpeg" style="width:100%">
+              <img src="assets/img/projects/idr/idr3.jpeg">
             </div>
             <div class="mySlides">
-              <img src="assets/img/projects/idr/idr4.png" style="width:100%">
+              <img src="assets/img/projects/idr/idr4.png">
             </div>
             <div class="mySlides">
-              <img src="assets/img/projects/idr/5.png" style="width:100%">
+              <img src="assets/img/projects/idr/5.png" >
             </div>
             <div class="mySlides">
-              <img src="assets/img/projects/idr/6.png" style="width:100%">
+              <img src="assets/img/projects/idr/6.png">
             </div>
 
             <!-- Botones de navegación -->
@@ -290,7 +290,6 @@
         </div>
       </div>
 
-
       <!-- Project Card ifsul3 -->
       <div class="project__card">
         <h3 class="project__title">Sistema de Llaves IFSUL</h3>
@@ -300,7 +299,7 @@
           <img src="assets/img/projects/chaves/ifs.png" style="width:100%">
           <div class="project__image-overlay">
             <div class="project__zoom-icon">
-              <i class="fas fa-images"></i>
+              <span class="zoom-text">Ver imágenes</span>
             </div>
           </div>
         </div>
@@ -363,22 +362,22 @@
           <div class="slideshow-container">
             <!-- Imágenes completas - SOLO UNA active -->
             <div class="mySlides active">
-              <img src="assets/img/projects/chaves/ifs.png" style="width:100%">
+              <img src="assets/img/projects/chaves/ifs.png" >
             </div>
             <div class="mySlides">
-              <img src="assets/img/projects/chaves/dashboard.png" style="width:100%">
+              <img src="assets/img/projects/chaves/dashboard.png">
             </div>
             <div class="mySlides">
-              <img src="assets/img/projects/chaves/login.png" style="width:100%">
+              <img src="assets/img/projects/chaves/login.png" >
             </div>
             <div class="mySlides">
-              <img src="assets/img/projects/chaves/salas.png" style="width:100%">
+              <img src="assets/img/projects/chaves/salas.png" >
             </div>
             <div class="mySlides">
-              <img src="assets/img/projects/chaves/usuarios.png" style="width:100%">
+              <img src="assets/img/projects/chaves/usuarios.png" >
             </div>
             <div class="mySlides">
-              <img src="assets/img/projects/chaves/chaves.png" style="width:100%">
+              <img src="assets/img/projects/chaves/chaves.png" >
             </div>
 
             <!-- Botones de anterior/siguiente -->
@@ -412,7 +411,7 @@
           <img src="assets/img/projects/chaves/ifs.png" style="width:100%">
           <div class="project__image-overlay">
             <div class="project__zoom-icon">
-              <i class="fas fa-images"></i>
+              <span class="zoom-text">Ver imágenes</span>
             </div>
           </div>
         </div>
@@ -475,22 +474,22 @@
           <div class="slideshow-container">
             <!-- Imágenes completas - SOLO UNA active -->
             <div class="mySlides active">
-              <img src="assets/img/projects/chaves/ifs.png" style="width:100%">
+              <img src="assets/img/projects/chaves/ifs.png" >
             </div>
             <div class="mySlides">
-              <img src="assets/img/projects/chaves/dashboard.png" style="width:100%">
+              <img src="assets/img/projects/chaves/dashboard.png">
             </div>
             <div class="mySlides">
-              <img src="assets/img/projects/chaves/login.png" style="width:100%">
+              <img src="assets/img/projects/chaves/login.png">
             </div>
             <div class="mySlides">
-              <img src="assets/img/projects/chaves/salas.png" style="width:100%">
+              <img src="assets/img/projects/chaves/salas.png">
             </div>
             <div class="mySlides">
-              <img src="assets/img/projects/chaves/usuarios.png" style="width:100%">
+              <img src="assets/img/projects/chaves/usuarios.png" >
             </div>
             <div class="mySlides">
-              <img src="assets/img/projects/chaves/chaves.png" style="width:100%">
+              <img src="assets/img/projects/chaves/chaves.png" >
             </div>
 
             <!-- Botones de anterior/siguiente -->

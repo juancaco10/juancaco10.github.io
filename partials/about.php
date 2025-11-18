@@ -28,7 +28,7 @@
                     Actualmente colaboro con un equipo de compañeros egresados en el desarrollo
                     de diversos proyectos, entre los que se incluye un Sistema de Gestión de Llaves
                     para el IFSUL (Instituto Federal Sul Riograndense). Además, estamos desarrollando
-                    un sistema integrado de Solicitud, Análisis y Gestión de Servicios para la
+                    la demo de un sistema integrado de Solicitud, análisis y gestión de servicios para la
                     Intendencia de Rivera.
                 </p>
 
