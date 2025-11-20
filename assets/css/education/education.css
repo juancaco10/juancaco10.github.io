@@ -241,6 +241,7 @@
   margin-bottom: 10px;
   border: 2px solid #5d5d9e;
   box-shadow: 0 4px 15px var(--color-shadow-blue);
+  cursor: pointer; 
 }
 
 .education-modal__caption {
@@ -305,7 +306,45 @@
   border-radius: 10px;
   margin-bottom: 20px;
   border: 1px solid #2d2d4d;
+
 }
+
+.img-modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: rgba(0,0,0,0.9);
+ }
+
+.img-modal-content {
+  display: block;
+  margin: auto;
+  max-width: 90%;
+  max-height: 80vh;
+  border-radius: 6px;
+}
+
+#imgModalCaption {
+  text-align: center;
+  color: #fff;
+  margin-top: 15px;
+}
+
+.img-modal-close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+}
+
 
 /* 📱 Responsive Design */
 @media (max-width: 992px) {

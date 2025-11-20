@@ -230,3 +230,18 @@ document.addEventListener('keydown', function (event) {
     else if (event.key === "ArrowRight") plusSlides(1, galleryId);
   }
 });
+
+function showImgModal(image) {
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("imgModalContent");
+  const caption = document.getElementById("imgModalCaption");
+
+  modal.style.display = "block";
+  modalImg.src = image.src;
+  caption.innerHTML = image.alt;
+}
+
+function closeImgModal() {
+  document.getElementById("imageModal").style.display = "none";
+}
+

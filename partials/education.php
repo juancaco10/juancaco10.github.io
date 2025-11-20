@@ -13,49 +13,30 @@
       </div>
 
       <div class="education__card">
-        <h3 class="education__card-title">Bootcamp de Desarrollo Web</h3>
+        <h3 class="education__card-title">Subiendo contenido…</h3>
         <hr class="education__divider" />
-        <p class="education__info"><strong>Duración:</strong> 400h</p>
-        <p class="education__info"><strong>Período:</strong> 2023</p>
-        <p class="education__info"><strong>Institución:</strong> Platzi / Udemy / Coursera</p>
-        <div class="education__view-more">Ver detalles →</div>
       </div>
 
       <div class="education__card">
-        <h3 class="education__card-title">JavaScript Moderno</h3>
+        <h3 class="education__card-title">Subiendo contenido…</h3>
         <hr class="education__divider" />
-        <p class="education__info"><strong>Duración:</strong> 60h</p>
-        <p class="education__info"><strong>Período:</strong> 2023</p>
-        <p class="education__info"><strong>Institución:</strong> Udemy / Platzi</p>
-        <div class="education__view-more">Ver detalles →</div>
       </div>
 
       <div class="education__card">
-        <h3 class="education__card-title">Certificación en React.js</h3>
+        <h3 class="education__card-title">Subiendo contenido…</h3>
         <hr class="education__divider" />
-        <p class="education__info"><strong>Duración:</strong> 80h</p>
-        <p class="education__info"><strong>Período:</strong> 2024</p>
-        <p class="education__info"><strong>Institución:</strong> FreeCodeCamp</p>
-        <div class="education__view-more">Ver detalles →</div>
       </div>
 
       <div class="education__card">
-        <h3 class="education__card-title">Fundamentos de Bases de Datos</h3>
+        <h3 class="education__card-title">Subiendo contenido…</h3>
         <hr class="education__divider" />
-        <p class="education__info"><strong>Duración:</strong> 45h</p>
-        <p class="education__info"><strong>Período:</strong> 2023</p>
-        <p class="education__info"><strong>Institución:</strong> Oracle Academy</p>
-        <div class="education__view-more">Ver detalles →</div>
       </div>
 
       <div class="education__card">
-        <h3 class="education__card-title">Metodologías Ágiles</h3>
+        <h3 class="education__card-title">Subiendo contenido…</h3>
         <hr class="education__divider" />
-        <p class="education__info"><strong>Duración:</strong> 30h</p>
-        <p class="education__info"><strong>Período:</strong> 2024</p>
-        <p class="education__info"><strong>Institución:</strong> LinkedIn Learning</p>
-        <div class="education__view-more">Ver detalles →</div>
       </div>
+
     </div>
   </div>
 </section>
@@ -196,7 +177,11 @@
           </div>
         </div>
 
-        <img src="assets/img/certificados/diploma.webp" alt="Certificado de Analista de Sistemas" class="education-modal__image">
+        <img
+          src="assets/img/certificados/analista.png"
+          alt="Certificado de Analista de Sistemas"
+          class="education-modal__image"
+          onclick="showImgModal(this)">
         <p class="education-modal__caption">Diploma de conclusión</p>
 
         <div class="modal-card">
@@ -526,4 +511,11 @@
       </div>
     </div>
   </div>
+</div>
+
+<!-- Modal de Imagen -->
+<div id="imageModal" class="img-modal">
+  <span class="img-modal-close" onclick="closeImgModal()">&times;</span>
+  <img class="img-modal-content" id="imgModalContent">
+  <div id="imgModalCaption"></div>
 </div>
