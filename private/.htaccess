@@ -1,0 +1,3 @@
+# Proteger directorio private - Denegar acceso completo
+Order deny,allow
+Deny from all

@@ -1,16 +1,21 @@
-/* ===========================
-   🎓 Education Section Styles
-   =========================== */
+/**
+ * EDUCATION.CSS - Education section styles
+ * WCAG 2.2 Compliant - Uses glass component
+ */
+
+/* ========================================
+   EDUCATION SECTION
+   ======================================== */
 .education {
-  max-width: 1200px;
+  max-width: var(--container-max);
   margin: auto;
-  padding: var(--spacing);
+  padding: var(--space-lg);
 }
 
 .education__title {
   color: var(--color-primary);
-  font-size: clamp(2rem, 4vw, 2.5rem);
-  margin-bottom: 2.5rem;
+  font-size: var(--text-3xl);
+  margin-bottom: var(--space-10);
   font-family: var(--font-title);
   text-align: center;
 }
@@ -18,31 +23,34 @@
 .education__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
+  gap: var(--space-6);
   margin: auto;
 }
 
+/* ========================================
+   EDUCATION CARD
+   Usa componente .o-glass + estilos específicos
+   ======================================== */
 .education__card {
-  padding: 1.5rem;
-  border: 2px solid var(--color-shadow-blue);
-  border-radius: 12px;
-  box-shadow: 0 4px 15px var(--color-shadow-blue);
-  transition: all 0.3s ease;
-  background: rgba(13, 17, 28, 0.6);
-  backdrop-filter: blur(10px);
+  /* Composición con glass */
+  composes: o-glass;
+  
+  /* Estilos específicos */
+  padding: var(--space-6);
+  border-radius: var(--radius-xl);
+  
+  /* FIX: backdrop-filter ya está en .o-glass con contain: layout paint */
 }
 
 .education__card:hover {
-  box-shadow: 0 8px 25px var(--color-primary);
-  border-color: var(--color-primary);
-  transform: translateY(-5px);
+  /* Estilos de hover ya definidos en .o-glass */
 }
 
 .education__card-title {
-  font-size: 1.3rem;
-  color: var(--color-text-light);
-  font-weight: 600;
-  margin-bottom: 1rem;
+  font-size: var(--text-xl);
+  color: var(--color-text);
+  font-weight: var(--font-semibold);
+  margin-bottom: var(--space-4);
   font-family: var(--font-primary);
 }
 
@@ -50,40 +58,53 @@
   border: 0;
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
-  margin: 1rem 0;
+  margin: var(--space-4) 0;
 }
 
 .education__info {
-  margin-top: 0.8rem;
-  font-size: 1rem;
-  color: var(--color-text-light);
+  margin-top: var(--space-3);
+  font-size: var(--text-base);
+  color: var(--color-text);
   font-family: var(--font-primary);
-  line-height: 1.5;
+  line-height: var(--leading-relaxed);
 }
 
 .education__info strong {
   color: var(--color-primary);
-  font-weight: 600;
+  font-weight: var(--font-semibold);
 }
 
 .education__view-more {
-  margin-top: 1rem;
+  margin-top: var(--space-4);
   color: var(--color-primary);
-  font-weight: 600;
+  font-weight: var(--font-semibold);
   text-align: center;
-  transition: all 0.3s ease;
   cursor: pointer;
   position: relative;
+  /* FIX: Touch target mínimo 44px */
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* FIX: Propiedades específicas */
+  transition: color var(--duration-base) var(--ease-default),
+              transform var(--duration-base) var(--ease-default);
 }
 
-/* ✨ Animación elegante */
 .education__view-more:hover {
-  color: #fff;
+  color: var(--color-text);
   transform: scale(1.05);
-  text-shadow: 0 0 8px var(--color-primary);
 }
 
-/* 🔥 Subrayado animado */
+/* FIX: Focus visible */
+.education__view-more:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+  border-radius: var(--radius-sm);
+}
+
+/* Subrayado animado */
 .education__view-more::after {
   content: "";
   position: absolute;
@@ -93,40 +114,40 @@
   width: 0%;
   height: 2px;
   background: var(--color-primary);
-  transition: width 0.3s ease;
+  transition: width var(--duration-base) var(--ease-default);
 }
 
-.education__view-more:hover::after {
+.education__view-more:hover::after,
+.education__view-more:focus-visible::after {
   width: 70%;
 }
 
-
-/* ===========================
-   🎓 Education Modal
-   =========================== */
+/* ========================================
+   EDUCATION MODAL
+   ======================================== */
 .education-modal {
   display: none;
   position: fixed;
-  z-index: 1000;
+  z-index: var(--z-modal);
   inset: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: var(--color-bg-overlay);
   overflow-y: auto;
 }
 
 .education-modal__content {
   background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
   margin: 5% auto;
-  padding: 2.5rem;
-  border-radius: 1rem;
-  max-width: 1200px;
+  padding: var(--space-10);
+  border-radius: var(--radius-xl);
+  max-width: var(--container-max);
   width: 95%;
   max-height: 90vh;
   overflow-y: auto;
   border: 2px solid var(--color-primary);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  color: #e6e6e6;
+  box-shadow: var(--shadow-lg);
+  color: var(--color-text);
 }
 
 .education-modal__close {
@@ -134,37 +155,50 @@
   font-size: 2rem;
   cursor: pointer;
   color: var(--color-primary);
-  transition: color 0.3s ease;
   font-weight: bold;
+  /* FIX: Touch target mínimo 44px */
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--duration-base) var(--ease-default);
 }
 
-.education-modal__close:hover {
-  color: #fff;
+.education-modal__close:hover,
+.education-modal__close:focus-visible {
+  color: var(--color-text);
+}
+
+.education-modal__close:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
 }
 
 .education-modal__header {
   text-align: center;
-  margin-bottom: 25px;
-  padding-bottom: 15px;
-  border-bottom: 1px solid #4e4e8d;
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border-light);
 }
 
 .education-modal__title {
   font-family: var(--font-title);
-  color: #7b9acc;
-  font-size: 2.2rem;
-  margin-bottom: 10px;
+  color: var(--color-text-accent);
+  font-size: var(--text-3xl);
+  margin-bottom: var(--space-3);
 }
 
 .education-modal__institution {
-  color: #a3c2e6;
-  font-size: 1.2rem;
-  margin-bottom: 15px;
+  color: var(--color-text-secondary);
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-4);
 }
 
 .education-modal__description {
   font-style: italic;
-  color: #b8b8d1;
+  color: var(--color-text-muted);
   max-width: 800px;
   margin: 0 auto;
 }
@@ -173,24 +207,24 @@
   display: grid;
   grid-template-columns: 65% 32%;
   gap: 3%;
-  margin-top: 1.5rem;
+  margin-top: var(--space-6);
 }
 
 .education-modal__section {
-  margin-bottom: 30px;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
-  border-left: 4px solid #7b9acc;
+  margin-bottom: var(--space-8);
+  padding: var(--space-5);
+  background: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  border-left: 4px solid var(--color-text-accent);
 }
 
 .education-modal__section h3 {
-  color: #7b9acc;
-  margin: 1.5rem 0 1rem 0;
-  font-size: 1.3rem;
+  color: var(--color-text-accent);
+  margin: var(--space-5) 0 var(--space-4) 0;
+  font-size: var(--text-xl);
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: var(--space-3);
 }
 
 .education-modal__list {
@@ -199,13 +233,13 @@
 }
 
 .education-modal__list li {
-  padding: 0.5rem 0;
-  border-bottom: 1px solid var(--color-shadow-blue);
-  color: var(--color-text-light);
-  margin-bottom: 8px;
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: var(--space-3);
 }
 
 .education-modal__list li:last-child {
@@ -215,17 +249,17 @@
 .education-modal__tech {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin: 1rem 0;
+  gap: var(--space-3);
+  margin: var(--space-4) 0;
 }
 
 .tech-badge {
   background: linear-gradient(135deg, #4e4e8d 0%, #2d2d4d 100%);
-  color: #e6e6e6;
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  border: 1px solid #5d5d9e;
+  color: var(--color-text);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  border: 1px solid var(--color-border-light);
 }
 
 .education-modal__media {
@@ -237,89 +271,96 @@
 .education-modal__image {
   width: 100%;
   max-width: 300px;
-  border-radius: 8px;
-  margin-bottom: 10px;
-  border: 2px solid #5d5d9e;
-  box-shadow: 0 4px 15px var(--color-shadow-blue);
-  cursor: pointer; 
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-3);
+  border: 2px solid var(--color-border-light);
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
 }
 
 .education-modal__caption {
-  color: #b8b8d1;
+  color: var(--color-text-muted);
   font-style: italic;
-  margin-top: 0.5rem;
+  margin-top: var(--space-2);
   text-align: center;
 }
 
-/* Extra content (semesters, competencies, etc.) */
+/* ========================================
+   SEMESTERS
+   ======================================== */
 .semester-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
-  margin-top: 15px;
+  gap: var(--space-4);
+  margin-top: var(--space-4);
 }
 
 .semester {
-  background: rgba(255, 255, 255, 0.03);
-  padding: 15px;
-  border-radius: 8px;
-  border: 1px solid #2d2d4d;
+  background: var(--color-bg-card);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
 }
 
 .semester h4 {
-  color: #a3c2e6;
-  margin-bottom: 10px;
-  font-size: 1rem;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-3);
+  font-size: var(--text-base);
 }
 
 .semester li {
-  margin-bottom: 5px;
-  font-size: 0.9rem;
-  color: #ccccdc;
+  margin-bottom: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
 }
 
 .competencies-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
-  margin-top: 15px;
+  gap: var(--space-4);
+  margin-top: var(--space-4);
 }
 
 .competency {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px;
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 8px;
-  border: 1px solid #2d2d4d;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  background: var(--color-bg-card);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
 }
 
 .competency i {
-  color: #7b9acc;
-  font-size: 1.2rem;
+  color: var(--color-text-accent);
+  font-size: var(--text-lg);
 }
 
+/* ========================================
+   MODAL CARD
+   ======================================== */
 .modal-card {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  border: 1px solid #2d2d4d;
-
+  background: var(--color-bg-card);
+  padding: var(--space-5);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-5);
+  border: 1px solid var(--color-border);
 }
 
+/* ========================================
+   IMAGE MODAL
+   ======================================== */
 .img-modal {
   display: none;
   position: fixed;
-  z-index: 2000;
+  z-index: var(--z-modal);
   padding-top: 60px;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   overflow: auto;
-  background: rgba(0,0,0,0.9);
+  background: rgba(0, 0, 0, 0.9);
  }
 
 .img-modal-content {
@@ -327,39 +368,70 @@
   margin: auto;
   max-width: 90%;
   max-height: 80vh;
-  border-radius: 6px;
+  border-radius: var(--radius-md);
 }
 
 #imgModalCaption {
   text-align: center;
-  color: #fff;
-  margin-top: 15px;
+  color: var(--color-text);
+  margin-top: var(--space-4);
 }
 
 .img-modal-close {
   position: absolute;
-  top: 20px;
-  right: 35px;
+  top: var(--space-5);
+  right: var(--space-8);
   font-size: 40px;
-  color: white;
+  color: var(--color-text);
   cursor: pointer;
+  /* FIX: Touch target mínimo 44px */
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--duration-base) var(--ease-default);
 }
 
+.img-modal-close:hover,
+.img-modal-close:focus-visible {
+  color: var(--color-primary);
+}
 
-/* 📱 Responsive Design */
+.img-modal-close:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
 @media (max-width: 992px) {
   .education-modal__grid {
     grid-template-columns: 1fr;
   }
+  
   .semester-container {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
 @media (max-width: 576px) {
+  .education-modal__content {
+    padding: var(--space-6);
+  }
+  
   .semester-container {
     grid-template-columns: 1fr;
   }
+  
   .competencies-grid {
     grid-template-columns: 1fr;
+  }
+  
+  .semester,
+  .competency {
+    padding: var(--space-3);
   }
 }

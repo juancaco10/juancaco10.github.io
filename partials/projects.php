@@ -8,8 +8,15 @@
         <h3 class="project__title">Sistema de Llaves IFSUL</h3>
         <p class="project__description">Plataforma para gestión de llaves, reservas y salas académicas.</p>
 
-        <div class="project__image-container" onclick="openGallery('ifsul1')">
-          <img src="assets/img/projects/chaves/ifs.png" style="width:100%">
+        <div class="project__image-container" onclick="openGallery('ifsul1')" role="button" tabindex="0" aria-label="Ver galería de imágenes del proyecto">
+          <img 
+            src="assets/img/projects/chaves/ifs.png" 
+            alt="Interfaz principal del Sistema de Llaves IFSUL mostrando el dashboard de gestión"
+            loading="lazy"
+            decoding="async"
+            width="600"
+            height="400"
+            class="project__image">
           <div class="project__image-overlay">
             <div class="project__zoom-icon">
               <span class="zoom-text">Ver imágenes</span>

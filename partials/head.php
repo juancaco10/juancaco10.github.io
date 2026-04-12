@@ -1,27 +1,103 @@
+<?php 
+// Incluir config si no está incluido
+if (!defined('SITE_NAME')) {
+    $configPath = dirname(__DIR__) . '/../private/config.php';
+    if (!file_exists($configPath)) {
+        $configPath = dirname(__DIR__) . '/private/config.php';
+    }
+    require_once $configPath;
+}
+
+// Obtener nonce CSP global
+$CSP_NONCE = $GLOBALS['CSP_NONCE'] ?? get_csp_nonce();
+?>
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- CSS Global -->
-  <link rel="stylesheet" href="assets/css/reset.css" />
-  <link rel="stylesheet" href="assets/css/fonts/fonts.css">
-  <link rel="stylesheet" href="assets/css/style.css" />
-
-  <!-- Header -->
-  <link rel="stylesheet" href="assets/css/header/header.css" />
-
-  <!-- Secciones -->
-  <link rel="stylesheet" href="assets/css/intro/intro.css" />
-  <link rel="stylesheet" href="assets/css/about/about.css" />
-  <link rel="stylesheet" href="assets/css/education/events.css" />
-  <link rel="stylesheet" href="assets/css/education/education.css" />
-  <link rel="stylesheet" href="assets/css/projects/projects.css" />
-  <link rel="stylesheet" href="assets/css/contact/contact.css" />
-  <link rel="stylesheet" href="assets/css/footer/footer.css" />
-
-  <!-- Icono -->
-  <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon" />
-
-  <title>Portfolio</title>
+  <!-- Metadatos Básicos -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <!-- SEO Básico -->
+  <title><?php echo e(SITE_NAME); ?> | <?php echo e(SITE_TITLE); ?></title>
+  <meta name="description" content="<?php echo e(SITE_DESCRIPTION); ?>">
+  <meta name="author" content="<?php echo e(SITE_NAME); ?>">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="googlebot" content="index, follow">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="<?php echo e(SITE_URL); ?>">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="<?php echo e(SITE_URL); ?>">
+  <meta property="og:title" content="<?php echo e(SITE_NAME); ?> | <?php echo e(SITE_TITLE); ?>">
+  <meta property="og:description" content="<?php echo e(SITE_DESCRIPTION); ?>">
+  <meta property="og:image" content="<?php echo e(SITE_URL); ?>/<?php echo e(OG_IMAGE); ?>">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="<?php echo e(SITE_LOCALE); ?>">
+  <meta property="og:site_name" content="<?php echo e(SITE_NAME); ?>">
+  
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="<?php echo e(TWITTER_HANDLE); ?>">
+  <meta name="twitter:title" content="<?php echo e(SITE_NAME); ?> | <?php echo e(SITE_TITLE); ?>">
+  <meta name="twitter:description" content="<?php echo e(SITE_DESCRIPTION); ?>">
+  <meta name="twitter:image" content="<?php echo e(SITE_URL); ?>/<?php echo e(OG_IMAGE); ?>">
+  
+  <!-- Preconnect a dominios externos -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  
+  <!-- DNS Prefetch para optimización -->
+  <link rel="dns-prefetch" href="//github.com">
+  <link rel="dns-prefetch" href="//linkedin.com">
+  <link rel="dns-prefetch" href="//wa.me">
+  
+  <!-- Preload de recursos críticos -->
+  <link rel="preload" href="assets/css/style.css" as="style">
+  <link rel="preload" href="assets/fonts/Saira_Stencil_One/SairaStencilOne-Regular.ttf" as="font" type="font/ttf" crossorigin>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
+  
+  <!-- CSS Global - Cache Busting automático -->
+  <link rel="stylesheet" href="<?php echo asset('assets/css/reset.css'); ?>">
+  <link rel="stylesheet" href="<?php echo asset('assets/css/fonts/fonts.css'); ?>">
+  <link rel="stylesheet" href="<?php echo asset('assets/css/style.css'); ?>">
+  
+  <!-- Header CSS -->
+  <link rel="stylesheet" href="<?php echo asset('assets/css/header/header.css'); ?>">
+  
+  <!-- Secciones CSS -->
+  <link rel="stylesheet" href="<?php echo asset('assets/css/intro/intro.css'); ?>">
+  <link rel="stylesheet" href="<?php echo asset('assets/css/about/about.css'); ?>">
+  <link rel="stylesheet" href="<?php echo asset('assets/css/education/events.css'); ?>">
+  <link rel="stylesheet" href="<?php echo asset('assets/css/education/education.css'); ?>">
+  <link rel="stylesheet" href="<?php echo asset('assets/css/projects/projects.css'); ?>">
+  <link rel="stylesheet" href="<?php echo asset('assets/css/contact/contact.css'); ?>">
+  <link rel="stylesheet" href="<?php echo asset('assets/css/contact/contact-extras.css'); ?>">
+  <link rel="stylesheet" href="<?php echo asset('assets/css/footer/footer.css'); ?>">
+  
+  <!-- Tema de color para móviles -->
+  <meta name="theme-color" content="#1a1a2e">
+  <meta name="msapplication-TileColor" content="#1a1a2e">
+  
+  <!-- Schema.org JSON-LD para SEO estructurado -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "<?php echo e(SITE_NAME); ?>",
+    "jobTitle": "Desarrollador y Analista de Sistemas",
+    "description": "<?php echo e(SITE_DESCRIPTION); ?>",
+    "url": "<?php echo e(SITE_URL); ?>",
+    "sameAs": [
+      "<?php echo e(SOCIAL_GITHUB); ?>",
+      "<?php echo e(SOCIAL_LINKEDIN); ?>"
+    ],
+    "image": "<?php echo e(SITE_URL); ?>/<?php echo e(OG_IMAGE); ?>"
+  }
+  </script>
 </head>

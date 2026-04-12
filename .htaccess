@@ -1,0 +1,91 @@
+# ============================================
+# CONFIGURACIÓN DE SEGURIDAD - Portfolio
+# Apache 2.4+ compatible
+# ============================================
+
+# Desactivar listado de directorios
+Options -Indexes
+
+# Proteger archivos sensibles
+<FilesMatch "^\.|\.(log|env|ini|phar|lock|git|svn|hg|bzr)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Proteger directorios y archivos sensibles
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^\.git/ - [F,L]
+    RewriteRule ^\.env - [F,L]
+    RewriteRule ^vendor/ - [F,L]
+    RewriteRule ^node_modules/ - [F,L]
+    RewriteRule ^private/ - [F,L]
+    RewriteRule ^config\.php$ - [F,L]
+</IfModule>
+
+# Proteger acceso directo a directorio private
+<IfModule mod_authz_core.c>
+    <Directory "^private/">
+        Require all denied
+    </Directory>
+</IfModule>
+
+# ============================================
+# HEADERS DE SEGURIDAD
+# ============================================
+<IfModule mod_headers.c>
+    # Prevenir Clickjacking
+    Header always set X-Frame-Options "SAMEORIGIN"
+    
+    # Prevenir MIME sniffing
+    Header always set X-Content-Type-Options "nosniff"
+    
+    # Política de referrer
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # Permisos de features
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=()"
+    
+    # Content Security Policy (base - nonce agregado dinámicamente por PHP)
+    # Para scripts inline usar: <script nonce="<?php echo e($CSP_NONCE); ?>">
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self'; media-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self';"
+    
+    # XSS Protection (legacy browsers)
+    Header always set X-XSS-Protection "1; mode=block"
+    
+    # HSTS (descomenta si tienes HTTPS activo)
+    # Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+</IfModule>
+
+# ============================================
+# COMPRESIÓN
+# ============================================
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
+    AddOutputFilterByType DEFLATE application/javascript application/json
+    AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# ============================================
+# CACHE OPTIMIZACIÓN
+# ============================================
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType font/ttf "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+# ============================================
+# PROTECCIÓN CONTRA HOTLINKING (opcional)
+# ============================================
+# <IfModule mod_rewrite.c>
+#     RewriteCond %{HTTP_REFERER} !^$
+#     RewriteCond %{HTTP_REFERER} !^https?://(www\.)?tu-dominio\.com [NC]
+#     RewriteRule \.(jpg|jpeg|png|gif|webp)$ - [F]
+# </IfModule>

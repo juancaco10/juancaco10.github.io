@@ -1,0 +1,18 @@
+# robots.txt - Portfolio Juan Carlos de León Silva
+# https://juancaco10.github.io/robots.txt
+
+User-agent: *
+Allow: /
+
+# Proteger archivos sensibles
+Disallow: /api/
+Disallow: /logs/
+Disallow: /config.php
+Disallow: /.git/
+Disallow: /.env
+Disallow: /*.log$
+Disallow: /*.sql$
+Disallow: /*.ini$
+
+# Sitemap
+Sitemap: https://juancaco10.github.io/sitemap.xml

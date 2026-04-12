@@ -1,0 +1,135 @@
+/**
+ * OBJECTS - Patrones reutilizables de layout
+ * Glass morphism component
+ */
+
+/* ========================================
+   GLASS COMPONENT - Efecto glass reutilizable
+   ======================================== */
+.o-glass {
+  /* Efecto visual base */
+  background: var(--color-bg-elevated);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid var(--color-border);
+  
+  /* Optimización performance - CRÍTICO */
+  contain: layout paint;
+  will-change: transform;
+  
+  /* Transiciones específicas (NO usar 'all') */
+  transition: transform var(--duration-base) var(--ease-default),
+              box-shadow var(--duration-base) var(--ease-default),
+              border-color var(--duration-base) var(--ease-default);
+}
+
+.o-glass:hover {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-glow-lg);
+  transform: translateY(-5px);
+}
+
+/* Variante sutil */
+.o-glass--subtle {
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  background: rgba(13, 17, 28, 0.4);
+}
+
+/* Variante sin animación */
+.o-glass--static {
+  transition: none;
+}
+
+.o-glass--static:hover {
+  transform: none;
+}
+
+/* ========================================
+   CONTAINER - Wrapper principal
+   ======================================== */
+.o-container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+/* ========================================
+   GRID - Layout grid reutilizable
+   ======================================== */
+.o-grid {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.o-grid--2col {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.o-grid--3col {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.o-grid--auto {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+/* ========================================
+   FLEX - Utilidades flexbox
+   ======================================== */
+.o-flex {
+  display: flex;
+}
+
+.o-flex--center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.o-flex--between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.o-flex--column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ========================================
+   SECTION - Espaciado consistente
+   ======================================== */
+.o-section {
+  padding: var(--space-12) 0;
+}
+
+.o-section--sm {
+  padding: var(--space-8) 0;
+}
+
+.o-section--lg {
+  padding: var(--space-16) 0;
+}
+
+/* ========================================
+   MEDIA QUERIES PARA OBJETOS
+   ======================================== */
+@media (max-width: 968px) {
+  .o-grid--3col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .o-grid--2col,
+  .o-grid--3col {
+    grid-template-columns: 1fr;
+  }
+  
+  .o-container {
+    padding: 0 var(--space-4);
+  }
+}

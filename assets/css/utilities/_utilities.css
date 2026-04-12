@@ -1,0 +1,112 @@
+/**
+ * UTILITIES - Clases utilitarias de bajo nivel
+ * Single responsibility classes
+ */
+
+/* ========================================
+   SPACING UTILITIES
+   ======================================== */
+.u-m-0 { margin: 0; }
+.u-mt-auto { margin-top: auto; }
+.u-mb-auto { margin-bottom: auto; }
+.u-ml-auto { margin-left: auto; }
+.u-mr-auto { margin-right: auto; }
+.u-mx-auto { margin-left: auto; margin-right: auto; }
+
+/* Padding */
+.u-p-0 { padding: 0; }
+
+/* ========================================
+   TYPOGRAPHY UTILITIES
+   ======================================== */
+.u-text-center { text-align: center; }
+.u-text-left { text-align: left; }
+.u-text-right { text-align: right; }
+
+.u-font-title { font-family: var(--font-title); }
+.u-font-primary { font-family: var(--font-primary); }
+
+/* ========================================
+   VISIBILITY UTILITIES
+   ======================================== */
+.u-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.u-hidden {
+  display: none !important;
+}
+
+.u-invisible {
+  visibility: hidden;
+}
+
+/* ========================================
+   ACCESSIBILITY UTILITIES
+   ======================================== */
+
+/* Focus ring para keyboard navigation */
+.u-focus-ring:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+}
+
+.u-focus-ring:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Skip link para screen readers */
+.u-skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-primary);
+  color: var(--color-text);
+  padding: 8px;
+  text-decoration: none;
+  z-index: 100;
+}
+
+.u-skip-link:focus {
+  top: 0;
+}
+
+/* ========================================
+   TOUCH TARGET UTILITIES
+   ======================================== */
+.u-touch-target {
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ========================================
+   VISUAL UTILITIES
+   ======================================== */
+.u-rounded-full { border-radius: var(--radius-full); }
+.u-shadow-glow { box-shadow: var(--shadow-glow); }
+
+/* ========================================
+   RESPONSIVE UTILITIES
+   ======================================== */
+@media (max-width: 768px) {
+  .u-hide-mobile {
+    display: none !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .u-hide-desktop {
+    display: none !important;
+  }
+}

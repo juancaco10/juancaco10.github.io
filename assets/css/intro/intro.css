@@ -1,6 +1,13 @@
-/* 🔹 Intro Section */
+/**
+ * INTRO.CSS - Hero section styles
+ * WCAG 2.2 Compliant
+ */
+
+/* ========================================
+   INTRO SECTION
+   ======================================== */
 .intro {
-  padding: calc(var(--spacing) * 0.5) 0;
+  padding: var(--space-4) 0;
   display: flex;
   justify-content: center;
 }
@@ -10,22 +17,24 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1.2rem;
+  gap: var(--space-5);
   max-width: 800px;
   width: 100%;
-  padding: 0 var(--spacing);
+  padding: 0 var(--space-lg);
   text-align: center;
 }
 
-/* CONTENEDOR DE IMAGEN */
+/* ========================================
+   IMAGE CONTAINER
+   ======================================== */
 .intro__image-container {
   position: relative;
   width: 220px;
   height: 220px;
-  border-radius: 50%;
+  border-radius: var(--radius-full);
   overflow: hidden;
   cursor: pointer;
-  box-shadow: 0 4px 20px rgba(108, 108, 236, 0.3);
+  box-shadow: var(--shadow-glow);
 }
 
 .intro__image {
@@ -34,10 +43,13 @@
   left: 0;
   width: 100%;
   height: 100%;
-  border-radius: 50%;
+  border-radius: var(--radius-full);
   border: 3px solid var(--color-primary);
   object-fit: cover;
-  transition: all 0.5s ease;
+  /* FIX: Propiedades específicas en lugar de 'all' */
+  transition: opacity var(--duration-slow) var(--ease-default),
+              filter var(--duration-slow) var(--ease-default),
+              transform var(--duration-slow) var(--ease-default);
 }
 
 .intro__image-primary {
@@ -64,10 +76,6 @@
   transform: scale(1);
 }
 
-.intro__image-container:hover {
-  cursor: pointer;
-}
-
 .intro__image-container::before {
   content: "";
   position: absolute;
@@ -81,10 +89,10 @@
     transparent 70%
   );
   opacity: 0;
-  transition: opacity 0.5s ease;
+  transition: opacity var(--duration-slow) var(--ease-default);
   z-index: 3;
   pointer-events: none;
-  border-radius: 50%;
+  border-radius: var(--radius-full);
 }
 
 .intro__image-container:hover::before {
@@ -93,56 +101,64 @@
 
 .intro__image-caption {
   font-style: italic;
-  color: var(--color-white-translucent);
-  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
 }
 
+/* ========================================
+   CONTENT
+   ======================================== */
 .intro__content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.7rem;
+  gap: var(--space-3);
 }
 
 .intro__title {
-  font-size: clamp(1rem, 4vw, 2rem);
+  font-size: var(--text-3xl);
   color: var(--color-primary);
-  margin: 0.5rem 0;
+  margin: var(--space-2) 0;
   font-family: var(--font-title);
-  line-height: 1.2;
+  line-height: var(--leading-tight);
 }
 
 .intro__title--lastname {
-  color: var(--color-text-light);
+  color: var(--color-text);
 }
 
 .intro__subtitle {
-  font-size: clamp(1rem, 2.5vw, 1.4rem);
-  color: var(--color-text-light);
-  font-weight: 400;
+  font-size: var(--text-xl);
+  color: var(--color-text);
+  font-weight: var(--font-normal);
   margin: 0;
 }
 
 .intro__description {
-  font-size: clamp(1rem, 2.5vw, 1.4rem);
-  color: var(--color-text-light);
-  line-height: 1.6;
-  font-weight: 300;
-  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  color: var(--color-text);
+  line-height: var(--leading-relaxed);
+  font-weight: var(--font-normal);
   margin: 0;
 }
 
+/* ========================================
+   SOCIAL ICONS
+   ======================================== */
 .intro__socials {
   display: flex;
   flex-direction: row;
-  gap: 1rem;
+  gap: var(--space-4);
   justify-content: center;
-  margin-top: 1rem;
+  margin-top: var(--space-4);
 }
 
 .social__icon {
   width: 40px;
-  transition: transform 0.3s ease, filter 0.3s ease;
+  height: 40px;
+  /* FIX: Transición específica */
+  transition: transform var(--duration-base) var(--ease-default),
+              filter var(--duration-base) var(--ease-default);
 }
 
 .social__icon:hover {
@@ -150,36 +166,75 @@
   filter: brightness(1.2);
 }
 
+/* FIX: Touch target mínimo 44px y focus visible */
+.intro__socials .social__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: var(--radius-full);
+  transition: background-color var(--duration-base) var(--ease-default);
+}
+
+.intro__socials .social__link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.intro__socials .social__link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ========================================
+   BUTTON
+   ======================================== */
 .intro__button-link {
   display: inline-block;
-  margin-top: 0.9rem;
+  margin-top: var(--space-4);
 }
 
 .button {
-  font-size: 1rem;
-  padding: 0.7rem 1.5rem;
-  border-radius: 0.5rem;
-  color: var(--color-text-light);
-  background-color: var(--color-background);
+  font-size: var(--text-base);
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-lg);
+  color: var(--color-text);
+  background-color: var(--color-bg);
   border: 2px solid var(--color-primary);
-  transition: all 0.3s ease-in-out;
   font-family: var(--font-primary);
   cursor: pointer;
-  margin-bottom: 1.2rem;
+  margin-bottom: var(--space-5);
+  /* FIX: Propiedades específicas en lugar de 'all' */
+  transition: box-shadow var(--duration-base) var(--ease-default),
+              background-color var(--duration-base) var(--ease-default),
+              color var(--duration-base) var(--ease-default),
+              transform var(--duration-base) var(--ease-default);
 }
 
 .button:hover {
-  cursor: pointer;
-  box-shadow: 0 0 15px var(--color-primary);
+  box-shadow: var(--shadow-glow);
   background-color: var(--color-primary);
-  color: var(--color-background);
+  color: var(--color-bg);
   transform: translateY(-2px);
 }
 
-/* 📱 Responsive */
+/* FIX: Focus visible */
+.button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+}
+
+/* FIX: Touch target */
+.button {
+  min-height: 44px;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
 @media (max-width: 768px) {
   .intro__container {
-    gap: 1.2rem;
+    gap: var(--space-5);
   }
 
   .intro__image-container {
@@ -200,6 +255,6 @@
   }
 
   .button {
-    padding: 0.6rem 1.5rem;
+    padding: var(--space-3) var(--space-6);
   }
 }
