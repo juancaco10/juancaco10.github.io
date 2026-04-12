@@ -1,3 +1,0 @@
-# Proteger directorio vendor - Denegar acceso
-Order deny,allow
-Deny from all

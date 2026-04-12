@@ -1,3 +1,0 @@
-# Proteger directorio logs - Denegar acceso completo
-Order deny,allow
-Deny from all
