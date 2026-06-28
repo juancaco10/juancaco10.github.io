@@ -1,0 +1,196 @@
+/**
+ * MODALS COMPONENT
+ * Sistema unificado de modales para todo el sitio
+ */
+
+.modal {
+  display: flex;
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--duration-base) var(--ease-default),
+              visibility var(--duration-base) var(--ease-default);
+}
+
+.modal:not([hidden]) {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal__overlay {
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-bg-overlay);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: -1;
+}
+
+.modal__content {
+  position: relative;
+  width: 100%;
+  max-height: 90vh;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: translateY(20px) scale(0.95);
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.modal:not([hidden]) .modal__content {
+  transform: translateY(0) scale(1);
+}
+
+/* Tallas de Modal */
+.modal--small .modal__content {
+  max-width: 400px;
+}
+
+.modal--medium .modal__content {
+  max-width: 600px;
+}
+
+.modal--large .modal__content {
+  max-width: 900px;
+}
+
+.modal--xlarge .modal__content {
+  max-width: 1200px;
+}
+
+/* Header, Body, Footer */
+.modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-bg-elevated);
+}
+
+.modal__title {
+  font-family: var(--font-title);
+  font-size: var(--text-xl);
+  color: var(--color-text);
+  margin: 0;
+}
+
+.modal__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin: -8px; /* Ajuste para touch target */
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--ease-default);
+  border-radius: var(--radius-md);
+}
+
+.modal__close:hover,
+.modal__close:focus-visible {
+  color: var(--color-error);
+  outline: 2px solid var(--color-error);
+  outline-offset: -2px;
+}
+
+.modal__body {
+  padding: var(--space-5);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+/* Scrollbar para modal body */
+.modal__body::-webkit-scrollbar {
+  width: 8px;
+}
+.modal__body::-webkit-scrollbar-track {
+  background: transparent;
+}
+.modal__body::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+}
+.modal__body::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+.modal__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  border-top: 1px solid var(--color-border);
+  background-color: var(--color-bg-elevated);
+}
+
+@media (max-width: 480px) {
+  .modal__footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .modal__footer .btn {
+    width: 100%;
+  }
+}
+
+/* ============================================
+   LIGHTBOX DE IMAGEN (#imageModal)
+   Oculto por defecto; JS lo muestra con display:block
+   ============================================ */
+.img-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  padding: var(--space-8) var(--space-5);
+  background-color: var(--color-bg-overlay);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  overflow: auto;
+  text-align: center;
+}
+
+.img-modal-content {
+  display: inline-block;
+  max-width: min(90%, 1000px);
+  max-height: 80vh;
+  margin-top: var(--space-6);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+.img-modal-close {
+  position: fixed;
+  top: var(--space-4);
+  right: var(--space-5);
+  font-size: 2.5rem;
+  line-height: 1;
+  color: #fff;
+}
+
+.img-modal-close:hover,
+.img-modal-close:focus-visible {
+  color: var(--color-primary-light);
+}
+
+#imgModalCaption {
+  margin-top: var(--space-4);
+  color: var(--color-text);
+  font-size: var(--text-base);
+}

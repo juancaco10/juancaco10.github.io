@@ -1,0 +1,14 @@
+# Datos sensibles y dependencias (NO deben publicarse)
+/private/
+/vendor/
+/logs/
+/node_modules/
+
+# Tooling local del editor/agente
+/.claude/
+
+# Artefactos temporales / duplicados
+*- copia*
+*- copia - copia*
+Thumbs.db
+.DS_Store

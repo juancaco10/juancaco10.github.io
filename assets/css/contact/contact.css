@@ -4,40 +4,37 @@
  */
 
 /* ========================================
-   CONTACT SECTION
+   CONTACT SECTION (Mobile First)
    ======================================== */
 .contact {
-  max-width: 1000px;
-  margin: auto;
-  padding: var(--space-lg);
+  text-align: center;
 }
 
 .contact__title {
   color: var(--color-primary);
-  font-size: var(--text-3xl);
+  font-size: var(--text-2xl);
   margin-bottom: var(--space-6);
   font-family: var(--font-title);
-  text-align: center;
 }
 
 .contact__content {
-  display: flex;
+  /* Layout manejado por .o-grid en el HTML */
   align-items: center;
-  gap: var(--space-12);
+  gap: var(--space-8);
 }
 
 .contact__info {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  flex: 1;
+  text-align: left;
 }
 
 .contact__description {
   color: var(--color-text);
-  font-size: var(--text-xl);
+  font-size: var(--text-lg);
   line-height: var(--leading-relaxed);
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--space-6);
   font-family: var(--font-primary);
 }
 
@@ -45,29 +42,32 @@
    SOCIALS
    ======================================== */
 .contact__socials {
-  background: rgba(89, 146, 171, 0.1);
-  border: 2px solid var(--color-border);
+  padding: var(--space-5);
   border-radius: var(--radius-xl);
-  padding: var(--space-6);
-  width: fit-content;
-  transition: box-shadow var(--duration-base) var(--ease-default),
-              border-color var(--duration-base) var(--ease-default);
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.contact__socials:hover {
-  box-shadow: var(--shadow-glow);
-  border-color: var(--color-primary);
+.contact__socials-title {
+  margin-bottom: var(--space-4);
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
 }
 
 .socials__container {
   display: flex;
   gap: var(--space-4);
+  justify-content: center;
 }
 
 .social__link {
   display: flex;
   text-decoration: none;
-  /* FIX: Touch target mínimo 44px */
   min-width: 44px;
   min-height: 44px;
   align-items: center;
@@ -80,15 +80,14 @@
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* FIX: Focus visible */
 .social__link:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
 
 .social__icon {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   transition: filter var(--duration-base) var(--ease-default);
 }
 
@@ -100,60 +99,48 @@
    CONTACT IMAGE
    ======================================== */
 .contact__image {
-  width: 45%;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-glow);
+  order: -1; /* Mueve la imagen arriba en móviles */
 }
 
 /* ========================================
-   RESPONSIVE
+   RESPONSIVE (Tablet / Desktop)
    ======================================== */
-@media (max-width: 968px) {
+@media (min-width: 768px) {
+  .contact__title {
+    font-size: var(--text-3xl);
+    margin-bottom: var(--space-8);
+  }
+
   .contact__content {
-    flex-direction: column;
-    gap: var(--space-10);
-    text-align: center;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
   }
-  
-  .contact__info {
-    align-items: center;
-  }
-  
-  .contact__image {
-    width: 70%;
-    order: -1;
-  }
-}
 
-@media (max-width: 640px) {
-  .contact {
-    padding: var(--space-lg) var(--space-4);
+  .contact__description {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-8);
   }
-  
-  .contact__image {
-    width: 85%;
-  }
-  
-  .socials__container {
-    gap: var(--space-3);
-  }
-  
-  .social__icon {
-    width: 35px;
-    height: 35px;
-  }
-}
 
-@media (max-width: 480px) {
-  .contact__image {
-    width: 100%;
-  }
-  
   .contact__socials {
-    padding: var(--space-4);
+    margin: 0;
+    max-width: none;
+    width: fit-content;
+    align-items: flex-start;
   }
-  
-  .socials__container {
-    gap: var(--space-2);
+
+  .social__icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .contact__image {
+    order: 0; /* Restaura el orden normal */
+    max-width: none;
   }
 }
+

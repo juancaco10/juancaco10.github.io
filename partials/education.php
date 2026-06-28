@@ -1,53 +1,41 @@
-<section id="education" class="education">
-  <div class="container">
+<?php
+// ============================================
+// DATOS DE FORMACIÓN (estructurado para escalar)
+// ============================================
+$curriculum = [
+  'Semestre 1' => ['Lógica de programación', 'Matemática discreta', 'Inglés técnico I', 'Introducción a la informática', 'Comunicación y expresión', 'Relaciones humanas, ética y ciudadanía'],
+  'Semestre 2' => ['Programación I', 'Bases de Datos I', 'Inglés Técnico II', 'Métodos Cuantitativos', 'Interface Hombre Computadora', 'Sistemas Operacionales', 'Probabilidad y Estadística'],
+  'Semestre 3' => ['Programación Orientada a Objetos', 'Sociedad y Tecnología', 'Bases de Datos II', 'Análisis de Sistemas I', 'Inglés Técnico III', 'Redes de Computadores', 'Estructura de Datos'],
+  'Semestre 4' => ['Programación Web I', 'Programación Mobile I', 'Bases de Datos III', 'Análisis de Sistema II', 'Metodología de Investigación', 'Testing de Aplicaciones', 'Sistemas Distribuidos'],
+  'Semestre 5' => ['Programación Web II', 'Programación Mobile II', 'Prácticas en Análisis y Desenvolvimiento de Sistemas I', 'Ingeniería de Software', 'Calidad de Software', 'Producción de Texto'],
+  'Semestre 6' => ['Tópicos Avanzados en Computadoras', 'Prácticas en Análisis y Desenvolvimiento de Sistemas II', 'Gerencia de Proyectos de Software', 'Seguridad y Auditoría de Sistemas', 'Ética y Legislación Aplicada a la Informática', 'Emprendedurismo'],
+];
+$degree_techs = ['Java', 'JavaScript', 'HTML/CSS', 'MySQL', 'React', 'MongoDB', 'Git'];
+?>
+<section id="education" class="education o-section">
+  <div class="o-container">
     <h2 class="education__title">Educación y Formación</h2>
 
-    <div class="education__grid">
-      <div class="education__card">
+    <div class="o-grid o-grid--auto education__grid">
+      <div class="education__card o-glass" data-modal="modal-degree">
         <h3 class="education__card-title">Análisis y Desarrollo de Sistemas</h3>
         <hr class="education__divider" />
         <p class="education__info"><strong>Duración:</strong> 2165h</p>
         <p class="education__info"><strong>Período:</strong> 2022 - 2024</p>
         <p class="education__info"><strong>Institución:</strong> IFSUL - UTEC </p>
-        <div class="education__view-more">Ver detalles →</div>
+        <div class="education__view-more" role="button" tabindex="0" aria-label="Ver detalles de la carrera">Ver detalles →</div>
       </div>
-
-      <div class="education__card">
-        <h3 class="education__card-title">Subiendo contenido…</h3>
-        <hr class="education__divider" />
-      </div>
-
-      <div class="education__card">
-        <h3 class="education__card-title">Subiendo contenido…</h3>
-        <hr class="education__divider" />
-      </div>
-
-      <div class="education__card">
-        <h3 class="education__card-title">Subiendo contenido…</h3>
-        <hr class="education__divider" />
-      </div>
-
-      <div class="education__card">
-        <h3 class="education__card-title">Subiendo contenido…</h3>
-        <hr class="education__divider" />
-      </div>
-
-      <div class="education__card">
-        <h3 class="education__card-title">Subiendo contenido…</h3>
-        <hr class="education__divider" />
-      </div>
-
     </div>
   </div>
 </section>
 
 <!-- Modal para la carrera principal -->
-<div id="modal-degree" class="education-modal">
+<div id="modal-degree" class="education-modal" role="dialog" aria-modal="true" aria-labelledby="modal-degree-title">
   <div class="education-modal__content">
-    <span class="education-modal__close" onclick="closeEducationModal('modal-degree')">&times;</span>
+    <button type="button" class="education-modal__close" data-click="closeEducationModal('modal-degree')" aria-label="Cerrar ventana">&times;</button>
 
     <div class="education-modal__header">
-      <h2 class="education-modal__title">Tecnólogo en Análisis y Desarrollo de Sistemas</h2>
+      <h2 class="education-modal__title" id="modal-degree-title">Tecnólogo en Análisis y Desarrollo de Sistemas</h2>
       <p class="education-modal__institution">IFSUL - UTEC | 2022 - 2024 | 2165 horas</p>
       <p class="education-modal__description">Formación como ciudadano crítico y solidario, con formación técnica y tecnológica para actuar tanto en Brasil como en Uruguay en situaciones que impliquen planificación, análisis, desarrollo, testeo, implementación, manutención, evaluación y utilización de tecnologías emergentes.</p>
     </div>
@@ -57,88 +45,25 @@
         <div class="education-modal__section">
           <h3><i class="fas fa-graduation-cap"></i> Plan de Estudios</h3>
           <div class="semester-container">
+            <?php foreach ($curriculum as $semestre => $materias): ?>
             <div class="semester">
-              <h4>Semestre 1</h4>
+              <h4><?php echo e($semestre); ?></h4>
               <ul>
-                <li>Lógica de programación</li>
-                <li>Matemática discreta</li>
-                <li>Inglés técnico I</li>
-                <li>Introducción a la informática</li>
-                <li>Comunicación y expresión</li>
-                <li>Relaciones humanas, ética y ciudadanía</li>
+                <?php foreach ($materias as $materia): ?>
+                <li><?php echo e($materia); ?></li>
+                <?php endforeach; ?>
               </ul>
             </div>
-            <div class="semester">
-              <h4>Semestre 2</h4>
-              <ul>
-                <li>Programación I</li>
-                <li>Bases de Datos I</li>
-                <li>Inglés Técnico II</li>
-                <li>Métodos Cuantitativos</li>
-                <li>Interface Hombre Computadora</li>
-                <li>Sistemas Operacionales</li>
-                <li>Probabilidad y Estadística</li>
-              </ul>
-            </div>
-            <div class="semester">
-              <h4>Semestre 3</h4>
-              <ul>
-                <li>Programación Orientada a Objetos</li>
-                <li>Sociedad y Tecnología</li>
-                <li>Bases de Datos II</li>
-                <li>Análisis de Sistemas I</li>
-                <li>Inglés Técnico III</li>
-                <li>Redes de Computadores</li>
-                <li>Estructura de Datos</li>
-              </ul>
-            </div>
-            <div class="semester">
-              <h4>Semestre 4</h4>
-              <ul>
-                <li>Programación Web I</li>
-                <li>Programación Mobile I</li>
-                <li>Bases de Datos III</li>
-                <li>Análisis de Sistema II</li>
-                <li>Metodología de Investigación</li>
-                <li>Testing de Aplicaciones</li>
-                <li>Sistemas Distribuidos</li>
-              </ul>
-            </div>
-            <div class="semester">
-              <h4>Semestre 5</h4>
-              <ul>
-                <li>Programación Web II</li>
-                <li>Programación Mobile II</li>
-                <li>Prácticas en Análisis y Desenvolvimiento de Sistemas I</li>
-                <li>Ingeniería de Software</li>
-                <li>Calidad de Software</li>
-                <li>Producción de Texto</li>
-              </ul>
-            </div>
-            <div class="semester">
-              <h4>Semestre 6</h4>
-              <ul>
-                <li>Tópicos Avanzados en Computadoras</li>
-                <li>Prácticas en Análisis y Desenvolvimiento de Sistemas II</li>
-                <li>Gerencia de Proyectos de Software</li>
-                <li>Seguridad y Auditoría de Sistemas</li>
-                <li>Ética y Legislación Aplicada a la Informática</li>
-                <li>Emprendedurismo</li>
-              </ul>
-            </div>
+            <?php endforeach; ?>
           </div>
         </div>
 
         <div class="education-modal__section">
           <h3><i class="fas fa-tools"></i> Tecnologías</h3>
           <div class="education-modal__tech">
-            <span class="tech-badge">Java</span>
-            <span class="tech-badge">JavaScript</span>
-            <span class="tech-badge">HTML/CSS</span>
-            <span class="tech-badge">MySQL</span>
-            <span class="tech-badge">React</span>
-            <span class="tech-badge">MongoDB</span>
-            <span class="tech-badge">Git</span>
+            <?php foreach ($degree_techs as $tech): ?>
+            <span class="tech-badge"><?php echo e($tech); ?></span>
+            <?php endforeach; ?>
           </div>
         </div>
 
@@ -181,7 +106,7 @@
           src="assets/img/certificados/analista.png"
           alt="Certificado de Analista de Sistemas"
           class="education-modal__image"
-          onclick="showImgModal(this)">
+          data-click="showImgModal(this)">
         <p class="education-modal__caption">Diploma de conclusión</p>
 
         <div class="modal-card">
@@ -203,53 +128,53 @@
       <h3><i class="fas fa-trophy"></i> Reconocimientos y Eventos</h3>
 
       <!-- Galería modal para CodeDay 2023 -->
-      <div id="gallery-codeday2023" class="gallery-modal">
+      <div id="gallery-codeday2023" class="gallery-modal" role="dialog" aria-modal="true" aria-label="Galería de fotos: CodeDay 2023">
         <div class="modal-content">
-          <span class="close" onclick="closeGallery('codeday2023')">&times;</span>
+          <button type="button" class="close" data-click="closeGallery('codeday2023')" aria-label="Cerrar galería">&times;</button>
 
           <div class="mySlides">
-            <img src="assets/img/events/codeday2023-1.jpg" alt="Competencia CodeDay 2023">
+            <img src="assets/img/events/codeday2023-1.webp" alt="Competencia CodeDay 2023">
           </div>
 
           <div class="mySlides">
-            <img src="assets/img/events/codeday2023-2.jpg" alt="Equipo en CodeDay 2023">
+            <img src="assets/img/events/codeday2023-2.webp" alt="Equipo en CodeDay 2023">
           </div>
 
           <div class="mySlides">
-            <img src="assets/img/events/codeday2023-3.jpg" alt="Premiación CodeDay 2023">
+            <img src="assets/img/events/codeday2023-3.webp" alt="Premiación CodeDay 2023">
           </div>
 
           <div class="mySlides">
-            <img src="assets/img/events/codeday2023-4.jpg" alt="Premiación CodeDay 2023">
+            <img src="assets/img/events/codeday2023-4.webp" alt="Premiación CodeDay 2023">
           </div>
 
-          <a class="prev" onclick="plusSlides(-1, 'codeday2023')">&#10094;</a>
-          <a class="next" onclick="plusSlides(1, 'codeday2023')">&#10095;</a>
+          <button type="button" class="prev" data-click="plusSlides(-1, 'codeday2023')" aria-label="Imagen anterior">&#10094;</button>
+          <button type="button" class="next" data-click="plusSlides(1, 'codeday2023')" aria-label="Imagen siguiente">&#10095;</button>
 
           <div class="thumbnail-container">
-            <div class="thumbnail" onclick="currentSlide(1, 'codeday2023')">
-              <img src="assets/img/events/codeday2023-1.jpg" alt="Competencia CodeDay 2023">
+            <div class="thumbnail" data-click="currentSlide(1, 'codeday2023')">
+              <img src="assets/img/events/codeday2023-1.webp" alt="Competencia CodeDay 2023">
             </div>
-            <div class="thumbnail" onclick="currentSlide(2, 'codeday2023')">
-              <img src="assets/img/events/codeday2023-2.jpg" alt="Equipo en CodeDay 2023">
+            <div class="thumbnail" data-click="currentSlide(2, 'codeday2023')">
+              <img src="assets/img/events/codeday2023-2.webp" alt="Equipo en CodeDay 2023">
             </div>
-            <div class="thumbnail" onclick="currentSlide(3, 'codeday2023')">
-              <img src="assets/img/events/codeday2023-3.jpg" alt="Premiación CodeDay 2023">
+            <div class="thumbnail" data-click="currentSlide(3, 'codeday2023')">
+              <img src="assets/img/events/codeday2023-3.webp" alt="Premiación CodeDay 2023">
             </div>
-            <div class="thumbnail" onclick="currentSlide(4, 'codeday2023')">
-              <img src="assets/img/events/codeday2023-4.jpg" alt="Premiación CodeDay 2023">
+            <div class="thumbnail" data-click="currentSlide(4, 'codeday2023')">
+              <img src="assets/img/events/codeday2023-4.webp" alt="Premiación CodeDay 2023">
             </div>
           </div>
         </div>
       </div>
 
       <!-- Galería modal para CodeDay 2024 -->
-      <div id="gallery-codeday2024" class="gallery-modal">
+      <div id="gallery-codeday2024" class="gallery-modal" role="dialog" aria-modal="true" aria-label="Galería de fotos: CodeDay 2024">
         <div class="modal-content">
-          <span class="close" onclick="closeGallery('codeday2024')">&times;</span>
+          <button type="button" class="close" data-click="closeGallery('codeday2024')" aria-label="Cerrar galería">&times;</button>
 
           <div class="mySlides">
-            <img src="assets/img/events/codeday2024-1.jpg" alt="CodeDay 2024">
+            <img src="assets/img/events/codeday2024-1.webp" alt="CodeDay 2024">
           </div>
 
           <div class="mySlides">
@@ -257,66 +182,66 @@
           </div>
 
           <div class="mySlides">
-            <img src="assets/img/events/codeday2024-3.jpg" alt="CodeDay 2024">
+            <img src="assets/img/events/codeday2024-3.webp" alt="CodeDay 2024">
           </div>
 
-          <a class="prev" onclick="plusSlides(-1, 'codeday2024')">&#10094;</a>
-          <a class="next" onclick="plusSlides(1, 'codeday2024')">&#10095;</a>
+          <button type="button" class="prev" data-click="plusSlides(-1, 'codeday2024')" aria-label="Imagen anterior">&#10094;</button>
+          <button type="button" class="next" data-click="plusSlides(1, 'codeday2024')" aria-label="Imagen siguiente">&#10095;</button>
 
           <div class="thumbnail-container">
-            <div class="thumbnail" onclick="currentSlide(1, 'codeday2024')">
-              <img src="assets/img/events/codeday2024-1.jpg" alt="CodeDay 2024">
+            <div class="thumbnail" data-click="currentSlide(1, 'codeday2024')">
+              <img src="assets/img/events/codeday2024-1.webp" alt="CodeDay 2024">
             </div>
-            <div class="thumbnail" onclick="currentSlide(2, 'codeday2024')">
+            <div class="thumbnail" data-click="currentSlide(2, 'codeday2024')">
               <img src="assets/img/events/codeday2024-2.jpg" alt="CodeDay 2024">
             </div>
-            <div class="thumbnail" onclick="currentSlide(3, 'codeday202')">
-              <img src="assets/img/events/codeday2024-3.jpg" alt="CodeDay 2024">
+            <div class="thumbnail" data-click="currentSlide(3, 'codeday2024')">
+              <img src="assets/img/events/codeday2024-3.webp" alt="CodeDay 2024">
             </div>
           </div>
         </div>
       </div>
 
       <!-- Galería modal para FEBITEC  -->
-      <div id="gallery-febitec" class="gallery-modal">
+      <div id="gallery-febitec" class="gallery-modal" role="dialog" aria-modal="true" aria-label="Galería de fotos: FEBITEC">
         <div class="modal-content">
-          <span class="close" onclick="closeGallery('febitec')">&times;</span>
+          <button type="button" class="close" data-click="closeGallery('febitec')" aria-label="Cerrar galería">&times;</button>
 
           <div class="mySlides">
-            <img src="assets/img/events/febi.png" alt="Presentación en FEBITEC">
+            <img src="assets/img/events/febi.webp" alt="Presentación en FEBITEC">
           </div>
           <div class="mySlides">
-            <img src="assets/img/events/febi1.png" alt="Presentación en FEBITEC">
-          </div>
-
-          <div class="mySlides">
-            <img src="assets/img/events/febi2.png" alt="Equipo en FEBITEC">
+            <img src="assets/img/events/febi1.webp" alt="Presentación en FEBITEC">
           </div>
 
           <div class="mySlides">
-            <img src="assets/img/events/febi3.png" alt="Mención Honrosa">
+            <img src="assets/img/events/febi2.webp" alt="Equipo en FEBITEC">
+          </div>
+
+          <div class="mySlides">
+            <img src="assets/img/events/febi3.webp" alt="Mención Honrosa">
           </div>
           <div class="mySlides">
             <img src="assets/img/events/febi4.png" alt="Mención Honrosa">
           </div>
 
-          <a class="prev" onclick="plusSlides(-1, 'febitec')">&#10094;</a>
-          <a class="next" onclick="plusSlides(1, 'febitec')">&#10095;</a>
+          <button type="button" class="prev" data-click="plusSlides(-1, 'febitec')" aria-label="Imagen anterior">&#10094;</button>
+          <button type="button" class="next" data-click="plusSlides(1, 'febitec')" aria-label="Imagen siguiente">&#10095;</button>
 
           <div class="thumbnail-container">
-            <div class="thumbnail" onclick="currentSlide(1, 'febitec')">
-              <img src="assets/img/events/febi.png" alt="Presentación en FEBITEC">
+            <div class="thumbnail" data-click="currentSlide(1, 'febitec')">
+              <img src="assets/img/events/febi.webp" alt="Presentación en FEBITEC">
             </div>
-            <div class="thumbnail" onclick="currentSlide(1, 'febitec')">
-              <img src="assets/img/events/febi1.png" alt="Presentación en FEBITEC">
+            <div class="thumbnail" data-click="currentSlide(2, 'febitec')">
+              <img src="assets/img/events/febi1.webp" alt="Presentación en FEBITEC">
             </div>
-            <div class="thumbnail" onclick="currentSlide(2, 'febitec')">
-              <img src="assets/img/events/febi2.png" alt="Equipo en FEBITEC">
+            <div class="thumbnail" data-click="currentSlide(3, 'febitec')">
+              <img src="assets/img/events/febi2.webp" alt="Equipo en FEBITEC">
             </div>
-            <div class="thumbnail" onclick="currentSlide(3, 'febitec')">
-              <img src="assets/img/events/febi3.png" alt="Mención Honrosa">
+            <div class="thumbnail" data-click="currentSlide(4, 'febitec')">
+              <img src="assets/img/events/febi3.webp" alt="Mención Honrosa">
             </div>
-            <div class="thumbnail" onclick="currentSlide(4, 'febitec')">
+            <div class="thumbnail" data-click="currentSlide(5, 'febitec')">
               <img src="assets/img/events/febi4.png" alt="Mención Honrosa">
             </div>
           </div>
@@ -352,16 +277,16 @@
           <div class="gallery-preview">
             <h5>Galería de Fotos</h5>
             <div class="gallery-grid">
-              <div class="gallery-item" onclick="openGallery('codeday2023');currentSlide(1, 'codeday2023')">
-                <img src="assets/img/events/codeday2023-1.jpg" alt="Competencia CodeDay 2023">
+              <div class="gallery-item" role="button" tabindex="0" data-click="openGallery('codeday2023');currentSlide(1, 'codeday2023')">
+                <img src="assets/img/events/codeday2023-1.webp" alt="Competencia CodeDay 2023">
                 <div class="gallery-overlay">Ver más</div>
               </div>
-              <div class="gallery-item" onclick="openGallery('codeday2023');currentSlide(2, 'codeday2023')">
-                <img src="assets/img/events/codeday2023-2.jpg" alt="Equipo en CodeDay 2023">
+              <div class="gallery-item" role="button" tabindex="0" data-click="openGallery('codeday2023');currentSlide(2, 'codeday2023')">
+                <img src="assets/img/events/codeday2023-2.webp" alt="Equipo en CodeDay 2023">
                 <div class="gallery-overlay">Ver más</div>
               </div>
-              <div class="gallery-item" onclick="openGallery('codeday2023');currentSlide(3, 'codeday2023')">
-                <img src="assets/img/events/codeday2023-3.jpg" alt="Premiación CodeDay 2023">
+              <div class="gallery-item" role="button" tabindex="0" data-click="openGallery('codeday2023');currentSlide(3, 'codeday2023')">
+                <img src="assets/img/events/codeday2023-3.webp" alt="Premiación CodeDay 2023">
                 <div class="gallery-overlay">Ver más</div>
               </div>
             </div>
@@ -410,16 +335,16 @@
           <div class="gallery-preview">
             <h5>Galería de Fotos</h5>
             <div class="gallery-grid">
-              <div class="gallery-item" onclick="openGallery('codeday2024');currentSlide(1, 'codeday2024')">
-                <img src="assets/img/events/codeday2024-1.jpg" alt="Competencia CodeDay 2024">
+              <div class="gallery-item" role="button" tabindex="0" data-click="openGallery('codeday2024');currentSlide(1, 'codeday2024')">
+                <img src="assets/img/events/codeday2024-1.webp" alt="Competencia CodeDay 2024">
                 <div class="gallery-overlay">Ver más</div>
               </div>
-              <div class="gallery-item" onclick="openGallery('codeday2024');currentSlide(2, 'codeday2024')">
+              <div class="gallery-item" role="button" tabindex="0" data-click="openGallery('codeday2024');currentSlide(2, 'codeday2024')">
                 <img src="assets/img/events/codeday2024-2.jpg" alt="Equipo en CodeDay 2024">
                 <div class="gallery-overlay">Ver más</div>
               </div>
-              <div class="gallery-item" onclick="openGallery('codeday2024');currentSlide(3, 'codeday2024')">
-                <img src="assets/img/events/codeday2024-3.jpg" alt="Premiación CodeDay 2024">
+              <div class="gallery-item" role="button" tabindex="0" data-click="openGallery('codeday2024');currentSlide(3, 'codeday2024')">
+                <img src="assets/img/events/codeday2024-3.webp" alt="Premiación CodeDay 2024">
                 <div class="gallery-overlay">Ver más</div>
               </div>
             </div>
@@ -455,16 +380,16 @@
           <div class="gallery-preview">
             <h5>Galería de Fotos</h5>
             <div class="gallery-grid">
-              <div class="gallery-item" onclick="openGallery('febitec');currentSlide(1, 'febitec')">
-                <img src="assets/img/events/febi.png" alt="Presentación en FEBITEC">
+              <div class="gallery-item" role="button" tabindex="0" data-click="openGallery('febitec');currentSlide(1, 'febitec')">
+                <img src="assets/img/events/febi.webp" alt="Presentación en FEBITEC">
                 <div class="gallery-overlay">Ver más</div>
               </div>
-              <div class="gallery-item" onclick="openGallery('febitec');currentSlide(2, 'febitec')">
-                <img src="assets/img/events/febi1.png" alt="Presentación en FEBITEC">
+              <div class="gallery-item" role="button" tabindex="0" data-click="openGallery('febitec');currentSlide(2, 'febitec')">
+                <img src="assets/img/events/febi1.webp" alt="Presentación en FEBITEC">
                 <div class="gallery-overlay">Ver más</div>
               </div>
-              <div class="gallery-item" onclick="openGallery('febitec');currentSlide(3, 'febitec')">
-                <img src="assets/img/events/febi2.png" alt="Equipo en FEBITEC">
+              <div class="gallery-item" role="button" tabindex="0" data-click="openGallery('febitec');currentSlide(3, 'febitec')">
+                <img src="assets/img/events/febi2.webp" alt="Equipo en FEBITEC">
                 <div class="gallery-overlay">Ver más</div>
               </div>
             </div>
@@ -478,11 +403,11 @@
 </div>
 
 <!-- Modal para bootcamp -->
-<div id="modal-bootcamp" class="education-modal">
+<div id="modal-bootcamp" class="education-modal" role="dialog" aria-modal="true" aria-labelledby="modal-bootcamp-title">
   <div class="education-modal__content">
-    <span class="education-modal__close" onclick="closeEducationModal('modal-bootcamp')">&times;</span>
+    <button type="button" class="education-modal__close" data-click="closeEducationModal('modal-bootcamp')" aria-label="Cerrar ventana">&times;</button>
 
-    <h2 class="education-modal__title">Bootcamp de Desarrollo Web Full Stack</h2>
+    <h2 class="education-modal__title" id="modal-bootcamp-title">Bootcamp de Desarrollo Web Full Stack</h2>
     <p class="education-modal__institution">Platzi | 2023 | 400 horas</p>
 
     <div class="education-modal__grid">
@@ -506,7 +431,7 @@
       </div>
 
       <div class="education-modal__media">
-        <img src="assets/img/education/bootcamp-certificate.jpg" alt="Certificado de Bootcamp" class="education-modal__image">
+        <img src="assets/img/certificados/diploma.webp" alt="Certificado de Bootcamp" class="education-modal__image">
         <p class="education-modal__caption">Certificación de finalización</p>
       </div>
     </div>
@@ -514,8 +439,8 @@
 </div>
 
 <!-- Modal de Imagen -->
-<div id="imageModal" class="img-modal">
-  <span class="img-modal-close" onclick="closeImgModal()">&times;</span>
-  <img class="img-modal-content" id="imgModalContent">
+<div id="imageModal" class="img-modal" role="dialog" aria-modal="true" aria-label="Imagen ampliada">
+  <button type="button" class="img-modal-close" data-click="closeImgModal()" aria-label="Cerrar imagen">&times;</button>
+  <img class="img-modal-content" id="imgModalContent" alt="">
   <div id="imgModalCaption"></div>
 </div>

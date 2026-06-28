@@ -145,11 +145,26 @@
   --container-max: 1200px;
   --container-padding: var(--space-6);
   
-  /* Breakpoints (para referencia en JS) */
-  --breakpoint-sm: 480px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 968px;
-  --breakpoint-xl: 1200px;
+  /* Container padding mobile-optimizado */
+  --container-px-mobile: 1rem;    /* 16px */
+  --container-px-tablet: 1.5rem;  /* 24px */
+  --container-px-desktop: 2rem;   /* 32px */
+
+  /* Espaciado de sección (8px grid) */
+  --section-py-mobile: 3rem;      /* 48px */
+  --section-py-tablet: 4rem;      /* 64px */
+  --section-py-desktop: 5rem;     /* 80px */
+
+  /* Navbar mobile-first */
+  --navbar-height-mobile: 60px;
+  --navbar-height-desktop: 64px;
+  
+  /* Breakpoints Mobile-First (min-width) */
+  --bp-xs: 320px;    /* Base mobile */
+  --bp-sm: 480px;    /* Mobile landscape */
+  --bp-md: 768px;    /* Tablet */
+  --bp-lg: 1024px;   /* Desktop */
+  --bp-xl: 1280px;   /* Large desktop */
 }
 
 /* ========================================

@@ -9,7 +9,7 @@ if (!defined('SITE_NAME')) {
 }
 ?>
 <footer class="footer">
-    <div class="container">
+    <div class="o-container">
         <div class="footer__content">
             <div class="footer__info">
                 <p class="footer__copyright">
@@ -65,10 +65,10 @@ if (!defined('SITE_NAME')) {
             </p>
         </div>
         <div class="cookie-banner__actions">
-            <button type="button" class="button button--primary cookie-banner__accept" data-cookie="accept">
+            <button type="button" class="btn btn--primary cookie-banner__accept" data-cookie="accept">
                 Aceptar
             </button>
-            <a href="#privacy" class="button button--secondary cookie-banner__more" data-open="privacy-modal">
+            <a href="#privacy" class="btn btn--secondary cookie-banner__more" data-open="privacy-modal">
                 Ver más
             </a>
         </div>
@@ -76,11 +76,11 @@ if (!defined('SITE_NAME')) {
 </div>
 
 <!-- Modal de Política de Privacidad -->
-<div id="privacy-modal" class="modal modal--large" hidden>
+<div id="privacy-modal" class="modal modal--large" role="dialog" aria-modal="true" aria-labelledby="privacy-modal-title" hidden>
     <div class="modal__overlay" data-close="privacy-modal"></div>
     <div class="modal__content">
         <header class="modal__header">
-            <h2 class="modal__title">Política de Privacidad</h2>
+            <h2 class="modal__title" id="privacy-modal-title">Política de Privacidad</h2>
             <button type="button" class="modal__close" data-close="privacy-modal" aria-label="Cerrar">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -104,7 +104,7 @@ if (!defined('SITE_NAME')) {
             <p class="modal__updated"><small>Última actualización: <?php echo date('F Y'); ?></small></p>
         </div>
         <footer class="modal__footer">
-            <button type="button" class="button button--primary" data-close="privacy-modal">Entendido</button>
+            <button type="button" class="btn btn--primary" data-close="privacy-modal">Entendido</button>
         </footer>
     </div>
 </div>
@@ -124,8 +124,8 @@ if (!defined('SITE_NAME')) {
             <p><strong>Nota:</strong> Tu número de teléfono será visible para el destinatario.</p>
         </div>
         <footer class="modal__footer">
-            <a href="<?php echo e(SOCIAL_WHATSAPP); ?>" target="_blank" rel="noopener noreferrer" class="button button--primary">Continuar</a>
-            <button type="button" class="button button--secondary" data-close="whatsapp-modal">Cancelar</button>
+            <a href="<?php echo e(SOCIAL_WHATSAPP); ?>" target="_blank" rel="noopener noreferrer" class="btn btn--primary">Continuar</a>
+            <button type="button" class="btn btn--secondary" data-close="whatsapp-modal">Cancelar</button>
         </footer>
     </div>
 </div>

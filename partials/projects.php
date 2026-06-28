@@ -1,14 +1,54 @@
-<section id="projects" class="projects">
-  <div class="container">
+<?php
+// ============================================
+// DATOS DE PROYECTOS (estructurado para escalar)
+// ============================================
+$team = [
+  ['photo' => 'assets/img/projects/juan.webp',     'name' => 'Juan Carlos de León Silva',  'alt' => 'Juan Carlos de León'],
+  ['photo' => 'assets/img/projects/rafa.jpg',      'name' => 'Rafael Quintanilla Fontané', 'alt' => 'Rafael Quintanilla'],
+  ['photo' => 'assets/img/projects/gualberto.png', 'name' => 'Gualberto Castro Casas',      'alt' => 'Gualberto Castro'],
+];
+
+// Galerías: el orden del array define el orden de slides y miniaturas.
+// Los índices de navegación se generan solos (sin desajustes manuales).
+$galleries = [
+  'ifsul1' => [
+    'label'  => 'Sistema de Llaves IFSUL',
+    'images' => [
+      ['src' => 'assets/img/projects/chaves/ifs.png',       'alt' => 'Interfaz principal del Sistema de Llaves IFSUL',          'thumb' => 'Interfaz principal del sistema'],
+      ['src' => 'assets/img/projects/chaves/dashboard.png', 'alt' => 'Dashboard del Sistema de Llaves IFSUL',                  'thumb' => 'Dashboard del sistema'],
+      ['src' => 'assets/img/projects/chaves/login.webp',    'alt' => 'Página de inicio de sesión del Sistema de Llaves IFSUL', 'thumb' => 'Página de login'],
+      ['src' => 'assets/img/projects/chaves/salas.webp',    'alt' => 'Pantalla de gestión de salas',                           'thumb' => 'Gestión de salas'],
+      ['src' => 'assets/img/projects/chaves/usuarios.png',  'alt' => 'Pantalla de gestión de usuarios',                        'thumb' => 'Gestión de usuarios'],
+      ['src' => 'assets/img/projects/chaves/chaves.png',    'alt' => 'Pantalla de control de llaves',                          'thumb' => 'Control de llaves'],
+      ['src' => 'assets/img/projects/chaves/7.webp',        'alt' => 'Vista adicional del Sistema de Llaves IFSUL',            'thumb' => 'Vista adicional del sistema'],
+      ['src' => 'assets/img/projects/chaves/8.webp',        'alt' => 'Vista de reportes del Sistema de Llaves IFSUL',          'thumb' => 'Vista de reportes del sistema'],
+    ],
+  ],
+  'idr' => [
+    'label'  => 'Sistema Integrado IDR',
+    'images' => [
+      ['src' => 'assets/img/projects/idr/idr.webp',  'alt' => 'Vista general del Sistema Integrado IDR',  'thumb' => 'Vista general del sistema'],
+      ['src' => 'assets/img/projects/idr/idr1.png',  'alt' => 'Plataforma web administrativa del IDR',    'thumb' => 'Plataforma web administrativa'],
+      ['src' => 'assets/img/projects/idr/idr2.png',  'alt' => 'App móvil para ciudadanos del IDR',        'thumb' => 'App móvil para ciudadanos'],
+      ['src' => 'assets/img/projects/idr/idr3.webp', 'alt' => 'App móvil para capataces del IDR',         'thumb' => 'App móvil para capataces'],
+      ['src' => 'assets/img/projects/idr/idr4.png',  'alt' => 'Pantalla de gestión de tareas del IDR',    'thumb' => 'Gestión de tareas'],
+      ['src' => 'assets/img/projects/idr/5.webp',    'alt' => 'Pantalla de reportes del IDR',             'thumb' => 'Pantalla de reportes'],
+      ['src' => 'assets/img/projects/idr/6.webp',    'alt' => 'Vista adicional del Sistema Integrado IDR','thumb' => 'Vista adicional del sistema'],
+    ],
+  ],
+];
+?>
+<section id="projects" class="projects o-section">
+  <div class="o-container">
     <h2 class="projects__title">Proyectos</h2>
-    <div class="projects__grid">
+    <div class="o-grid o-grid--auto projects__grid">
 
       <!-- Project Card ifsul1 -->
-      <div class="project__card">
+      <div class="project__card o-glass">
         <h3 class="project__title">Sistema de Llaves IFSUL</h3>
         <p class="project__description">Plataforma para gestión de llaves, reservas y salas académicas.</p>
 
-        <div class="project__image-container" onclick="openGallery('ifsul1')" role="button" tabindex="0" aria-label="Ver galería de imágenes del proyecto">
+        <div class="project__image-container" data-click="openGallery('ifsul1')" role="button" tabindex="0" aria-label="Ver galería de imágenes del proyecto">
           <img 
             src="assets/img/projects/chaves/ifs.png" 
             alt="Interfaz principal del Sistema de Llaves IFSUL mostrando el dashboard de gestión"
@@ -24,14 +64,14 @@
           </div>
         </div>
 
-        <button class="project__button" onclick="openModal('ifsul1')">Ver más</button>
+        <button class="btn btn--primary btn--block" data-click="openModal('ifsul1')">Ver más</button>
       </div>
 
       <!-- Modal de información del proyecto ifsul1 -->
-      <div id="modal-ifsul1" class="modal">
+      <div id="modal-ifsul1" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-ifsul1-title" hidden>
         <div class="modal__content">
-          <span class="modal__close" onclick="closeModal('ifsul1')">&times;</span>
-          <h2 class="modal__title">Sistema de Llaves IFSUL</h2>
+          <button type="button" class="modal__close" data-click="closeModal('ifsul1')" aria-label="Cerrar ventana">&times;</button>
+          <h2 class="modal__title" id="modal-ifsul1-title">Sistema de Llaves IFSUL</h2>
           <p class="modal__text">
             Este sistema fue desarrollado inicialmente para el IFSUL con el objetivo de
             modernizar y simplificar la gestión de llaves, reservas y salas académicas.
@@ -81,89 +121,24 @@
           <div class="team-section">
             <h3 class="modal__subtitle">👨‍💻 Equipo de Desarrollo</h3>
             <div class="team-grid">
+              <?php foreach ($team as $member): ?>
               <div class="team-member">
-                <img src="assets/img/projects/juan.jpg" alt="Juan Carlos de León" class="team-photo">
-                <p class="team-name">Juan Carlos de León Silva</p>
+                <img src="<?php echo e($member['photo']); ?>" alt="<?php echo e($member['alt']); ?>" class="team-photo">
+                <p class="team-name"><?php echo e($member['name']); ?></p>
               </div>
-
-              <div class="team-member">
-                <img src="assets/img/projects/rafa.jpg" alt="Rafael Quintanilla" class="team-photo">
-                <p class="team-name">Rafael Quintanilla Fontané</p>
-              </div>
-
-              <div class="team-member">
-                <img src="assets/img/projects/gualberto.png" alt="Gualberto Castro" class="team-photo">
-                <p class="team-name">Gualberto Castro Casas</p>
-              </div>
+              <?php endforeach; ?>
             </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Modal de galería de imágenes ifsul1 -->
-      <div id="gallery-ifsul1" class="gallery-modal">
-        <span class="gallery-modal__close" onclick="closeGallery('ifsul1')">&times;</span>
-        <div class="gallery-modal__content">
-          <!-- Slideshow container -->
-          <div class="slideshow-container">
-            <!-- Imágenes completas - SOLO UNA active -->
-            <div class="mySlides active">
-              <img src="assets/img/projects/chaves/ifs.png" ">
-            </div>
-            <div class="mySlides">
-              <img src="assets/img/projects/chaves/dashboard.png" >
-            </div>
-            <div class="mySlides">
-              <img src="assets/img/projects/chaves/login.png" >
-            </div>
-            <div class="mySlides">
-              <img src="assets/img/projects/chaves/salas.png">
-            </div>
-            <div class="mySlides">
-              <img src="assets/img/projects/chaves/usuarios.png" >
-            </div>
-            <div class="mySlides">
-              <img src="assets/img/projects/chaves/chaves.png" >
-            </div>
-            <div class="mySlides">
-              <img src="assets/img/projects/chaves/7.png" >
-            </div>
-            <div class="mySlides">
-              <img src="assets/img/projects/chaves/8.png" >
-            </div>
-
-            <!-- Botones de anterior/siguiente -->
-            <a class="prev" onclick="plusSlides(-1, 'ifsul1')">&#10094;</a>
-            <a class="next" onclick="plusSlides(1, 'ifsul1')">&#10095;</a>
-
-            <!-- Texto de la imagen -->
-            <div class="caption-container">
-              <p id="caption-ifsul1"></p>
-            </div>
-          </div>
-
-          <!-- Miniaturas - SOLO UNA active -->
-          <div class="thumbnail-row">
-            <img class="thumbnail active" src="assets/img/projects/chaves/ifs.png" onclick="currentSlide(1, 'ifsul1')" alt="Interfaz principal del sistema">
-            <img class="thumbnail" src="assets/img/projects/chaves/dashboard.png" onclick="currentSlide(2, 'ifsul1')" alt="Dashboard del sistema">
-            <img class="thumbnail" src="assets/img/projects/chaves/login.png" onclick="currentSlide(3, 'ifsul1')" alt="Página de login">
-            <img class="thumbnail" src="assets/img/projects/chaves/salas.png" onclick="currentSlide(4, 'ifsul1')" alt="Gestión de salas">
-            <img class="thumbnail" src="assets/img/projects/chaves/usuarios.png" onclick="currentSlide(5, 'ifsul1')" alt="Gestión de usuarios">
-            <img class="thumbnail" src="assets/img/projects/chaves/chaves.png" onclick="currentSlide(6, 'ifsul1')" alt="Control de llaves">
-            <img class="thumbnail" src="assets/img/projects/chaves/7.png" onclick="currentSlide(5, 'ifsul1')" alt="Gestión de usuarios">
-            <img class="thumbnail" src="assets/img/projects/chaves/8.png" onclick="currentSlide(6, 'ifsul1')" alt="Control de llaves">
-
           </div>
         </div>
       </div>
 
       <!-- Project Card IDR -->
-      <div class="project__card">
+      <div class="project__card o-glass">
         <h3 class="project__title">Sistema Integrado IDR (Prototipo)</h3>
         <p class="project__description">Plataforma para la gestión de solicitudes, análisis y servicios de la Intendencia de Rivera.</p>
 
-        <div class="project__image-container" onclick="openGallery('idr')">
-          <img src="assets/img/projects/idr/idr.png" alt="Sistema IDR" style="width:100%">
+        <div class="project__image-container" data-click="openGallery('idr')">
+          <img src="assets/img/projects/idr/idr.webp" alt="Sistema IDR" style="width:100%">
           <div class="project__image-overlay">
             <div class="project__zoom-icon">
               <span class="zoom-text">Ver imágenes</span>
@@ -171,14 +146,14 @@
           </div>
         </div>
 
-        <button class="project__button" onclick="openModal('idr')">Ver más</button>
+        <button class="btn btn--primary btn--block" data-click="openModal('idr')">Ver más</button>
       </div>
 
       <!-- Modal de información del proyecto IDR -->
-      <div id="modal-idr" class="modal">
+      <div id="modal-idr" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-idr-title" hidden>
         <div class="modal__content">
-          <span class="modal__close" onclick="closeModal('idr')">&times;</span>
-          <h2 class="modal__title">Sistema Integrado de Solicitud, Análisis y Gestión de Servicios (Prototipo)</h2>
+          <button type="button" class="modal__close" data-click="closeModal('idr')" aria-label="Cerrar ventana">&times;</button>
+          <h2 class="modal__title" id="modal-idr-title">Sistema Integrado de Solicitud, Análisis y Gestión de Servicios (Prototipo)</h2>
           <p class="modal__text">
             Este prototipo fue desarrollado para la <strong>Intendencia de Rivera – Uruguay</strong> y está compuesto por tres módulos:
             una aplicación móvil para ciudadanos, una plataforma web administrativa y una aplicación móvil para capataces.
@@ -226,78 +201,45 @@
           <div class="team-section">
             <h3 class="modal__subtitle">👨‍💻 Equipo de Desarrollo</h3>
             <div class="team-grid">
+              <?php foreach ($team as $member): ?>
               <div class="team-member">
-                <img src="assets/img/projects/juan.jpg" alt="Juan Carlos de León" class="team-photo">
-                <p class="team-name">Juan Carlos de León Silva</p>
+                <img src="<?php echo e($member['photo']); ?>" alt="<?php echo e($member['alt']); ?>" class="team-photo">
+                <p class="team-name"><?php echo e($member['name']); ?></p>
               </div>
-
-              <div class="team-member">
-                <img src="assets/img/projects/rafa.jpg" alt="Rafael Quintanilla" class="team-photo">
-                <p class="team-name">Rafael Quintanilla Fontané</p>
-              </div>
-
-              <div class="team-member">
-                <img src="assets/img/projects/gualberto.png" alt="Gualberto Castro" class="team-photo">
-                <p class="team-name">Gualberto Castro Casas</p>
-              </div>
+              <?php endforeach; ?>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Modal de galería de imágenes IDR -->
-      <div id="gallery-idr" class="gallery-modal">
-        <span class="gallery-modal__close" onclick="closeGallery('idr')">&times;</span>
+      <!-- Galerías de imágenes (generadas desde $galleries) -->
+      <?php foreach ($galleries as $gid => $g): ?>
+      <div id="gallery-<?php echo e($gid); ?>" class="gallery-modal" role="dialog" aria-modal="true" aria-label="Galería de imágenes: <?php echo e($g['label']); ?>">
+        <button type="button" class="gallery-modal__close" data-click="closeGallery('<?php echo e($gid); ?>')" aria-label="Cerrar galería">&times;</button>
         <div class="gallery-modal__content">
-          <!-- Slideshow container -->
           <div class="slideshow-container">
-            <div class="mySlides active">
-              <img src="assets/img/projects/idr/idr.png" >
+            <?php foreach ($g['images'] as $i => $img): ?>
+            <div class="mySlides<?php echo $i === 0 ? ' active' : ''; ?>">
+              <img src="<?php echo e($img['src']); ?>" alt="<?php echo e($img['alt']); ?>" loading="lazy" decoding="async">
             </div>
-            <div class="mySlides">
-              <img src="assets/img/projects/idr/idr1.png">
-            </div>
-            <div class="mySlides">
-              <img src="assets/img/projects/idr/idr2.png">
-            </div>
-            <div class="mySlides">
-              <img src="assets/img/projects/idr/idr3.jpeg">
-            </div>
-            <div class="mySlides">
-              <img src="assets/img/projects/idr/idr4.png">
-            </div>
-            <div class="mySlides">
-              <img src="assets/img/projects/idr/5.png" >
-            </div>
-            <div class="mySlides">
-              <img src="assets/img/projects/idr/6.png">
-            </div>
+            <?php endforeach; ?>
 
-            <!-- Botones de navegación -->
-            <a class="prev" onclick="plusSlides(-1, 'idr')">&#10094;</a>
-            <a class="next" onclick="plusSlides(1, 'idr')">&#10095;</a>
+            <button type="button" class="prev" data-click="plusSlides(-1, '<?php echo e($gid); ?>')" aria-label="Imagen anterior">&#10094;</button>
+            <button type="button" class="next" data-click="plusSlides(1, '<?php echo e($gid); ?>')" aria-label="Imagen siguiente">&#10095;</button>
 
-            <!-- Texto dinámico -->
             <div class="caption-container">
-              <p id="caption-idr"></p>
+              <p id="caption-<?php echo e($gid); ?>"></p>
             </div>
           </div>
 
-          <!-- Miniaturas -->
           <div class="thumbnail-row">
-            <img class="thumbnail active" src="assets/img/projects/idr/idr.png" onclick="currentSlide(1, 'idr')" alt="Vista general del sistema">
-            <img class="thumbnail" src="assets/img/projects/idr/idr1.png" onclick="currentSlide(2, 'idr')" alt="Plataforma web administrativa">
-            <img class="thumbnail" src="assets/img/projects/idr/idr2.png" onclick="currentSlide(3, 'idr')" alt="App móvil para ciudadanos">
-            <img class="thumbnail" src="assets/img/projects/idr/idr3.jpeg" onclick="currentSlide(4, 'idr')" alt="App móvil para capataces">
-            <img class="thumbnail" src="assets/img/projects/idr/idr4.png" onclick="currentSlide(4, 'idr')" alt="App móvil para capataces">
-            <img class="thumbnail" src="assets/img/projects/idr/5.png" onclick="currentSlide(4, 'idr')" alt="App móvil para capataces">
-            <img class="thumbnail" src="assets/img/projects/idr/6.png" onclick="currentSlide(4, 'idr')" alt="App móvil para capataces">
-
+            <?php foreach ($g['images'] as $i => $img): ?>
+            <img class="thumbnail<?php echo $i === 0 ? ' active' : ''; ?>" src="<?php echo e($img['src']); ?>" data-click="currentSlide(<?php echo $i + 1; ?>, '<?php echo e($gid); ?>')" alt="<?php echo e($img['thumb']); ?>">
+            <?php endforeach; ?>
           </div>
         </div>
       </div>
-
-     
+      <?php endforeach; ?>
 
     </div>
   </div>

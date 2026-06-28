@@ -1,19 +1,22 @@
-<section class="intro">
-    <div class="container intro__container">
+<section class="intro o-section" id="intro">
+    <div class="o-container intro__container">
         <!-- Contenedor de imagen y contenido principal -->
-        <div class="intro__content">
+        <div class="intro__content o-flex o-flex--column o-flex--center">
             <div class="intro__image-container">
-                <img class="intro__image intro__image-primary" src="assets/img/juan.jpg" alt="Juan Carlos de León profesional" />
-                <img class="intro__image intro__image-secondary" src="assets/img/perfil2.jpg" alt="Juan Carlos de León casual" />
+                <img class="intro__image intro__image-primary" src="assets/img/juan.webp" alt="Juan Carlos de León profesional" width="200" height="200" fetchpriority="high" />
+                <img class="intro__image intro__image-secondary" src="assets/img/perfil2.jpg" alt="Juan Carlos de León casual" width="200" height="200" />
             </div>
 
-            <h1 class="intro__title">Juan Carlos <span class="intro__title--lastname">de León Silva</span></h1>
-            <h2 class="intro__subtitle">Desarrollador y Analista de Sistemas</h2>
-            <p class="intro__description">Técnico Informático</p>
+            <div class="intro__text">
+                <h1 class="intro__title">Juan Carlos <span class="intro__title--lastname">de León Silva</span></h1>
+                <p class="intro__subtitle">Desarrollador y Analista de Sistemas</p>
+                <p class="intro__description">Técnico Informático</p>
+            </div>
 
-            <a href="#projects" class="intro__button-link">
-                <button class="button">Ver proyectos</button>
-            </a>
+            <div class="intro__actions">
+                <a href="#projects" class="btn btn--primary btn--lg btn--block-mobile">Ver proyectos</a>
+                <a href="#contact" class="btn btn--ghost btn--lg btn--block-mobile">Contactar</a>
+            </div>
         </div>
     </div>
 </section>

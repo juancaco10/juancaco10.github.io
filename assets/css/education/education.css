@@ -4,53 +4,40 @@
  */
 
 /* ========================================
-   EDUCATION SECTION
+   EDUCATION SECTION (Mobile First)
    ======================================== */
 .education {
-  max-width: var(--container-max);
-  margin: auto;
-  padding: var(--space-lg);
+  text-align: center;
 }
 
 .education__title {
   color: var(--color-primary);
-  font-size: var(--text-3xl);
-  margin-bottom: var(--space-10);
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-8);
   font-family: var(--font-title);
-  text-align: center;
 }
 
 .education__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--space-6);
-  margin: auto;
+  /* Alineación para que las cards tengan la misma altura */
+  align-items: stretch;
 }
 
 /* ========================================
    EDUCATION CARD
-   Usa componente .o-glass + estilos específicos
    ======================================== */
 .education__card {
-  /* Composición con glass */
-  composes: o-glass;
-  
-  /* Estilos específicos */
-  padding: var(--space-6);
+  padding: var(--space-5);
   border-radius: var(--radius-xl);
-  
-  /* FIX: backdrop-filter ya está en .o-glass con contain: layout paint */
-}
-
-.education__card:hover {
-  /* Estilos de hover ya definidos en .o-glass */
+  text-align: left;
+  display: flex;
+  flex-direction: column;
 }
 
 .education__card-title {
-  font-size: var(--text-xl);
+  font-size: var(--text-lg);
   color: var(--color-text);
   font-weight: var(--font-semibold);
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-3);
   font-family: var(--font-primary);
 }
 
@@ -58,11 +45,11 @@
   border: 0;
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
-  margin: var(--space-4) 0;
+  margin: var(--space-3) 0;
 }
 
 .education__info {
-  margin-top: var(--space-3);
+  margin-top: var(--space-2);
   font-size: var(--text-base);
   color: var(--color-text);
   font-family: var(--font-primary);
@@ -75,19 +62,17 @@
 }
 
 .education__view-more {
-  margin-top: var(--space-4);
+  margin-top: auto;
+  padding-top: var(--space-4);
   color: var(--color-primary);
   font-weight: var(--font-semibold);
   text-align: center;
   cursor: pointer;
   position: relative;
-  /* FIX: Touch target mínimo 44px */
   min-height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
-  
-  /* FIX: Propiedades específicas */
   transition: color var(--duration-base) var(--ease-default),
               transform var(--duration-base) var(--ease-default);
 }
@@ -97,18 +82,16 @@
   transform: scale(1.05);
 }
 
-/* FIX: Focus visible */
 .education__view-more:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 4px;
   border-radius: var(--radius-sm);
 }
 
-/* Subrayado animado */
 .education__view-more::after {
   content: "";
   position: absolute;
-  bottom: -3px;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 0%;
@@ -123,7 +106,9 @@
 }
 
 /* ========================================
-   EDUCATION MODAL
+   EDUCATION MODAL SPECIFICS
+   NOTA: La estructura de modal se heredará de .modal si se actualiza el HTML,
+   pero mantendremos estas clases específicas aquí por compatibilidad temporal.
    ======================================== */
 .education-modal {
   display: none;
@@ -138,13 +123,11 @@
 
 .education-modal__content {
   background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-  margin: 5% auto;
-  padding: var(--space-10);
+  margin: var(--space-8) auto;
+  padding: var(--space-6);
   border-radius: var(--radius-xl);
   max-width: var(--container-max);
   width: 95%;
-  max-height: 90vh;
-  overflow-y: auto;
   border: 2px solid var(--color-primary);
   box-shadow: var(--shadow-lg);
   color: var(--color-text);
@@ -156,7 +139,6 @@
   cursor: pointer;
   color: var(--color-primary);
   font-weight: bold;
-  /* FIX: Touch target mínimo 44px */
   min-width: 44px;
   min-height: 44px;
   display: flex;
@@ -178,7 +160,7 @@
 
 .education-modal__header {
   text-align: center;
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-4);
   padding-bottom: var(--space-4);
   border-bottom: 1px solid var(--color-border-light);
 }
@@ -186,13 +168,14 @@
 .education-modal__title {
   font-family: var(--font-title);
   color: var(--color-text-accent);
-  font-size: var(--text-3xl);
+  font-size: var(--text-2xl);
   margin-bottom: var(--space-3);
+  padding-top: var(--space-5);
 }
 
 .education-modal__institution {
   color: var(--color-text-secondary);
-  font-size: var(--text-lg);
+  font-size: var(--text-base);
   margin-bottom: var(--space-4);
 }
 
@@ -201,18 +184,19 @@
   color: var(--color-text-muted);
   max-width: 800px;
   margin: 0 auto;
+  font-size: var(--text-base);
 }
 
 .education-modal__grid {
-  display: grid;
-  grid-template-columns: 65% 32%;
-  gap: 3%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
   margin-top: var(--space-6);
 }
 
 .education-modal__section {
-  margin-bottom: var(--space-8);
-  padding: var(--space-5);
+  margin-bottom: var(--space-6);
+  padding: var(--space-4);
   background: var(--color-bg-card);
   border-radius: var(--radius-lg);
   border-left: 4px solid var(--color-text-accent);
@@ -220,8 +204,8 @@
 
 .education-modal__section h3 {
   color: var(--color-text-accent);
-  margin: var(--space-5) 0 var(--space-4) 0;
-  font-size: var(--text-xl);
+  margin: 0 0 var(--space-4) 0;
+  font-size: var(--text-lg);
   display: flex;
   align-items: center;
   gap: var(--space-3);
@@ -240,6 +224,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-3);
+  font-size: var(--text-sm);
 }
 
 .education-modal__list li:last-child {
@@ -249,7 +234,7 @@
 .education-modal__tech {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-3);
+  gap: var(--space-2);
   margin: var(--space-4) 0;
 }
 
@@ -258,7 +243,7 @@
   color: var(--color-text);
   padding: var(--space-2) var(--space-3);
   border-radius: var(--radius-full);
-  font-size: var(--text-sm);
+  font-size: var(--text-xs);
   border: 1px solid var(--color-border-light);
 }
 
@@ -283,28 +268,29 @@
   font-style: italic;
   margin-top: var(--space-2);
   text-align: center;
+  font-size: var(--text-sm);
 }
 
 /* ========================================
    SEMESTERS
    ======================================== */
 .semester-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-direction: column;
   gap: var(--space-4);
   margin-top: var(--space-4);
 }
 
 .semester {
   background: var(--color-bg-card);
-  padding: var(--space-4);
+  padding: var(--space-3);
   border-radius: var(--radius-md);
   border: 1px solid var(--color-border);
 }
 
 .semester h4 {
   color: var(--color-text-secondary);
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-2);
   font-size: var(--text-base);
 }
 
@@ -314,124 +300,97 @@
   color: var(--color-text-muted);
 }
 
-.competencies-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-4);
-  margin-top: var(--space-4);
-}
-
-.competency {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-3);
-  background: var(--color-bg-card);
-  border-radius: var(--radius-md);
-  border: 1px solid var(--color-border);
-}
-
-.competency i {
-  color: var(--color-text-accent);
-  font-size: var(--text-lg);
-}
-
 /* ========================================
    MODAL CARD
    ======================================== */
 .modal-card {
   background: var(--color-bg-card);
-  padding: var(--space-5);
+  padding: var(--space-4);
   border-radius: var(--radius-lg);
-  margin-bottom: var(--space-5);
+  margin-bottom: var(--space-4);
   border: 1px solid var(--color-border);
-}
-
-/* ========================================
-   IMAGE MODAL
-   ======================================== */
-.img-modal {
-  display: none;
-  position: fixed;
-  z-index: var(--z-modal);
-  padding-top: 60px;
-  left: 0;
-  top: 0;
   width: 100%;
-  height: 100%;
-  overflow: auto;
-  background: rgba(0, 0, 0, 0.9);
- }
-
-.img-modal-content {
-  display: block;
-  margin: auto;
-  max-width: 90%;
-  max-height: 80vh;
-  border-radius: var(--radius-md);
 }
 
-#imgModalCaption {
-  text-align: center;
-  color: var(--color-text);
-  margin-top: var(--space-4);
-}
-
-.img-modal-close {
-  position: absolute;
-  top: var(--space-5);
-  right: var(--space-8);
-  font-size: 40px;
-  color: var(--color-text);
-  cursor: pointer;
-  /* FIX: Touch target mínimo 44px */
-  min-width: 44px;
-  min-height: 44px;
+.card-detail {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: color var(--duration-base) var(--ease-default);
+  align-items: flex-start;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+  font-size: var(--text-sm);
 }
 
-.img-modal-close:hover,
-.img-modal-close:focus-visible {
+.card-detail i {
+  margin-top: var(--space-1);
   color: var(--color-primary);
 }
 
-.img-modal-close:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-  border-radius: var(--radius-sm);
-}
-
 /* ========================================
-   RESPONSIVE
+   RESPONSIVE (Tablet / Desktop)
    ======================================== */
-@media (max-width: 992px) {
-  .education-modal__grid {
-    grid-template-columns: 1fr;
+@media (min-width: 768px) {
+  .education__title {
+    font-size: var(--text-3xl);
+    margin-bottom: var(--space-10);
   }
-  
-  .semester-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
 
-@media (max-width: 576px) {
-  .education-modal__content {
+  .education__card {
     padding: var(--space-6);
   }
-  
+
+  .education__card-title {
+    font-size: var(--text-xl);
+  }
+
+  .education-modal__content {
+    padding: var(--space-10);
+  }
+
+  .education-modal__title {
+    font-size: var(--text-3xl);
+  }
+
+  .education-modal__institution {
+    font-size: var(--text-lg);
+  }
+
+  .education-modal__grid {
+    display: grid;
+    grid-template-columns: 65% 32%;
+    gap: 3%;
+  }
+
+  .education-modal__section {
+    padding: var(--space-5);
+  }
+
+  .education-modal__section h3 {
+    font-size: var(--text-xl);
+  }
+
+  .education-modal__list li {
+    font-size: var(--text-base);
+  }
+
+  .tech-badge {
+    font-size: var(--text-sm);
+    padding: var(--space-2) var(--space-4);
+  }
+
   .semester-container {
-    grid-template-columns: 1fr;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
   }
-  
-  .competencies-grid {
-    grid-template-columns: 1fr;
+
+  .semester {
+    padding: var(--space-4);
   }
-  
-  .semester,
-  .competency {
-    padding: var(--space-3);
+
+  .modal-card {
+    padding: var(--space-5);
+  }
+
+  .card-detail {
+    font-size: var(--text-base);
   }
 }

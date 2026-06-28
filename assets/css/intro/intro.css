@@ -4,23 +4,16 @@
  */
 
 /* ========================================
-   INTRO SECTION
+   INTRO SECTION (Mobile First)
    ======================================== */
 .intro {
-  padding: var(--space-4) 0;
   display: flex;
   justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - var(--navbar-height-mobile));
 }
 
 .intro__container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-5);
-  max-width: 800px;
-  width: 100%;
-  padding: 0 var(--space-lg);
   text-align: center;
 }
 
@@ -29,11 +22,10 @@
    ======================================== */
 .intro__image-container {
   position: relative;
-  width: 220px;
-  height: 220px;
+  width: 180px;
+  height: 180px;
   border-radius: var(--radius-full);
-  overflow: hidden;
-  cursor: pointer;
+  margin-bottom: var(--space-6);
   box-shadow: var(--shadow-glow);
 }
 
@@ -46,7 +38,6 @@
   border-radius: var(--radius-full);
   border: 3px solid var(--color-primary);
   object-fit: cover;
-  /* FIX: Propiedades específicas en lugar de 'all' */
   transition: opacity var(--duration-slow) var(--ease-default),
               filter var(--duration-slow) var(--ease-default),
               transform var(--duration-slow) var(--ease-default);
@@ -62,27 +53,26 @@
   opacity: 0;
   filter: grayscale(100%);
   z-index: 1;
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
-.intro__image-container:hover .intro__image-primary {
-  opacity: 0;
-  transform: scale(1.1);
-}
+@media (hover: hover) {
+  .intro__image-container:hover .intro__image-primary {
+    opacity: 0;
+    transform: scale(1.05);
+  }
 
-.intro__image-container:hover .intro__image-secondary {
-  opacity: 1;
-  filter: grayscale(0%);
-  transform: scale(1);
+  .intro__image-container:hover .intro__image-secondary {
+    opacity: 1;
+    filter: grayscale(0%);
+    transform: scale(1);
+  }
 }
 
 .intro__image-container::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: radial-gradient(
     circle at center,
     rgba(108, 108, 236, 0.2) 0%,
@@ -95,30 +85,29 @@
   border-radius: var(--radius-full);
 }
 
-.intro__image-container:hover::before {
-  opacity: 1;
-}
-
-.intro__image-caption {
-  font-style: italic;
-  color: var(--color-text-muted);
-  font-size: var(--text-sm);
+@media (hover: hover) {
+  .intro__image-container:hover::before {
+    opacity: 1;
+  }
 }
 
 /* ========================================
    CONTENT
    ======================================== */
 .intro__content {
+  gap: var(--space-6);
+}
+
+.intro__text {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: var(--space-3);
+  gap: var(--space-2);
 }
 
 .intro__title {
   font-size: var(--text-3xl);
   color: var(--color-primary);
-  margin: var(--space-2) 0;
+  margin: 0;
   font-family: var(--font-title);
   line-height: var(--leading-tight);
 }
@@ -135,126 +124,53 @@
 }
 
 .intro__description {
-  font-size: var(--text-xl);
-  color: var(--color-text);
+  font-size: var(--text-lg);
+  color: var(--color-text-secondary);
   line-height: var(--leading-relaxed);
   font-weight: var(--font-normal);
   margin: 0;
 }
 
 /* ========================================
-   SOCIAL ICONS
+   ACTIONS
    ======================================== */
-.intro__socials {
+.intro__actions {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: var(--space-4);
-  justify-content: center;
+  width: 100%;
   margin-top: var(--space-4);
 }
 
-.social__icon {
-  width: 40px;
-  height: 40px;
-  /* FIX: Transición específica */
-  transition: transform var(--duration-base) var(--ease-default),
-              filter var(--duration-base) var(--ease-default);
-}
-
-.social__icon:hover {
-  transform: scale(1.15);
-  filter: brightness(1.2);
-}
-
-/* FIX: Touch target mínimo 44px y focus visible */
-.intro__socials .social__link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 44px;
-  min-height: 44px;
-  border-radius: var(--radius-full);
-  transition: background-color var(--duration-base) var(--ease-default);
-}
-
-.intro__socials .social__link:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.intro__socials .social__link:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-}
-
 /* ========================================
-   BUTTON
+   RESPONSIVE (Tablet / Desktop)
    ======================================== */
-.intro__button-link {
-  display: inline-block;
-  margin-top: var(--space-4);
-}
-
-.button {
-  font-size: var(--text-base);
-  padding: var(--space-3) var(--space-6);
-  border-radius: var(--radius-lg);
-  color: var(--color-text);
-  background-color: var(--color-bg);
-  border: 2px solid var(--color-primary);
-  font-family: var(--font-primary);
-  cursor: pointer;
-  margin-bottom: var(--space-5);
-  /* FIX: Propiedades específicas en lugar de 'all' */
-  transition: box-shadow var(--duration-base) var(--ease-default),
-              background-color var(--duration-base) var(--ease-default),
-              color var(--duration-base) var(--ease-default),
-              transform var(--duration-base) var(--ease-default);
-}
-
-.button:hover {
-  box-shadow: var(--shadow-glow);
-  background-color: var(--color-primary);
-  color: var(--color-bg);
-  transform: translateY(-2px);
-}
-
-/* FIX: Focus visible */
-.button:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 4px;
-}
-
-/* FIX: Touch target */
-.button {
-  min-height: 44px;
-}
-
-/* ========================================
-   RESPONSIVE
-   ======================================== */
-@media (max-width: 768px) {
-  .intro__container {
-    gap: var(--space-5);
+@media (min-width: 768px) {
+  .intro {
+    min-height: calc(100vh - var(--navbar-height-desktop));
   }
-
+  
   .intro__image-container {
-    width: 180px;
-    height: 180px;
+    width: 220px;
+    height: 220px;
+    margin-bottom: var(--space-8);
   }
 
   .intro__title {
-    font-size: clamp(1.8rem, 4vw, 2.2rem);
+    font-size: var(--text-4xl);
   }
 
   .intro__subtitle {
-    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    font-size: var(--text-2xl);
   }
-
+  
   .intro__description {
-    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+    font-size: var(--text-xl);
   }
 
-  .button {
-    padding: var(--space-3) var(--space-6);
+  .intro__actions {
+    flex-direction: row;
+    justify-content: center;
+    width: auto;
   }
 }

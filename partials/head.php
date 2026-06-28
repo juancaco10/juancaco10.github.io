@@ -55,30 +55,62 @@ $CSP_NONCE = $GLOBALS['CSP_NONCE'] ?? get_csp_nonce();
   <link rel="dns-prefetch" href="//wa.me">
   
   <!-- Preload de recursos críticos -->
-  <link rel="preload" href="assets/css/style.css" as="style">
-  <link rel="preload" href="assets/fonts/Saira_Stencil_One/SairaStencilOne-Regular.ttf" as="font" type="font/ttf" crossorigin>
-  
+  <link rel="preload" href="assets/fonts/Saira_Stencil_One/SairaStencilOne-Regular.woff2" as="font" type="font/woff2" crossorigin>
+
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
-  
-  <!-- CSS Global - Cache Busting automático -->
-  <link rel="stylesheet" href="<?php echo asset('assets/css/reset.css'); ?>">
+
+  <!-- CSS crítico inline (above-the-fold): tokens + reset + objects + buttons + header + hero.
+       Se inlina el contenido real de los archivos (sin url(), seguro) para el primer pintado sin bloqueo. -->
+  <style>
+<?php
+  $__root = dirname(__DIR__);
+  foreach ([
+    '/assets/css/settings/_tokens.css',
+    '/assets/css/reset.css',
+    '/assets/css/objects/_objects.css',
+    '/assets/css/components/_buttons.css',
+    '/assets/css/header/header.css',
+    '/assets/css/intro/intro.css',
+  ] as $__critical) {
+    $__p = $__root . $__critical;
+    if (is_readable($__p)) { readfile($__p); }
+  }
+?>
+  </style>
+
+  <!-- Fuentes (font-display:swap → no bloquea el texto) -->
   <link rel="stylesheet" href="<?php echo asset('assets/css/fonts/fonts.css'); ?>">
-  <link rel="stylesheet" href="<?php echo asset('assets/css/style.css'); ?>">
-  
-  <!-- Header CSS -->
-  <link rel="stylesheet" href="<?php echo asset('assets/css/header/header.css'); ?>">
-  
-  <!-- Secciones CSS -->
-  <link rel="stylesheet" href="<?php echo asset('assets/css/intro/intro.css'); ?>">
-  <link rel="stylesheet" href="<?php echo asset('assets/css/about/about.css'); ?>">
-  <link rel="stylesheet" href="<?php echo asset('assets/css/education/events.css'); ?>">
-  <link rel="stylesheet" href="<?php echo asset('assets/css/education/education.css'); ?>">
-  <link rel="stylesheet" href="<?php echo asset('assets/css/projects/projects.css'); ?>">
-  <link rel="stylesheet" href="<?php echo asset('assets/css/contact/contact.css'); ?>">
-  <link rel="stylesheet" href="<?php echo asset('assets/css/contact/contact-extras.css'); ?>">
-  <link rel="stylesheet" href="<?php echo asset('assets/css/footer/footer.css'); ?>">
+
+  <!-- Resto del CSS: carga asíncrona vía JS nonced (CSP-safe) para no bloquear el primer pintado -->
+<?php
+  $__deferred_css = [
+    'assets/css/style.css',
+    'assets/css/about/about.css',
+    'assets/css/education/events.css',
+    'assets/css/education/education.css',
+    'assets/css/projects/projects.css',
+    'assets/css/contact/contact.css',
+    'assets/css/contact/contact-extras.css',
+    'assets/css/footer/footer.css',
+  ];
+  $__deferred_urls = array_map('asset', $__deferred_css);
+?>
+  <script nonce="<?php echo e(get_csp_nonce()); ?>">
+    (function () {
+      var hrefs = <?php echo json_encode($__deferred_urls); ?>;
+      for (var i = 0; i < hrefs.length; i++) {
+        var l = document.createElement('link');
+        l.rel = 'stylesheet';
+        l.href = hrefs[i];
+        document.head.appendChild(l);
+      }
+    })();
+  </script>
+  <noscript>
+<?php foreach ($__deferred_urls as $__u) { echo '    <link rel="stylesheet" href="' . e($__u) . "\">\n"; } ?>
+  </noscript>
   
   <!-- Tema de color para móviles -->
   <meta name="theme-color" content="#1a1a2e">

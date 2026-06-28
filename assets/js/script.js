@@ -49,7 +49,8 @@ const ModalManager = {
     const modal = document.getElementById(`modal-${id}`);
     if (!modal) return;
     
-    modal.style.display = 'block';
+    modal.hidden = false;
+    modal.style.display = 'flex';
     requestAnimationFrame(() => modal.classList.add('show'));
     document.body.style.overflow = 'hidden';
     modal.setAttribute('aria-hidden', 'false');
@@ -68,6 +69,7 @@ const ModalManager = {
     modal.classList.remove('show');
     setTimeout(() => {
       modal.style.display = 'none';
+      modal.hidden = true;
       document.body.style.overflow = 'auto';
       modal.setAttribute('aria-hidden', 'true');
     }, 300);
@@ -77,9 +79,11 @@ const ModalManager = {
     const modal = document.getElementById(modalId);
     if (!modal) return;
 
-    modal.style.display = 'block';
+    modal.hidden = false;
+    modal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
     modal.setAttribute('aria-hidden', 'false');
+    A11yModals.focusFirst(modal);
 
     if (sectionName) {
       const sections = modal.querySelectorAll('.education-modal__section.full-modal');
@@ -97,6 +101,7 @@ const ModalManager = {
     if (!modal) return;
     
     modal.style.display = 'none';
+    modal.hidden = true;
     document.body.style.overflow = 'auto';
     modal.setAttribute('aria-hidden', 'true');
   }
@@ -112,6 +117,7 @@ const GalleryManager = {
     const gallery = document.getElementById(`gallery-${id}`);
     if (!gallery) return;
 
+    gallery.hidden = false;
     gallery.style.display = 'block';
     requestAnimationFrame(() => gallery.classList.add('show'));
     document.body.style.overflow = 'hidden';
@@ -119,6 +125,7 @@ const GalleryManager = {
 
     if (this.slideIndexes[id] === undefined) this.slideIndexes[id] = 1;
     this.showSlides(this.slideIndexes[id], id);
+    A11yModals.focusFirst(gallery);
   },
 
   closeGallery(id) {
@@ -374,13 +381,51 @@ const EventDelegation = {
   init() {
     // Delegación para modales
     document.addEventListener('click', (e) => {
-      // Abrir modal
+      // Delegación para data-click (Reemplazo de onclick para cumplir CSP)
+      const elWithClick = e.target.closest('[data-click]');
+      if (elWithClick) {
+        const actionStr = elWithClick.getAttribute('data-click');
+        if (actionStr) {
+          const actions = actionStr.split(';').map(s => s.trim()).filter(Boolean);
+          actions.forEach(action => {
+             const match = action.match(/^([a-zA-Z0-9_]+)\((.*)\)$/);
+             if (match) {
+                const funcName = match[1];
+                const argStr = match[2];
+                const args = argStr.split(',').map(arg => {
+                   arg = arg.trim();
+                   if (arg === 'this') return elWithClick;
+                   if (arg.startsWith("'") && arg.endsWith("'")) return arg.slice(1, -1);
+                   if (arg.startsWith('"') && arg.endsWith('"')) return arg.slice(1, -1);
+                   if (!isNaN(arg) && arg !== '') return Number(arg);
+                   return arg;
+                });
+                
+                // Si el primer arg es vacío por un split(""), lo quitamos
+                if (args.length === 1 && args[0] === '') args.pop();
+                
+                if (typeof window[funcName] === 'function') {
+                   window[funcName](...args);
+                }
+             }
+          });
+          // Devolver el foco al disparador cuando se cierra un modal/galería
+          if (actionStr.includes('close')) {
+            A11yModals.restoreFocus();
+          }
+        }
+      }
+
+      // Abrir modal (Lógica original conservada)
       if (e.target.closest('[data-open]')) {
         const modalId = e.target.closest('[data-open]').dataset.open;
         const modal = document.getElementById(modalId);
         if (modal) {
           modal.hidden = false;
           modal.style.display = 'flex';
+          document.body.style.overflow = 'hidden';
+          modal.setAttribute('aria-hidden', 'false');
+          A11yModals.focusFirst(modal);
         }
       }
 
@@ -391,6 +436,9 @@ const EventDelegation = {
         if (modal) {
           modal.hidden = true;
           modal.style.display = 'none';
+          modal.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = 'auto';
+          A11yModals.restoreFocus();
         }
       }
 
@@ -403,12 +451,96 @@ const EventDelegation = {
       }
     });
 
-    // Keyboard navigation
+    // La navegación por teclado (ESC, focus-trap, Enter/Espacio) la gestiona A11yModals.init()
+  }
+};
+
+// ============================================
+// ACCESIBILIDAD DE MODALES (teclado y foco)
+// ============================================
+const A11yModals = {
+  selector: '.modal, .education-modal, .gallery-modal, .img-modal',
+  lastFocused: null,
+
+  isOpen(el) {
+    if (!el || el.hasAttribute('hidden')) return false;
+    return getComputedStyle(el).display !== 'none';
+  },
+
+  getOpenModals() {
+    return Array.from(document.querySelectorAll(this.selector)).filter(el => this.isOpen(el));
+  },
+
+  topOpenModal() {
+    const open = this.getOpenModals();
+    return open.length ? open[open.length - 1] : null;
+  },
+
+  focusables(el) {
+    return Array.from(el.querySelectorAll(
+      'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+    )).filter(n => n.offsetWidth || n.offsetHeight || n.getClientRects().length);
+  },
+
+  focusFirst(el) {
+    const f = this.focusables(el);
+    (f[0] || el).focus();
+  },
+
+  closeEl(el) {
+    el.classList.remove('show');
+    el.hidden = true;
+    el.style.display = 'none';
+    el.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = 'auto';
+  },
+
+  restoreFocus() {
+    if (this.lastFocused && document.contains(this.lastFocused)) {
+      this.lastFocused.focus();
+    }
+    this.lastFocused = null;
+  },
+
+  init() {
+    // Recordar el último elemento enfocado fuera de un modal (para devolverle el foco al cerrar)
+    document.addEventListener('focusin', (e) => {
+      if (!e.target.closest(this.selector)) {
+        this.lastFocused = e.target;
+      }
+    });
+
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        document.querySelectorAll('.modal:not([hidden])').forEach(modal => {
-          modal.hidden = true;
-        });
+      const top = this.topOpenModal();
+
+      // ESC cierra el modal/galería superior y devuelve el foco
+      if (e.key === 'Escape' && top) {
+        this.closeEl(top);
+        this.restoreFocus();
+        return;
+      }
+
+      // Focus-trap: mantener el tabulado dentro del modal abierto
+      if (e.key === 'Tab' && top) {
+        const f = this.focusables(top);
+        if (!f.length) { e.preventDefault(); return; }
+        const first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault(); last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault(); first.focus();
+        }
+        return;
+      }
+
+      // Enter/Espacio activan disparadores no nativos (div con role="button" o data-click)
+      if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+        const el = e.target;
+        const isNative = ['BUTTON', 'A', 'INPUT', 'SELECT', 'TEXTAREA'].includes(el.tagName);
+        if (!isNative && (el.hasAttribute('data-click') || el.getAttribute('role') === 'button')) {
+          e.preventDefault();
+          el.click();
+        }
       }
     });
   }
@@ -423,6 +555,7 @@ document.addEventListener('DOMContentLoaded', () => {
   ContactForm.init();
   CookieBanner.init();
   EventDelegation.init();
+  A11yModals.init();
 
   // Education modals - usando data attributes en lugar de array hardcodeado
   const viewMoreButtons = document.querySelectorAll('.education__view-more');
@@ -468,6 +601,7 @@ window.showImgModal = (image) => {
 
   if (!modal || !modalImg || !caption) return;
 
+  modal.hidden = false;
   modal.style.display = 'block';
   modalImg.src = image.src;
   // Usar textContent en lugar de innerHTML (seguridad XSS)

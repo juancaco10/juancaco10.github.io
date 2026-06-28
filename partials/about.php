@@ -1,7 +1,7 @@
-<section id="about" class="about">
-    <div class="container">
+<section id="about" class="about o-section">
+    <div class="o-container">
         <h2 class="about__title">Sobre mí</h2>
-        <div class="about__content">
+        <div class="about__content o-glass">
 
             <div class="about__intro">
                 <p class="about__text">

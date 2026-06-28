@@ -11,10 +11,10 @@ if (!defined('SITE_NAME')) {
 // Generar token CSRF para el formulario
 $csrf_token = generate_csrf_token();
 ?>
-<section id="contact" class="contact">
-  <div class="container">
+<section id="contact" class="contact o-section">
+  <div class="o-container">
     <h2 class="contact__title">Contacto</h2>
-    <div class="contact__content">
+    <div class="contact__content o-grid">
       <div class="contact__info">
         <p class="contact__description">
           Ponte en contacto para discutir colaboraciones, proyectos,
@@ -28,7 +28,7 @@ $csrf_token = generate_csrf_token();
           <input type="hidden" name="csrf_token" value="<?php echo $csrf_token; ?>">
           
           <!-- Honeypot - Anti-spam oculto -->
-          <div class="honeypot" style="position: absolute; left: -9999px;">
+          <div class="honeypot" style="position: absolute; left: -9999px;" aria-hidden="true">
             <input type="text" name="website" tabindex="-1" autocomplete="off">
           </div>
           
@@ -93,7 +93,7 @@ $csrf_token = generate_csrf_token();
           <?php endif; ?>
           
           <div class="form__actions">
-            <button type="submit" class="button button--primary">
+            <button type="submit" class="btn btn--primary">
               <span class="button__text">Enviar mensaje</span>
               <span class="button__loader" hidden>Cargando...</span>
             </button>
@@ -104,7 +104,7 @@ $csrf_token = generate_csrf_token();
         </form>
         <?php endif; ?>
         
-        <div class="contact__socials">
+        <div class="contact__socials o-glass">
           <p class="contact__socials-title">O contáctame por:</p>
           <div class="socials__container">
             <a class="social__link" href="<?php echo e(SOCIAL_GITHUB); ?>" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
@@ -126,14 +126,4 @@ $csrf_token = generate_csrf_token();
   </div>
 </section>
 
-<!-- Modal de confirmación para WhatsApp (privacidad) -->
-<div id="whatsapp-modal" class="modal modal--small" hidden>
-  <div class="modal__content">
-    <h3>Contacto por WhatsApp</h3>
-    <p>Al hacer clic, serás redirigido a WhatsApp. Tu número de teléfono será visible para el destinatario.</p>
-    <div class="modal__actions">
-      <a href="<?php echo e(SOCIAL_WHATSAPP); ?>" target="_blank" rel="noopener noreferrer" class="button button--primary">Continuar</a>
-      <button type="button" class="button button--secondary" data-close="whatsapp-modal">Cancelar</button>
-    </div>
-  </div>
-</div>
+<!-- El modal de WhatsApp vive en footer.php (versión única y completa); se abre con data-open="whatsapp-modal" -->

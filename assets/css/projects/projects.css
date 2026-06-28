@@ -4,43 +4,38 @@
  */
 
 /* ========================================
-   PROJECTS SECTION
+   PROJECTS SECTION (Mobile First)
    ======================================== */
 .projects {
-  max-width: var(--container-max);
-  margin: auto;
-  padding: var(--space-lg);
+  text-align: center;
 }
 
 .projects__title {
   color: var(--color-primary);
   font-size: var(--text-3xl);
-  margin-bottom: var(--space-10);
+  margin-bottom: var(--space-8);
   font-family: var(--font-title);
   text-align: center;
 }
 
+/* El grid principal usa el componente .o-grid--auto, así que aquí solo añadimos márgenes y gaps extra si son necesarios */
 .projects__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: var(--space-8);
-  margin: auto;
+  /* Alineación específica para projects */
+  align-items: stretch;
 }
 
 /* ========================================
    PROJECT CARD
-   Usa componente .o-glass
    ======================================== */
+/* NOTA: Eliminado el 'composes: o-glass;' - se usa la clase .o-glass directamente en el HTML */
 .project__card {
-  composes: o-glass;
-  
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   justify-content: space-between;
-  padding: var(--space-6);
-  min-height: 250px;
+  padding: var(--space-5);
+  min-height: 200px;
   border-radius: var(--radius-xl);
   position: relative;
   overflow: hidden;
@@ -50,7 +45,7 @@
    PROJECT TITLE
    ======================================== */
 .project__title {
-  font-size: var(--text-2xl);
+  font-size: var(--text-xl);
   color: var(--color-primary);
   font-weight: var(--font-semibold);
   margin-bottom: var(--space-4);
@@ -96,10 +91,7 @@
 
 .project__image-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   background: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
@@ -116,8 +108,8 @@
   color: var(--color-text);
   font-size: var(--text-2xl);
   background: var(--color-primary);
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: var(--radius-full);
   display: flex;
   align-items: center;
@@ -129,7 +121,7 @@
    ======================================== */
 .project__description {
   color: var(--color-text);
-  font-size: var(--text-lg);
+  font-size: var(--text-base);
   margin-bottom: var(--space-4);
   font-family: var(--font-primary);
   line-height: var(--leading-relaxed);
@@ -141,8 +133,8 @@
    PROJECT PLACEHOLDER
    ======================================== */
 .project__placeholder {
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   border-radius: var(--radius-full);
   background: linear-gradient(
     135deg,
@@ -163,110 +155,19 @@
 }
 
 .project__placeholder span {
-  font-size: var(--text-3xl);
+  font-size: var(--text-2xl);
 }
 
 /* ========================================
    PROJECT BUTTON
+   NOTA: Se migraron estilos de botón principal a components/_buttons.css
+   La clase en HTML es .btn .btn--primary .btn--block
    ======================================== */
-.project__button {
-  background-color: var(--color-primary);
-  color: var(--color-text);
-  border: none;
-  border-radius: var(--radius-lg);
-  padding: var(--space-3) var(--space-6);
-  font-weight: var(--font-bold);
-  cursor: pointer;
-  margin-top: auto;
-  /* FIX: Touch target mínimo 44px */
-  min-height: 44px;
-  /* FIX: Propiedades específicas */
-  transition: background-color var(--duration-base) var(--ease-default),
-              transform var(--duration-base) var(--ease-default);
-}
-
-.project__button:hover {
-  background-color: var(--color-primary-light);
-  transform: translateY(-2px);
-}
-
-/* FIX: Focus visible */
-.project__button:focus-visible {
-  outline: 2px solid var(--color-text);
-  outline-offset: 4px;
-  border-radius: var(--radius-lg);
-}
-
+   
 /* ========================================
-   MODAL
+   MODAL (PROJECT SPECIFICS)
+   NOTA: La estructura general .modal se migró a components/_modals.css
    ======================================== */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: var(--z-modal);
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--color-bg-overlay);
-  overflow-y: auto;
-  opacity: 0;
-  transition: opacity var(--duration-base) var(--ease-default);
-}
-
-.modal.show {
-  opacity: 1;
-}
-
-.modal__content {
-  background: var(--color-bg);
-  color: var(--color-text);
-  margin: 5% auto;
-  padding: var(--space-8);
-  border-radius: var(--radius-xl);
-  max-width: 800px;
-  box-shadow: var(--shadow-glow);
-  transform: translateY(-20px);
-  transition: transform var(--duration-base) var(--ease-default);
-}
-
-.modal.show .modal__content {
-  transform: translateY(0);
-}
-
-.modal__close {
-  float: right;
-  font-size: 2rem;
-  cursor: pointer;
-  color: var(--color-primary);
-  /* FIX: Touch target mínimo 44px */
-  min-width: 44px;
-  min-height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: color var(--duration-base) var(--ease-default);
-}
-
-.modal__close:hover,
-.modal__close:focus-visible {
-  color: var(--color-primary-light);
-}
-
-.modal__close:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-  border-radius: var(--radius-sm);
-}
-
-.modal__title {
-  font-family: var(--font-title);
-  color: var(--color-primary);
-  margin-bottom: var(--space-4);
-  clear: both;
-  padding-top: var(--space-4);
-}
-
 .modal__subtitle {
   margin-top: var(--space-6);
   color: var(--color-primary-light);
@@ -302,11 +203,8 @@
   display: none;
   position: fixed;
   z-index: var(--z-modal);
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.9);
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.95);
   opacity: 0;
   transition: opacity var(--duration-base) var(--ease-default);
 }
@@ -317,13 +215,12 @@
 
 .gallery-modal__close {
   position: absolute;
-  top: var(--space-5);
-  right: var(--space-8);
+  top: var(--space-4);
+  right: var(--space-4);
   color: var(--color-text);
-  font-size: 40px;
+  font-size: 32px;
   cursor: pointer;
   z-index: var(--z-tooltip);
-  /* FIX: Touch target mínimo 44px */
   min-width: 44px;
   min-height: 44px;
   display: flex;
@@ -347,7 +244,7 @@
   display: none;
   text-align: center;
   width: 100%;
-  max-width: 60%;
+  max-width: 90%;
   margin: 0 auto;
   padding-top: var(--space-5);
 }
@@ -358,7 +255,7 @@
 
 .gallery-modal .mySlides img {
   max-width: 100%;
-  max-height: 70vh;
+  max-height: 60vh;
   object-fit: contain;
   margin: 0 auto;
   display: block;
@@ -367,20 +264,20 @@
 .caption-container {
   text-align: center;
   color: var(--color-text);
-  font-size: var(--text-lg);
+  font-size: var(--text-base);
   margin-top: var(--space-4);
 }
 
 /* Slideshow container */
 .slideshow-container {
   position: relative;
-  height: 80%;
-  margin: var(--space-8) auto var(--space-5) auto;
+  height: 70vh;
+  margin: var(--space-10) auto var(--space-4) auto;
   overflow: hidden;
   border-radius: var(--radius-md);
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 }
 
@@ -390,22 +287,25 @@
   position: absolute;
   top: 50%;
   width: auto;
-  padding: var(--space-4);
-  margin-top: -50px;
+  padding: var(--space-3);
+  transform: translateY(-50%);
   color: var(--color-text);
   font-weight: var(--font-bold);
-  font-size: var(--text-xl);
+  font-size: var(--text-lg);
   transition: background-color var(--duration-base) var(--ease-default);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
   user-select: none;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: var(--z-sticky);
-  /* FIX: Touch target mínimo 44px */
   min-width: 44px;
   min-height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.prev {
+  left: 0;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
 }
 
 .next {
@@ -429,15 +329,17 @@
 /* Thumbnail gallery */
 .thumbnail-row {
   display: flex;
-  justify-content: center;
-  margin-top: var(--space-5);
+  justify-content: flex-start;
+  margin-top: var(--space-4);
   gap: var(--space-3);
-  flex-wrap: wrap;
+  overflow-x: auto;
+  padding-bottom: var(--space-4);
 }
 
 .thumbnail {
-  width: 80px;
-  height: 60px;
+  width: 60px;
+  height: 45px;
+  flex-shrink: 0;
   object-fit: cover;
   cursor: pointer;
   opacity: 0.6;
@@ -462,7 +364,7 @@
 .team-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-6);
+  gap: var(--space-4);
   justify-content: center;
   margin-top: var(--space-4);
 }
@@ -471,12 +373,12 @@
   background: var(--color-bg-card);
   padding: var(--space-4);
   border-radius: var(--radius-xl);
-  width: 180px;
+  width: 140px;
 }
 
 .team-photo {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   border-radius: var(--radius-full);
   object-fit: cover;
   margin-bottom: var(--space-2);
@@ -485,106 +387,98 @@
 
 .team-name {
   font-family: var(--font-primary);
-  font-size: var(--text-base);
+  font-size: var(--text-sm);
   margin-bottom: var(--space-2);
   color: var(--color-text);
 }
 
-.team-links a {
-  margin: 0 var(--space-1);
-  color: var(--color-primary);
-  font-size: var(--text-lg);
-  transition: color var(--duration-base) var(--ease-default);
-}
-
-.team-links a:hover,
-.team-links a:focus-visible {
-  color: var(--color-primary-light);
-}
-
-.team-links a:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-  border-radius: var(--radius-sm);
-}
-
 /* ========================================
-   RESPONSIVE
+   RESPONSIVE (Tablet / Desktop)
    ======================================== */
-@media (max-width: 1000px) {
-  .projects__grid {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--space-6);
-  }
-}
-
-@media (max-width: 768px) {
-  .projects {
-    padding: var(--space-lg) var(--space-4);
-  }
-
-  .projects__grid {
-    grid-template-columns: 1fr;
-    max-width: 500px;
+@media (min-width: 768px) {
+  .projects__title {
+    margin-bottom: var(--space-10);
   }
 
   .project__card {
     padding: var(--space-6);
-    min-height: 220px;
-  }
-
-  .modal__content {
-    margin: 10% auto;
-    width: 90%;
-    padding: var(--space-6);
-  }
-
-  .gallery-modal__content {
-    width: 95%;
-    height: 85%;
-  }
-
-  .thumbnail {
-    width: 60px;
-    height: 45px;
-  }
-}
-
-@media (max-width: 480px) {
-  .project__card {
-    padding: var(--space-5);
-    min-height: 200px;
+    min-height: 250px;
   }
 
   .project__title {
-    font-size: var(--text-xl);
-  }
-
-  .project__description {
-    font-size: var(--text-base);
-  }
-
-  .project__placeholder {
-    width: 70px;
-    height: 70px;
-  }
-
-  .project__placeholder span {
     font-size: var(--text-2xl);
   }
 
-  .modal__content {
-    padding: var(--space-4);
+  .project__description {
+    font-size: var(--text-lg);
+  }
+
+  .project__zoom-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .project__placeholder {
+    width: 80px;
+    height: 80px;
+  }
+
+  .project__placeholder span {
+    font-size: var(--text-3xl);
+  }
+
+  .gallery-modal__close {
+    top: var(--space-5);
+    right: var(--space-8);
+    font-size: 40px;
+  }
+
+  .gallery-modal .mySlides {
+    max-width: 60%;
+  }
+
+  .gallery-modal .mySlides img {
+    max-height: 70vh;
+  }
+
+  .caption-container {
+    font-size: var(--text-lg);
+  }
+
+  .slideshow-container {
+    height: 80vh;
   }
 
   .prev,
   .next {
-    padding: var(--space-3);
-    font-size: var(--text-lg);
+    padding: var(--space-4);
+    font-size: var(--text-xl);
+  }
+
+  .thumbnail-row {
+    justify-content: center;
+    overflow-x: visible;
   }
 
   .thumbnail {
-    width: 50px;
-    height: 38px;
+    width: 80px;
+    height: 60px;
+  }
+
+  .team-grid {
+    gap: var(--space-6);
+  }
+
+  .team-member {
+    width: 180px;
+  }
+
+  .team-photo {
+    width: 100px;
+    height: 100px;
+  }
+
+  .team-name {
+    font-size: var(--text-base);
   }
 }

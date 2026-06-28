@@ -16,11 +16,21 @@ html {
   -webkit-text-size-adjust: 100%;
   -moz-tab-size: 4;
   tab-size: 4;
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--navbar-height-mobile, 64px);
+}
+
+@media (min-width: 1024px) {
+  html {
+    scroll-padding-top: var(--navbar-height-desktop, 80px);
+  }
 }
 
 body {
   margin: 0;
   padding: 0;
+  background-color: var(--color-bg, #1a1a2e);
+  color: var(--color-text, #e6e6e6);
 }
 
 /* Typography reset */
