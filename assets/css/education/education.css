@@ -79,7 +79,6 @@
 
 .education__view-more:hover {
   color: var(--color-text);
-  transform: scale(1.05);
 }
 
 .education__view-more:focus-visible {

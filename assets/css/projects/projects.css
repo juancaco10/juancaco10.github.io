@@ -25,137 +25,208 @@
 }
 
 /* ========================================
-   PROJECT CARD
+   PROJECT CARD (preview compacto)
+   Usa .o-glass en el HTML; aquí anulamos su padding para que
+   la portada vaya a sangre y el contenido lleve su propio padding.
    ======================================== */
-/* NOTA: Eliminado el 'composes: o-glass;' - se usa la clase .o-glass directamente en el HTML */
-.project__card {
+.project__card,
+.project-card {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  justify-content: space-between;
-  padding: var(--space-5);
-  min-height: 200px;
+  text-align: left;
+  padding: 0;
   border-radius: var(--radius-xl);
-  position: relative;
   overflow: hidden;
-}
-
-/* ========================================
-   PROJECT TITLE
-   ======================================== */
-.project__title {
-  font-size: var(--text-xl);
-  color: var(--color-primary);
-  font-weight: var(--font-semibold);
-  margin-bottom: var(--space-4);
-  font-family: var(--font-title);
-  border-bottom: 2px solid var(--color-border);
-  padding-bottom: var(--space-2);
-  width: 100%;
-  text-align: center;
-}
-
-.project__card:hover .project__title {
-  border-bottom-color: var(--color-primary);
-}
-
-/* ========================================
-   PROJECT IMAGE
-   ======================================== */
-.project__image-container {
-  position: relative;
-  width: 100%;
-  margin-bottom: var(--space-4);
-  overflow: hidden;
-  border-radius: var(--radius-md);
-  cursor: pointer;
-}
-
-.project__image {
-  width: 100%;
-  height: auto;
-  display: block;
-  transition: transform var(--duration-base) var(--ease-default);
-}
-
-.project__image-container:hover .project__image {
-  transform: scale(1.05);
-}
-
-.zoom-text {
-  color: var(--color-text);
-  font-size: var(--text-sm);
-  text-align: center;
-}
-
-.project__image-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity var(--duration-base) var(--ease-default);
-}
-
-.project__image-container:hover .project__image-overlay {
-  opacity: 1;
-}
-
-.project__zoom-icon {
-  color: var(--color-text);
-  font-size: var(--text-2xl);
-  background: var(--color-primary);
-  width: 40px;
-  height: 40px;
-  border-radius: var(--radius-full);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* ========================================
-   PROJECT DESCRIPTION
-   ======================================== */
-.project__description {
-  color: var(--color-text);
-  font-size: var(--text-base);
-  margin-bottom: var(--space-4);
-  font-family: var(--font-primary);
-  line-height: var(--leading-relaxed);
-  text-align: center;
-  flex-grow: 1;
-}
-
-/* ========================================
-   PROJECT PLACEHOLDER
-   ======================================== */
-.project__placeholder {
-  width: 70px;
-  height: 70px;
-  border-radius: var(--radius-full);
-  background: linear-gradient(
-    135deg,
-    var(--color-primary-dark),
-    var(--color-primary)
-  );
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: var(--space-4) 0;
   transition: transform var(--duration-base) var(--ease-default),
               box-shadow var(--duration-base) var(--ease-default);
 }
 
-.project__card:hover .project__placeholder {
-  transform: scale(1.1) rotate(5deg);
-  box-shadow: var(--shadow-glow);
+/* Sin movimiento: al pasar el cursor solo se resalta el borde */
+.project-card:hover {
+  box-shadow: inset 0 0 0 1px var(--color-primary);
 }
 
-.project__placeholder span {
-  font-size: var(--text-2xl);
+/* Portada (botón clicable) */
+.project-card__media {
+  position: relative;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--color-bg-card);
+  border: none;
+  padding: 0;
+}
+
+/* Imagen completa (sin recorte): ancho 100%, alto según su proporción real. Sin zoom en hover. */
+.project-card__cover {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.project-card__media:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: -2px;
+}
+
+.project-card__year {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  background: rgba(0, 0, 10, 0.7);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  color: var(--color-text);
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  padding: 2px 10px;
+  border-radius: var(--radius-full);
+}
+
+/* Cuerpo del card */
+.project-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  flex-grow: 1;
+}
+
+.project-card__title {
+  font-size: var(--text-xl);
+  color: var(--color-primary);
+  font-family: var(--font-title);
+  font-weight: var(--font-semibold);
+}
+
+.project-card__tagline {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+}
+
+.project-card__chips,
+.project-detail__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  list-style: none;
+}
+
+.project-card__body .btn {
+  margin-top: auto; /* CTA pegado al fondo aunque varíe la altura */
+}
+
+/* Chip de tecnología reutilizable */
+.chip {
+  font-size: var(--text-xs);
+  padding: 2px 10px;
+  border-radius: var(--radius-full);
+  background: rgba(var(--color-primary-rgb), 0.12);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+  white-space: nowrap;
+}
+
+/* ========================================
+   PROJECT DETAIL (modal enriquecido)
+   ======================================== */
+.project-detail {
+  text-align: left;
+}
+
+.project-detail__header {
+  margin-bottom: var(--space-6);
+  padding-right: var(--space-8); /* deja aire para el botón cerrar */
+}
+
+.project-detail__tagline {
+  color: var(--color-text-muted);
+  font-size: var(--text-base);
+  margin-top: var(--space-2);
+}
+
+.project-detail__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-3);
+  margin-top: var(--space-4);
+  list-style: none;
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.project-detail__meta li {
+  background: var(--color-bg-card);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+}
+
+.project-detail__photos,
+.project-detail__tech,
+.project-detail__section {
+  margin: var(--space-6) 0;
+}
+
+.project-detail__thumbs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+
+.project-detail__thumb {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  border: 1px solid var(--color-border);
+  padding: 0;
+  background: var(--color-bg-card);
+  transition: border-color var(--duration-base) var(--ease-default),
+              transform var(--duration-base) var(--ease-default);
+}
+
+.project-detail__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.project-detail__thumb:hover,
+.project-detail__thumb:focus-visible {
+  border-color: var(--color-primary);
+}
+
+.project-detail__thumb:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Lista de especificaciones técnicas */
+.spec {
+  margin: var(--space-4) 0;
+}
+
+.spec__row {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.spec__row dt {
+  color: var(--color-text-muted);
+  font-weight: var(--font-medium);
+}
+
+.spec__row dd {
+  color: var(--color-text);
+  text-align: right;
 }
 
 /* ========================================
@@ -400,31 +471,8 @@
     margin-bottom: var(--space-10);
   }
 
-  .project__card {
-    padding: var(--space-6);
-    min-height: 250px;
-  }
-
-  .project__title {
+  .project-card__title {
     font-size: var(--text-2xl);
-  }
-
-  .project__description {
-    font-size: var(--text-lg);
-  }
-
-  .project__zoom-icon {
-    width: 50px;
-    height: 50px;
-  }
-
-  .project__placeholder {
-    width: 80px;
-    height: 80px;
-  }
-
-  .project__placeholder span {
-    font-size: var(--text-3xl);
   }
 
   .gallery-modal__close {

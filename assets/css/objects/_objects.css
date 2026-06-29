@@ -27,15 +27,7 @@
   box-shadow: var(--shadow-glow-lg);
 }
 
-/* Solo aplicar transformaciones en dispositivos que las soportan bien y no son touch puros */
-@media (hover: hover) and (pointer: fine) {
-  .o-glass {
-    will-change: transform;
-  }
-  .o-glass:hover {
-    transform: translateY(-4px);
-  }
-}
+/* Transformaciones sutiles eliminadas por petición del usuario (sin descoloque vertical) */
 
 /* Variante sutil */
 .o-glass--subtle {

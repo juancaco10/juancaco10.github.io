@@ -42,6 +42,59 @@ const Utils = {
 };
 
 // ============================================
+// NAVEGACIÓN MÓVIL
+// ============================================
+const NavigationManager = {
+  init() {
+    this.toggleBtn = document.getElementById('navToggle');
+    this.navMenu = document.getElementById('navMenu');
+    this.navLinks = document.querySelectorAll('.nav__link');
+
+    if (!this.toggleBtn || !this.navMenu) return;
+
+    // Toggle menu
+    this.toggleBtn.addEventListener('click', () => this.toggleMenu());
+
+    // Cerrar al hacer click en enlace
+    this.navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (this.navMenu.classList.contains('is-open')) {
+          this.closeMenu();
+        }
+      });
+    });
+
+    // Cerrar al hacer resize a desktop
+    window.addEventListener('resize', Utils.debounce(() => {
+      if (window.innerWidth >= 768 && this.navMenu.classList.contains('is-open')) {
+        this.closeMenu();
+      }
+    }, 150));
+  },
+
+  toggleMenu() {
+    const isExpanded = this.toggleBtn.getAttribute('aria-expanded') === 'true';
+    if (isExpanded) {
+      this.closeMenu();
+    } else {
+      this.openMenu();
+    }
+  },
+
+  openMenu() {
+    this.navMenu.classList.add('is-open');
+    this.toggleBtn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden'; // Prevenir scroll
+  },
+
+  closeMenu() {
+    this.navMenu.classList.remove('is-open');
+    this.toggleBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = ''; // Restaurar scroll
+  }
+};
+
+// ============================================
 // GESTIÓN DE MODALES
 // ============================================
 const ModalManager = {
@@ -556,6 +609,7 @@ document.addEventListener('DOMContentLoaded', () => {
   CookieBanner.init();
   EventDelegation.init();
   A11yModals.init();
+  NavigationManager.init();
 
   // Education modals - usando data attributes en lugar de array hardcodeado
   const viewMoreButtons = document.querySelectorAll('.education__view-more');

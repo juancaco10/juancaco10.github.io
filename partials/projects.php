@@ -8,12 +8,31 @@ $team = [
   ['photo' => 'assets/img/projects/gualberto.png', 'name' => 'Gualberto Castro Casas',      'alt' => 'Gualberto Castro'],
 ];
 
-// Galerías: el orden del array define el orden de slides y miniaturas.
-// Los índices de navegación se generan solos (sin desajustes manuales).
-$galleries = [
+// Un único array por proyecto: card + detalle + galería se generan desde aquí.
+// Campos marcados "EDITAR" son inferidos: ajústalos con los datos reales.
+$projects = [
   'ifsul1' => [
-    'label'  => 'Sistema de Llaves IFSUL',
-    'images' => [
+    'title'     => 'Sistema de Llaves IFSUL',
+    'tagline'   => 'Gestión de llaves, reservas y salas académicas.',
+    'cover'     => 'assets/img/projects/chaves/ifs.png',
+    'year'      => '2024',                       // EDITAR
+    'role'      => 'Desarrollador Full Stack',   // EDITAR
+    'status'    => 'MVP',                         // EDITAR
+    'platforms' => ['Web', 'Móvil'],
+    'stack'     => ['Java', 'Android', 'MySQL', 'Git'],   // EDITAR (inferido)
+    'overview'  => 'Este sistema fue desarrollado inicialmente para el IFSUL con el objetivo de modernizar y simplificar la gestión de llaves, reservas y salas académicas. A futuro, su alcance podría ampliarse para instituciones municipales y otras organizaciones que requieran un control seguro de sus espacios físicos.',
+    'objective' => 'Centralizar y automatizar la gestión de llaves, reservas y usuarios en un único sistema, aumentando la seguridad y optimizando los recursos de las instituciones.',
+    'features'  => [
+      '🔐 <strong>Gestión de Llaves</strong>: registro de retiro, devolución y <strong>transferencia entre docentes</strong>.',
+      '📅 <strong>Reservas y Salas</strong>: consulta de disponibilidad en tiempo real, solicitud y aprobación de reservas.',
+      '👥 <strong>Gestión de Usuarios</strong>: perfiles personalizables, inicio de sesión seguro y control de accesos.',
+      '📊 <strong>Reportes Inteligentes</strong>: estadísticas de uso, generación de reportes por periodo, filtros por usuario, sala y tipo de operación.',
+    ],
+    'audience'  => 'Actualmente diseñado para el IFSUL, pero adaptable a universidades, escuelas, municipalidades, instituciones técnicas, espacios corporativos y centros de entrenamiento.',
+    'roadmap'   => ['Lanzamiento del MVP en el IFSUL', 'Validación con usuarios reales', 'Escalabilidad hacia municipalidades u otras instituciones'],
+    'quote'     => 'Transformamos la forma en que las instituciones gestionan sus espacios. Porque la educación merece tecnología inteligente.',
+    'team'      => true,
+    'images'    => [
       ['src' => 'assets/img/projects/chaves/ifs.png',       'alt' => 'Interfaz principal del Sistema de Llaves IFSUL',          'thumb' => 'Interfaz principal del sistema'],
       ['src' => 'assets/img/projects/chaves/dashboard.png', 'alt' => 'Dashboard del Sistema de Llaves IFSUL',                  'thumb' => 'Dashboard del sistema'],
       ['src' => 'assets/img/projects/chaves/login.webp',    'alt' => 'Página de inicio de sesión del Sistema de Llaves IFSUL', 'thumb' => 'Página de login'],
@@ -25,8 +44,27 @@ $galleries = [
     ],
   ],
   'idr' => [
-    'label'  => 'Sistema Integrado IDR',
-    'images' => [
+    'title'     => 'Sistema Integrado IDR',
+    'tagline'   => 'Solicitudes, análisis y servicios de la Intendencia de Rivera.',
+    'cover'     => 'assets/img/projects/idr/idr.webp',
+    'year'      => '2024',                          // EDITAR
+    'role'      => 'Desarrollador (trabajo en equipo)', // EDITAR
+    'status'    => 'Prototipo',
+    'platforms' => ['Web', 'App Ciudadanos', 'App Capataces'],
+    'stack'     => ['Java', 'Android', 'REST API', 'MySQL'],  // EDITAR (inferido)
+    'overview'  => 'Este prototipo fue desarrollado para la <strong>Intendencia de Rivera – Uruguay</strong> y está compuesto por tres módulos: una aplicación móvil para ciudadanos, una plataforma web administrativa y una aplicación móvil para capataces. El objetivo es <strong>optimizar la gestión de servicios públicos</strong>, aumentar la transparencia y mejorar la participación ciudadana en un contexto de transformación digital.',
+    'objective' => 'Mejorar la eficiencia administrativa y reducir los tiempos de respuesta en los servicios municipales mediante la digitalización y centralización de las solicitudes.',
+    'features'  => [
+      '📌 Reporte de incidencias en infraestructura con geolocalización.',
+      '📊 Análisis de datos para la toma de decisiones.',
+      '🗂 Gestión de tareas para capataces con seguimiento en tiempo real.',
+      '🔒 Transparencia y trazabilidad en las solicitudes.',
+    ],
+    'audience'  => 'Ciudadanos de Rivera, funcionarios administrativos, capataces y autoridades de la Intendencia.',
+    'roadmap'   => ['Lanzamiento del prototipo', 'Validación con usuarios reales', 'Escalabilidad para otras municipalidades'],
+    'quote'     => 'Un sistema diseñado para acercar la gestión pública a la ciudadanía, optimizando los servicios y fomentando la transparencia.',
+    'team'      => true,
+    'images'    => [
       ['src' => 'assets/img/projects/idr/idr.webp',  'alt' => 'Vista general del Sistema Integrado IDR',  'thumb' => 'Vista general del sistema'],
       ['src' => 'assets/img/projects/idr/idr1.png',  'alt' => 'Plataforma web administrativa del IDR',    'thumb' => 'Plataforma web administrativa'],
       ['src' => 'assets/img/projects/idr/idr2.png',  'alt' => 'App móvil para ciudadanos del IDR',        'thumb' => 'App móvil para ciudadanos'],
@@ -41,206 +79,150 @@ $galleries = [
 <section id="projects" class="projects o-section">
   <div class="o-container">
     <h2 class="projects__title">Proyectos</h2>
-    <div class="o-grid o-grid--auto projects__grid">
 
-      <!-- Project Card ifsul1 -->
-      <div class="project__card o-glass">
-        <h3 class="project__title">Sistema de Llaves IFSUL</h3>
-        <p class="project__description">Plataforma para gestión de llaves, reservas y salas académicas.</p>
-
-        <div class="project__image-container" data-click="openGallery('ifsul1')" role="button" tabindex="0" aria-label="Ver galería de imágenes del proyecto">
-          <img 
-            src="assets/img/projects/chaves/ifs.png" 
-            alt="Interfaz principal del Sistema de Llaves IFSUL mostrando el dashboard de gestión"
-            loading="lazy"
-            decoding="async"
-            width="600"
-            height="400"
-            class="project__image">
-          <div class="project__image-overlay">
-            <div class="project__zoom-icon">
-              <span class="zoom-text">Ver imágenes</span>
-            </div>
-          </div>
-        </div>
-
-        <button class="btn btn--primary btn--block" data-click="openModal('ifsul1')">Ver más</button>
-      </div>
-
-      <!-- Modal de información del proyecto ifsul1 -->
-      <div id="modal-ifsul1" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-ifsul1-title" hidden>
-        <div class="modal__content">
-          <button type="button" class="modal__close" data-click="closeModal('ifsul1')" aria-label="Cerrar ventana">&times;</button>
-          <h2 class="modal__title" id="modal-ifsul1-title">Sistema de Llaves IFSUL</h2>
-          <p class="modal__text">
-            Este sistema fue desarrollado inicialmente para el IFSUL con el objetivo de
-            modernizar y simplificar la gestión de llaves, reservas y salas académicas.
-            A futuro, su alcance podría ampliarse para instituciones municipales y otras
-            organizaciones que requieran un control seguro de sus espacios físicos.
-          </p>
-
-          <h3 class="modal__subtitle">🎯 Objetivo</h3>
-          <p class="modal__text">
-            Centralizar y automatizar la gestión de llaves, reservas y usuarios en un único
-            sistema, aumentando la seguridad y optimizando los recursos de las instituciones.
-          </p>
-
-          <ul class="modal__list">
-            <li>🌐 Plataforma Web (administración y recepción)</li>
-            <li>📱 Aplicación Móvil (docentes y funcionarios)</li>
+    <!-- Cards de preview (2 columnas) -->
+    <div class="o-grid o-grid--2col projects__grid">
+      <?php foreach ($projects as $id => $p): ?>
+      <article class="project-card o-glass">
+        <button type="button" class="project-card__media" data-click="openModal('<?php echo e($id); ?>')" aria-label="Ver detalles de <?php echo e($p['title']); ?>">
+          <img class="project-card__cover" src="<?php echo e($p['cover']); ?>" alt="Portada de <?php echo e($p['title']); ?>" loading="lazy" decoding="async" width="600" height="375">
+          <span class="project-card__year"><?php echo e($p['year']); ?></span>
+        </button>
+        <div class="project-card__body">
+          <h3 class="project-card__title"><?php echo e($p['title']); ?></h3>
+          <p class="project-card__tagline"><?php echo e($p['tagline']); ?></p>
+          <ul class="project-card__chips">
+            <?php foreach (array_slice($p['stack'], 0, 4) as $tech): ?>
+            <li class="chip"><?php echo e($tech); ?></li>
+            <?php endforeach; ?>
           </ul>
+          <button class="btn btn--primary btn--block" data-click="openModal('<?php echo e($id); ?>')">Ver detalles</button>
+        </div>
+      </article>
+      <?php endforeach; ?>
+    </div>
 
+    <!-- Modales de detalle (uno por proyecto) -->
+    <?php foreach ($projects as $id => $p): ?>
+    <div id="modal-<?php echo e($id); ?>" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-<?php echo e($id); ?>-title" hidden>
+      <div class="modal__content project-detail">
+        <button type="button" class="modal__close" data-click="closeModal('<?php echo e($id); ?>')" aria-label="Cerrar ventana">&times;</button>
+
+        <header class="project-detail__header">
+          <h2 class="modal__title" id="modal-<?php echo e($id); ?>-title"><?php echo e($p['title']); ?></h2>
+          <p class="project-detail__tagline"><?php echo e($p['tagline']); ?></p>
+          <ul class="project-detail__meta">
+            <li>📅 <?php echo e($p['year']); ?></li>
+            <li>👤 <?php echo e($p['role']); ?></li>
+            <li>🏷 <?php echo e($p['status']); ?></li>
+            <li>🖥 <?php echo e(implode(' · ', $p['platforms'])); ?></li>
+          </ul>
+        </header>
+
+        <!-- Capturas (miniaturas -> galería fullscreen) -->
+        <section class="project-detail__photos">
+          <h3 class="modal__subtitle">📸 Capturas</h3>
+          <div class="project-detail__thumbs">
+            <?php foreach ($p['images'] as $i => $img): ?>
+            <button type="button" class="project-detail__thumb" data-click="openGallery('<?php echo e($id); ?>');currentSlide(<?php echo $i + 1; ?>, '<?php echo e($id); ?>')" aria-label="Ampliar: <?php echo e($img['thumb']); ?>">
+              <img src="<?php echo e($img['src']); ?>" alt="<?php echo e($img['thumb']); ?>" loading="lazy" decoding="async">
+            </button>
+            <?php endforeach; ?>
+          </div>
+        </section>
+
+        <!-- Descripción + funcionalidades -->
+        <section class="project-detail__section">
+          <p class="modal__text"><?php echo $p['overview']; ?></p>
+          <h3 class="modal__subtitle">🎯 Objetivo</h3>
+          <p class="modal__text"><?php echo e($p['objective']); ?></p>
           <h3 class="modal__subtitle">🔑 Funcionalidades</h3>
           <ul class="modal__list">
-            <li>🔐 <strong>Gestión de Llaves</strong>: registro de retiro, devolución y <strong>transferencia entre docentes</strong>.</li>
-            <li>📅 <strong>Reservas y Salas</strong>: consulta de disponibilidad en tiempo real, solicitud y aprobación de reservas.</li>
-            <li>👥 <strong>Gestión de Usuarios</strong>: perfiles personalizables, inicio de sesión seguro y control de accesos.</li>
-            <li>📊 <strong>Reportes Inteligentes</strong>: estadísticas de uso, generación de reportes por periodo, filtros por usuario, sala y tipo de operación.</li>
+            <?php foreach ($p['features'] as $feature): ?>
+            <li><?php echo $feature; ?></li>
+            <?php endforeach; ?>
           </ul>
+        </section>
 
+        <!-- Detalles técnicos -->
+        <section class="project-detail__tech">
+          <h3 class="modal__subtitle">🧩 Detalles técnicos</h3>
+          <dl class="spec">
+            <div class="spec__row"><dt>Rol</dt><dd><?php echo e($p['role']); ?></dd></div>
+            <div class="spec__row"><dt>Plataformas</dt><dd><?php echo e(implode(', ', $p['platforms'])); ?></dd></div>
+            <div class="spec__row"><dt>Estado</dt><dd><?php echo e($p['status']); ?></dd></div>
+            <div class="spec__row"><dt>Año</dt><dd><?php echo e($p['year']); ?></dd></div>
+          </dl>
+          <ul class="project-detail__chips">
+            <?php foreach ($p['stack'] as $tech): ?>
+            <li class="chip"><?php echo e($tech); ?></li>
+            <?php endforeach; ?>
+          </ul>
+        </section>
+
+        <!-- ¿Para quién? -->
+        <section class="project-detail__section">
           <h3 class="modal__subtitle">👥 ¿Para quién?</h3>
-          <p class="modal__text">
-            Actualmente diseñado para el IFSUL, pero adaptable a universidades, escuelas,
-            municipalidades, instituciones técnicas, espacios corporativos y centros de
-            entrenamiento.
-          </p>
+          <p class="modal__text"><?php echo e($p['audience']); ?></p>
+        </section>
 
-          <h3 class="modal__subtitle">🚀 Roadmap Futuro</h3>
-          <ul class="modal__list">
-            <li>Lanzamiento del MVP en el IFSUL</li>
-            <li>Validación con usuarios reales</li>
-            <li>Escalabilidad hacia municipalidades u otras instituciones</li>
-          </ul>
-
-          <blockquote class="modal__quote">
-            "Transformamos la forma en que las instituciones gestionan sus espacios.
-            Porque la educación merece tecnología inteligente."
-          </blockquote>
-
-          <!-- 🧑‍🤝‍🧑 Equipo de Desarrollo -->
-          <div class="team-section">
-            <h3 class="modal__subtitle">👨‍💻 Equipo de Desarrollo</h3>
-            <div class="team-grid">
-              <?php foreach ($team as $member): ?>
-              <div class="team-member">
-                <img src="<?php echo e($member['photo']); ?>" alt="<?php echo e($member['alt']); ?>" class="team-photo">
-                <p class="team-name"><?php echo e($member['name']); ?></p>
-              </div>
-              <?php endforeach; ?>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project Card IDR -->
-      <div class="project__card o-glass">
-        <h3 class="project__title">Sistema Integrado IDR (Prototipo)</h3>
-        <p class="project__description">Plataforma para la gestión de solicitudes, análisis y servicios de la Intendencia de Rivera.</p>
-
-        <div class="project__image-container" data-click="openGallery('idr')">
-          <img src="assets/img/projects/idr/idr.webp" alt="Sistema IDR" style="width:100%">
-          <div class="project__image-overlay">
-            <div class="project__zoom-icon">
-              <span class="zoom-text">Ver imágenes</span>
-            </div>
-          </div>
-        </div>
-
-        <button class="btn btn--primary btn--block" data-click="openModal('idr')">Ver más</button>
-      </div>
-
-      <!-- Modal de información del proyecto IDR -->
-      <div id="modal-idr" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-idr-title" hidden>
-        <div class="modal__content">
-          <button type="button" class="modal__close" data-click="closeModal('idr')" aria-label="Cerrar ventana">&times;</button>
-          <h2 class="modal__title" id="modal-idr-title">Sistema Integrado de Solicitud, Análisis y Gestión de Servicios (Prototipo)</h2>
-          <p class="modal__text">
-            Este prototipo fue desarrollado para la <strong>Intendencia de Rivera – Uruguay</strong> y está compuesto por tres módulos:
-            una aplicación móvil para ciudadanos, una plataforma web administrativa y una aplicación móvil para capataces.
-            El objetivo es <strong>optimizar la gestión de servicios públicos</strong>, aumentar la transparencia y mejorar la
-            participación ciudadana en un contexto de transformación digital.
-          </p>
-
-          <h3 class="modal__subtitle">🎯 Objetivo</h3>
-          <p class="modal__text">
-            Mejorar la eficiencia administrativa y reducir los tiempos de respuesta en los servicios municipales mediante
-            la digitalización y centralización de las solicitudes.
-          </p>
-
-          <ul class="modal__list">
-            <li>🌐 Plataforma Web (centralización y análisis de datos)</li>
-            <li>📱 App Móvil Ciudadanos (reportes de problemas e incidencias)</li>
-            <li>📱 App Móvil Capataces (gestión de tareas en campo)</li>
-          </ul>
-
-          <h3 class="modal__subtitle">🔑 Funcionalidades</h3>
-          <ul class="modal__list">
-            <li>📌 Reporte de incidencias en infraestructura con geolocalización</li>
-            <li>📊 Análisis de datos para la toma de decisiones</li>
-            <li>🗂 Gestión de tareas para capataces con seguimiento en tiempo real</li>
-            <li>🔒 Transparencia y trazabilidad en las solicitudes</li>
-          </ul>
-
-          <h3 class="modal__subtitle">👥 Beneficiarios</h3>
-          <p class="modal__text">
-            Ciudadanos de Rivera, funcionarios administrativos, capataces y autoridades de la Intendencia.
-          </p>
-
+        <!-- Roadmap -->
+        <section class="project-detail__section">
           <h3 class="modal__subtitle">🚀 Roadmap</h3>
           <ul class="modal__list">
-            <li>Lanzamiento del prototipo</li>
-            <li>Validación con usuarios reales</li>
-            <li>Escalabilidad para otras municipalidades</li>
+            <?php foreach ($p['roadmap'] as $step): ?>
+            <li><?php echo e($step); ?></li>
+            <?php endforeach; ?>
           </ul>
+        </section>
 
-          <blockquote class="modal__quote">
-            "Un sistema diseñado para acercar la gestión pública a la ciudadanía, optimizando los servicios y fomentando la transparencia."
-          </blockquote>
+        <blockquote class="modal__quote"><?php echo e($p['quote']); ?></blockquote>
 
-          <!-- 🧑‍🤝‍🧑 Equipo de Desarrollo -->
-          <div class="team-section">
-            <h3 class="modal__subtitle">👨‍💻 Equipo de Desarrollo</h3>
-            <div class="team-grid">
-              <?php foreach ($team as $member): ?>
-              <div class="team-member">
-                <img src="<?php echo e($member['photo']); ?>" alt="<?php echo e($member['alt']); ?>" class="team-photo">
-                <p class="team-name"><?php echo e($member['name']); ?></p>
-              </div>
-              <?php endforeach; ?>
+        <?php if (!empty($p['team'])): ?>
+        <div class="team-section">
+          <h3 class="modal__subtitle">👨‍💻 Equipo de Desarrollo</h3>
+          <div class="team-grid">
+            <?php foreach ($team as $member): ?>
+            <div class="team-member">
+              <img src="<?php echo e($member['photo']); ?>" alt="<?php echo e($member['alt']); ?>" class="team-photo">
+              <p class="team-name"><?php echo e($member['name']); ?></p>
             </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Galerías de imágenes (generadas desde $galleries) -->
-      <?php foreach ($galleries as $gid => $g): ?>
-      <div id="gallery-<?php echo e($gid); ?>" class="gallery-modal" role="dialog" aria-modal="true" aria-label="Galería de imágenes: <?php echo e($g['label']); ?>">
-        <button type="button" class="gallery-modal__close" data-click="closeGallery('<?php echo e($gid); ?>')" aria-label="Cerrar galería">&times;</button>
-        <div class="gallery-modal__content">
-          <div class="slideshow-container">
-            <?php foreach ($g['images'] as $i => $img): ?>
-            <div class="mySlides<?php echo $i === 0 ? ' active' : ''; ?>">
-              <img src="<?php echo e($img['src']); ?>" alt="<?php echo e($img['alt']); ?>" loading="lazy" decoding="async">
-            </div>
-            <?php endforeach; ?>
-
-            <button type="button" class="prev" data-click="plusSlides(-1, '<?php echo e($gid); ?>')" aria-label="Imagen anterior">&#10094;</button>
-            <button type="button" class="next" data-click="plusSlides(1, '<?php echo e($gid); ?>')" aria-label="Imagen siguiente">&#10095;</button>
-
-            <div class="caption-container">
-              <p id="caption-<?php echo e($gid); ?>"></p>
-            </div>
-          </div>
-
-          <div class="thumbnail-row">
-            <?php foreach ($g['images'] as $i => $img): ?>
-            <img class="thumbnail<?php echo $i === 0 ? ' active' : ''; ?>" src="<?php echo e($img['src']); ?>" data-click="currentSlide(<?php echo $i + 1; ?>, '<?php echo e($gid); ?>')" alt="<?php echo e($img['thumb']); ?>">
             <?php endforeach; ?>
           </div>
         </div>
+        <?php endif; ?>
       </div>
-      <?php endforeach; ?>
-
     </div>
+    <?php endforeach; ?>
+
+    <!-- Galerías fullscreen (generadas desde $projects) -->
+    <?php foreach ($projects as $id => $p): ?>
+    <div id="gallery-<?php echo e($id); ?>" class="gallery-modal" role="dialog" aria-modal="true" aria-label="Galería de imágenes: <?php echo e($p['title']); ?>">
+      <button type="button" class="gallery-modal__close" data-click="closeGallery('<?php echo e($id); ?>')" aria-label="Cerrar galería">&times;</button>
+      <div class="gallery-modal__content">
+        <div class="slideshow-container">
+          <?php foreach ($p['images'] as $i => $img): ?>
+          <div class="mySlides<?php echo $i === 0 ? ' active' : ''; ?>">
+            <img src="<?php echo e($img['src']); ?>" alt="<?php echo e($img['alt']); ?>" loading="lazy" decoding="async">
+          </div>
+          <?php endforeach; ?>
+
+          <button type="button" class="prev" data-click="plusSlides(-1, '<?php echo e($id); ?>')" aria-label="Imagen anterior">&#10094;</button>
+          <button type="button" class="next" data-click="plusSlides(1, '<?php echo e($id); ?>')" aria-label="Imagen siguiente">&#10095;</button>
+
+          <div class="caption-container">
+            <p id="caption-<?php echo e($id); ?>"></p>
+          </div>
+        </div>
+
+        <div class="thumbnail-row">
+          <?php foreach ($p['images'] as $i => $img): ?>
+          <img class="thumbnail<?php echo $i === 0 ? ' active' : ''; ?>" src="<?php echo e($img['src']); ?>" data-click="currentSlide(<?php echo $i + 1; ?>, '<?php echo e($id); ?>')" alt="<?php echo e($img['thumb']); ?>">
+          <?php endforeach; ?>
+        </div>
+      </div>
+    </div>
+    <?php endforeach; ?>
+
   </div>
 </section>

@@ -126,7 +126,7 @@
 
 .button--primary:hover:not(:disabled) {
   background: var(--color-primary-light);
-  transform: translateY(-2px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 /* FIX: Focus visible */
@@ -393,10 +393,6 @@
   overflow: hidden;
   cursor: pointer;
   border-radius: var(--radius-md);
-}
-
-.project__image-container:hover .project__image {
-  transform: scale(1.05);
 }
 
 /* Prevenir CLS con aspect ratio */

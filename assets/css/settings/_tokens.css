@@ -115,7 +115,7 @@
   --duration-base: 300ms;
   --duration-slow: 500ms;
   
-  --ease-default: ease;
+  --ease-default: cubic-bezier(0.4, 0, 0.2, 1); /* suave en ambos sentidos (estándar) */
   --ease-in-out: ease-in-out;
   --ease-out: cubic-bezier(0, 0, 0.2, 1);
   

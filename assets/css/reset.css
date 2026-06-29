@@ -17,12 +17,17 @@ html {
   -moz-tab-size: 4;
   tab-size: 4;
   scroll-behavior: smooth;
-  scroll-padding-top: var(--navbar-height-mobile, 64px);
+  /* 
+   * Fórmula para ocultar la línea divisoria (<hr>) y el padding extra bajo el topbar.
+   * Queremos que el título quede a 16px exactos del topbar.
+   * scroll-padding = gap deseado (16px) - padding de la sección + altura del topbar 
+   */
+  scroll-padding-top: calc(16px - var(--section-py-mobile, 48px) + var(--navbar-height-mobile, 60px));
 }
 
 @media (min-width: 1024px) {
   html {
-    scroll-padding-top: var(--navbar-height-desktop, 80px);
+    scroll-padding-top: calc(16px - var(--section-py-desktop, 80px) + var(--navbar-height-desktop, 64px));
   }
 }
 
@@ -31,6 +36,7 @@ body {
   padding: 0;
   background-color: var(--color-bg, #1a1a2e);
   color: var(--color-text, #e6e6e6);
+  font-family: var(--font-primary, "Saira", system-ui, sans-serif);
 }
 
 /* Typography reset */

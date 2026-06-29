@@ -52,9 +52,9 @@ $CSP_NONCE = $GLOBALS['CSP_NONCE'] ?? get_csp_nonce();
   <!-- DNS Prefetch para optimización -->
   <link rel="dns-prefetch" href="//github.com">
   <link rel="dns-prefetch" href="//linkedin.com">
-  <link rel="dns-prefetch" href="//wa.me">
-  
-  <!-- Preload de recursos críticos -->
+  <link rel="preload" href="<?php echo asset('assets/css/style.css'); ?>" as="style">
+  <link rel="preload" href="assets/fonts/Saira/static/Saira-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/Saira/static/Saira-Medium.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/Saira_Stencil_One/SairaStencilOne-Regular.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Favicon -->
