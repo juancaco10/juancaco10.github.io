@@ -7,9 +7,11 @@
    INTRO SECTION (Mobile First)
    ======================================== */
 .intro {
+  position: relative; /* ancla el indicador de scroll */
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: calc(100svh - var(--navbar-height-mobile)); /* primera pantalla en mobile */
   padding-top: var(--space-4) !important;
   padding-bottom: var(--space-8) !important;
 }
@@ -27,7 +29,7 @@
   height: 130px;
   border-radius: var(--radius-full);
   margin: 0 auto;
-  box-shadow: var(--shadow-glow);
+  box-shadow: 0 0 28px rgba(var(--color-primary-rgb), 0.3); /* glow violeta externo suave */
 }
 
 .intro__image {
@@ -108,10 +110,12 @@
   color: var(--color-primary);
   margin: 0;
   font-family: var(--font-title);
-  line-height: var(--leading-tight);
+  line-height: 1.1;
 }
 
+/* Nombre en 2 líneas: "Juan Carlos" / "de León Silva" */
 .intro__title--lastname {
+  display: block;
   color: var(--color-text);
 }
 
@@ -142,6 +146,40 @@
 }
 
 /* ========================================
+   SCROLL INDICATOR (solo mobile)
+   ======================================== */
+.intro__scroll {
+  position: absolute;
+  bottom: var(--space-5);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  color: var(--color-primary);
+  transition: color var(--duration-base) var(--ease-default);
+  animation: intro-bounce 1.8s var(--ease-default) infinite;
+}
+
+.intro__scroll:hover,
+.intro__scroll:focus-visible {
+  color: var(--color-primary-light);
+}
+
+.intro__scroll:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+  border-radius: var(--radius-full);
+}
+
+@keyframes intro-bounce {
+  0%, 100% { transform: translate(-50%, 0); }
+  50%      { transform: translate(-50%, 8px); }
+}
+
+/* ========================================
    RESPONSIVE (Tablet / Desktop)
    ======================================== */
 @media (min-width: 768px) {
@@ -165,6 +203,11 @@
     font-size: var(--text-4xl);
   }
 
+  /* En web el nombre va entero en una sola fila (el corte es solo mobile) */
+  .intro__title--lastname {
+    display: inline;
+  }
+
   .intro__subtitle {
     font-size: var(--text-2xl);
   }
@@ -177,5 +220,10 @@
     flex-direction: row;
     justify-content: center;
     width: auto;
+  }
+
+  /* El indicador de scroll es solo para mobile */
+  .intro__scroll {
+    display: none;
   }
 }

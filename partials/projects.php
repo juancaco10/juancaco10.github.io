@@ -74,6 +74,60 @@ $projects = [
       ['src' => 'assets/img/projects/idr/6.webp',    'alt' => 'Vista adicional del Sistema Integrado IDR','thumb' => 'Vista adicional del sistema'],
     ],
   ],
+  'falta-menos' => [
+    'title'     => 'Falta Menos — Álbum Tracker',
+    'tagline'   => 'Gestiona tu álbum del Mundial y sigue tu progreso en tiempo real.',
+    'cover'     => 'assets/img/projects/placeholder.jpg',
+    'year'      => '2026',
+    'role'      => 'Desarrollador / Creador',
+    'status'    => 'Publicado (Google Play)',
+    'platforms' => ['Android'],
+    'stack'     => ['Android', 'Kotlin', 'Firebase'],
+    'overview'  => 'Falta Menos — Álbum Tracker es la forma más fácil de gestionar tu álbum de figuritas del Mundial y seguir tu progreso en tiempo real. Olvídate del cuaderno con listas: lleva tu colección siempre contigo. Sabe al instante cuáles tienes, cuáles te faltan y visualiza tu avance de forma clara y organizada.<br><br>👉 <a href="https://play.google.com/store/apps/details?id=com.jcpapeleria.completeandswap&hl=es_UY" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); text-decoration: underline;">Ver en Google Play</a>',
+    'objective' => 'Ofrecer a los coleccionistas una herramienta clara, rápida y gratuita para llevar el registro de sus figuritas del Mundial, proveyendo además el fixture del torneo.',
+    'features'  => [
+      '✅ <strong>Gestión de figuritas</strong>: Marca como "obtenida" o "repetida" con un solo toque.',
+      '📊 <strong>Estadísticas</strong>: Consulta el progreso de tu álbum en tiempo real.',
+      '🔍 <strong>Búsqueda instantánea</strong>: Filtra por país o número para encontrar figuritas rápido.',
+      '📅 <strong>Fixture completo</strong>: Sigue los partidos del Mundial y resultados de los grupos sin salir de la app.',
+      '🔐 <strong>Sincronización</strong>: Inicia sesión con Google para respaldar tu colección o úsala de forma anónima.',
+      '🛡 <strong>Privacidad</strong>: Control total de tus datos, pudiendo eliminar tu cuenta en cualquier momento.',
+    ],
+    'audience'  => 'Para quienes coleccionan figuritas del Mundial y quieren completar su álbum de forma organizada. Ideal para fanáticos del fútbol, familias y amigos.',
+    'roadmap'   => ['Lanzamiento oficial v1.0.0', 'Soporte para múltiples idiomas', 'Nuevas funciones basadas en el feedback'],
+    'quote'     => 'Lleva tu colección siempre contigo. Dedica tu tiempo a coleccionar, no a buscar.',
+    'team'      => false,
+    'images'    => [
+      ['src' => 'assets/img/projects/placeholder.jpg', 'alt' => 'Falta Menos - Pantalla principal', 'thumb' => 'Pantalla principal'],
+      ['src' => 'assets/img/projects/placeholder.jpg', 'alt' => 'Falta Menos - Progreso del álbum', 'thumb' => 'Progreso del álbum'],
+      ['src' => 'assets/img/projects/placeholder.jpg', 'alt' => 'Falta Menos - Fixture y partidos', 'thumb' => 'Fixture y partidos'],
+    ],
+  ],
+  'web-project' => [
+    'title'     => 'Nuevo Proyecto Web',
+    'tagline'   => '(Ingresa aquí la descripción corta o eslogan)',
+    'cover'     => 'assets/img/projects/placeholder.jpg',
+    'year'      => '2026',
+    'role'      => 'Desarrollador Web',
+    'status'    => 'En desarrollo',
+    'platforms' => ['Web', 'Mobile'],
+    'stack'     => ['HTML', 'CSS', 'JavaScript'],
+    'overview'  => '(Agrega aquí la descripción detallada de tu página web. ¿Qué problema resuelve y cómo funciona? Aquí puedes escribir todo el texto que desees sobre el proyecto.)',
+    'objective' => '(Define aquí el objetivo principal del proyecto web)',
+    'features'  => [
+      '✨ <strong>Característica 1</strong>: (Descripción de la característica)',
+      '⚡ <strong>Característica 2</strong>: (Descripción de la característica)',
+      '🌐 <strong>Característica 3</strong>: (Descripción de la característica)',
+    ],
+    'audience'  => '(Describe a quién está orientada esta página web)',
+    'roadmap'   => ['Fase de diseño', 'Desarrollo Frontend', 'Lanzamiento oficial'],
+    'quote'     => 'El diseño web no se trata solo de crear algo bonito, sino de construir experiencias memorables.',
+    'team'      => false,
+    'images'    => [
+      ['src' => 'assets/img/projects/placeholder.jpg', 'alt' => 'Captura web 1', 'thumb' => 'Vista principal'],
+      ['src' => 'assets/img/projects/placeholder.jpg', 'alt' => 'Captura web 2', 'thumb' => 'Vista secundaria'],
+    ],
+  ],
 ];
 ?>
 <section id="projects" class="projects o-section">
@@ -104,12 +158,15 @@ $projects = [
 
     <!-- Modales de detalle (uno por proyecto) -->
     <?php foreach ($projects as $id => $p): ?>
-    <div id="modal-<?php echo e($id); ?>" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-<?php echo e($id); ?>-title" hidden>
+    <div id="modal-<?php echo e($id); ?>" class="modal modal--large" role="dialog" aria-modal="true" aria-labelledby="modal-<?php echo e($id); ?>-title" hidden>
       <div class="modal__content project-detail">
-        <button type="button" class="modal__close" data-click="closeModal('<?php echo e($id); ?>')" aria-label="Cerrar ventana">&times;</button>
-
-        <header class="project-detail__header">
+        <div class="modal__header">
           <h2 class="modal__title" id="modal-<?php echo e($id); ?>-title"><?php echo e($p['title']); ?></h2>
+          <button type="button" class="modal__close" data-click="closeModal('<?php echo e($id); ?>')" aria-label="Cerrar ventana">&times;</button>
+        </div>
+
+        <div class="modal__body">
+          <header class="project-detail__header">
           <p class="project-detail__tagline"><?php echo e($p['tagline']); ?></p>
           <ul class="project-detail__meta">
             <li>📅 <?php echo e($p['year']); ?></li>
@@ -191,6 +248,7 @@ $projects = [
           </div>
         </div>
         <?php endif; ?>
+        </div>
       </div>
     </div>
     <?php endforeach; ?>
