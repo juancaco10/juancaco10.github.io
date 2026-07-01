@@ -106,7 +106,7 @@ $projects = [
     'status'    => 'Publicado (Google Play)',
     'platforms' => ['Android'],
     'stack'     => ['Android', 'Kotlin', 'Firebase'],
-    'overview'  => 'Falta Menos — Álbum Tracker es la forma más fácil de gestionar tu álbum de figuritas del Mundial y seguir tu progreso en tiempo real. Olvídate del cuaderno con listas: lleva tu colección siempre contigo. Sabe al instante cuáles tienes, cuáles te faltan y visualiza tu avance de forma clara y organizada.<br><br>👉 <a href="https://play.google.com/store/apps/details?id=com.jcpapeleria.completeandswap&hl=es_UY" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); text-decoration: underline;">Ver en Google Play</a>',
+    'overview'  => 'Falta Menos — Álbum Tracker es la forma más fácil de gestionar tu álbum de figuritas del Mundial y seguir tu progreso en tiempo real. Olvídate del cuaderno con listas: lleva tu colección siempre contigo. Sabe al instante cuáles tienes, cuáles te faltan y visualiza tu avance de forma clara y organizada.<br><br><a href="https://play.google.com/store/apps/details?id=com.jcpapeleria.completeandswap&hl=es_UY" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); text-decoration: underline;">Ver en Google Play</a>',
     'objective' => 'Ofrecer a los coleccionistas una herramienta clara, rápida y gratuita para llevar el registro de sus figuritas del Mundial, proveyendo además el fixture del torneo.',
     'features'  => [
       '<strong>Gestión de figuritas</strong>: Marca como "obtenida" o "repetida" con un solo toque.',

@@ -52,7 +52,8 @@
   margin-top: var(--space-2);
   font-size: var(--text-base);
   color: var(--color-text);
-  font-family: var(--font-primary);
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
   line-height: var(--leading-relaxed);
 }
 
@@ -291,6 +292,7 @@
   color: var(--color-text-secondary);
   margin-bottom: var(--space-2);
   font-size: var(--text-base);
+  font-family: var(--font-mono);
 }
 
 .semester li {

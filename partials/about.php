@@ -3,7 +3,7 @@
         <h2 class="about__title">Sobre mí</h2>
         <div class="about__content o-glass">
 
-            <div class="about__intro">
+            <div class="about__intro" data-reveal>
                 <p class="about__text">
                     Bienvenido. Mi nombre es Juan Carlos de León, tengo 33 años y cuento con
                     <strong>12 años de experiencia</strong> en reparación de computadoras e impresoras.
@@ -13,7 +13,7 @@
                 </p>
             </div>
 
-            <div class="about__passion">
+            <div class="about__passion" data-reveal>
                 <h3 class="about__subtitle">Mi pasión por la tecnología</h3>
                 <p class="about__text">
                     Mi formación en desarrollo de sistemas me impulsa a buscar oportunidades
@@ -22,7 +22,7 @@
                 </p>
             </div>
 
-            <div class="about__opportunity">
+            <div class="about__opportunity" data-reveal>
                 <h3 class="about__subtitle">Buscando mi camino</h3>
                 <p class="about__text">
                     Actualmente colaboro con un equipo de compañeros egresados en el desarrollo
@@ -45,19 +45,19 @@
                 </p>
             </div>
 
-            <div class="about__languages">
+            <div class="about__languages" data-reveal>
                 <h3 class="about__subtitle">Idiomas</h3>
                 <ul class="languages__list">
                     <li class="language__item">
-                        <span class="language__flag">🇺🇾</span>
+                        <span class="language__badge">ES</span>
                         <strong>Español:</strong> Nativo
                     </li>
                     <li class="language__item">
-                        <span class="language__flag">🇧🇷</span>
+                        <span class="language__badge">PT</span>
                         <strong>Portugués:</strong> Lengua materna (ciudad fronteriza)
                     </li>
                     <li class="language__item">
-                        <span class="language__flag">🇺🇸</span>
+                        <span class="language__badge">EN</span>
                         <strong>Inglés:</strong> Actualmente estudiando
                     </li>
                 </ul>

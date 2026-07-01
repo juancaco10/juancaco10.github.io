@@ -15,7 +15,7 @@ $csrf_token = generate_csrf_token();
   <div class="o-container">
     <h2 class="contact__title">Contacto</h2>
     <div class="contact__content o-grid">
-      <div class="contact__info">
+      <div class="contact__info" data-reveal>
         <p class="contact__description">
           Ponte en contacto para discutir colaboraciones, proyectos,
           contratarme o simplemente para saludarme.
@@ -104,7 +104,7 @@ $csrf_token = generate_csrf_token();
         </form>
         <?php endif; ?>
         
-        <div class="contact__socials o-glass">
+        <div class="contact__socials o-glass" data-reveal>
           <p class="contact__socials-title">O contáctame por:</p>
           <div class="socials__container">
             <a class="social__link" href="<?php echo e(SOCIAL_GITHUB); ?>" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
@@ -121,7 +121,7 @@ $csrf_token = generate_csrf_token();
         </div>
       </div>
       
-      <img class="contact__image" src="assets/img/icons/contacto.jpg" alt="Contacto profesional" loading="lazy" width="400" height="300" decoding="async" />
+      <img class="contact__image" src="assets/img/icons/contacto.jpg" alt="Contacto profesional" loading="lazy" width="400" height="300" decoding="async" data-reveal />
     </div>
   </div>
 </section>
