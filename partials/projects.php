@@ -1,5 +1,28 @@
 <?php
 // ============================================
+// Helper: iconos SVG (Lucide, trazo consistente) — reemplaza emojis
+// ============================================
+if (!function_exists('proj_icon')) {
+  function proj_icon(string $name): string {
+    $paths = [
+      'target'   => '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>',
+      'key'      => '<path d="m15.5 7.5 2.3 2.3a1 1 0 0 0 1.4 0l2.1-2.1a1 1 0 0 0 0-1.4L19 4"/><path d="m21 2-9.6 9.6"/><circle cx="7.5" cy="15.5" r="5.5"/>',
+      'users'    => '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+      'rocket'   => '<path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>',
+      'cpu'      => '<rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/>',
+      'image'    => '<rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>',
+      'check'    => '<path d="M20 6 9 17l-5-5"/>',
+      'calendar' => '<rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/>',
+      'user'     => '<circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/>',
+      'tag'      => '<path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"/>',
+      'monitor'  => '<rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/>',
+    ];
+    $p = $paths[$name] ?? '';
+    return '<svg class="icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' . $p . '</svg>';
+  }
+}
+
+// ============================================
 // DATOS DE PROYECTOS (estructurado para escalar)
 // ============================================
 $team = [
@@ -23,10 +46,10 @@ $projects = [
     'overview'  => 'Este sistema fue desarrollado inicialmente para el IFSUL con el objetivo de modernizar y simplificar la gestión de llaves, reservas y salas académicas. A futuro, su alcance podría ampliarse para instituciones municipales y otras organizaciones que requieran un control seguro de sus espacios físicos.',
     'objective' => 'Centralizar y automatizar la gestión de llaves, reservas y usuarios en un único sistema, aumentando la seguridad y optimizando los recursos de las instituciones.',
     'features'  => [
-      '🔐 <strong>Gestión de Llaves</strong>: registro de retiro, devolución y <strong>transferencia entre docentes</strong>.',
-      '📅 <strong>Reservas y Salas</strong>: consulta de disponibilidad en tiempo real, solicitud y aprobación de reservas.',
-      '👥 <strong>Gestión de Usuarios</strong>: perfiles personalizables, inicio de sesión seguro y control de accesos.',
-      '📊 <strong>Reportes Inteligentes</strong>: estadísticas de uso, generación de reportes por periodo, filtros por usuario, sala y tipo de operación.',
+      '<strong>Gestión de Llaves</strong>: registro de retiro, devolución y <strong>transferencia entre docentes</strong>.',
+      '<strong>Reservas y Salas</strong>: consulta de disponibilidad en tiempo real, solicitud y aprobación de reservas.',
+      '<strong>Gestión de Usuarios</strong>: perfiles personalizables, inicio de sesión seguro y control de accesos.',
+      '<strong>Reportes Inteligentes</strong>: estadísticas de uso, generación de reportes por periodo, filtros por usuario, sala y tipo de operación.',
     ],
     'audience'  => 'Actualmente diseñado para el IFSUL, pero adaptable a universidades, escuelas, municipalidades, instituciones técnicas, espacios corporativos y centros de entrenamiento.',
     'roadmap'   => ['Lanzamiento del MVP en el IFSUL', 'Validación con usuarios reales', 'Escalabilidad hacia municipalidades u otras instituciones'],
@@ -55,10 +78,10 @@ $projects = [
     'overview'  => 'Este prototipo fue desarrollado para la <strong>Intendencia de Rivera – Uruguay</strong> y está compuesto por tres módulos: una aplicación móvil para ciudadanos, una plataforma web administrativa y una aplicación móvil para capataces. El objetivo es <strong>optimizar la gestión de servicios públicos</strong>, aumentar la transparencia y mejorar la participación ciudadana en un contexto de transformación digital.',
     'objective' => 'Mejorar la eficiencia administrativa y reducir los tiempos de respuesta en los servicios municipales mediante la digitalización y centralización de las solicitudes.',
     'features'  => [
-      '📌 Reporte de incidencias en infraestructura con geolocalización.',
-      '📊 Análisis de datos para la toma de decisiones.',
-      '🗂 Gestión de tareas para capataces con seguimiento en tiempo real.',
-      '🔒 Transparencia y trazabilidad en las solicitudes.',
+      'Reporte de incidencias en infraestructura con geolocalización.',
+      'Análisis de datos para la toma de decisiones.',
+      'Gestión de tareas para capataces con seguimiento en tiempo real.',
+      'Transparencia y trazabilidad en las solicitudes.',
     ],
     'audience'  => 'Ciudadanos de Rivera, funcionarios administrativos, capataces y autoridades de la Intendencia.',
     'roadmap'   => ['Lanzamiento del prototipo', 'Validación con usuarios reales', 'Escalabilidad para otras municipalidades'],
@@ -86,12 +109,12 @@ $projects = [
     'overview'  => 'Falta Menos — Álbum Tracker es la forma más fácil de gestionar tu álbum de figuritas del Mundial y seguir tu progreso en tiempo real. Olvídate del cuaderno con listas: lleva tu colección siempre contigo. Sabe al instante cuáles tienes, cuáles te faltan y visualiza tu avance de forma clara y organizada.<br><br>👉 <a href="https://play.google.com/store/apps/details?id=com.jcpapeleria.completeandswap&hl=es_UY" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); text-decoration: underline;">Ver en Google Play</a>',
     'objective' => 'Ofrecer a los coleccionistas una herramienta clara, rápida y gratuita para llevar el registro de sus figuritas del Mundial, proveyendo además el fixture del torneo.',
     'features'  => [
-      '✅ <strong>Gestión de figuritas</strong>: Marca como "obtenida" o "repetida" con un solo toque.',
-      '📊 <strong>Estadísticas</strong>: Consulta el progreso de tu álbum en tiempo real.',
-      '🔍 <strong>Búsqueda instantánea</strong>: Filtra por país o número para encontrar figuritas rápido.',
-      '📅 <strong>Fixture completo</strong>: Sigue los partidos del Mundial y resultados de los grupos sin salir de la app.',
-      '🔐 <strong>Sincronización</strong>: Inicia sesión con Google para respaldar tu colección o úsala de forma anónima.',
-      '🛡 <strong>Privacidad</strong>: Control total de tus datos, pudiendo eliminar tu cuenta en cualquier momento.',
+      '<strong>Gestión de figuritas</strong>: Marca como "obtenida" o "repetida" con un solo toque.',
+      '<strong>Estadísticas</strong>: Consulta el progreso de tu álbum en tiempo real.',
+      '<strong>Búsqueda instantánea</strong>: Filtra por país o número para encontrar figuritas rápido.',
+      '<strong>Fixture completo</strong>: Sigue los partidos del Mundial y resultados de los grupos sin salir de la app.',
+      '<strong>Sincronización</strong>: Inicia sesión con Google para respaldar tu colección o úsala de forma anónima.',
+      '<strong>Privacidad</strong>: Control total de tus datos, pudiendo eliminar tu cuenta en cualquier momento.',
     ],
     'audience'  => 'Para quienes coleccionan figuritas del Mundial y quieren completar su álbum de forma organizada. Ideal para fanáticos del fútbol, familias y amigos.',
     'roadmap'   => ['Lanzamiento oficial v1.0.0', 'Soporte para múltiples idiomas', 'Nuevas funciones basadas en el feedback'],
@@ -115,9 +138,9 @@ $projects = [
     'overview'  => '(Agrega aquí la descripción detallada de tu página web. ¿Qué problema resuelve y cómo funciona? Aquí puedes escribir todo el texto que desees sobre el proyecto.)',
     'objective' => '(Define aquí el objetivo principal del proyecto web)',
     'features'  => [
-      '✨ <strong>Característica 1</strong>: (Descripción de la característica)',
-      '⚡ <strong>Característica 2</strong>: (Descripción de la característica)',
-      '🌐 <strong>Característica 3</strong>: (Descripción de la característica)',
+      '<strong>Característica 1</strong>: (Descripción de la característica)',
+      '<strong>Característica 2</strong>: (Descripción de la característica)',
+      '<strong>Característica 3</strong>: (Descripción de la característica)',
     ],
     'audience'  => '(Describe a quién está orientada esta página web)',
     'roadmap'   => ['Fase de diseño', 'Desarrollo Frontend', 'Lanzamiento oficial'],
@@ -137,7 +160,7 @@ $projects = [
     <!-- Cards de preview (2 columnas) -->
     <div class="o-grid o-grid--2col projects__grid">
       <?php foreach ($projects as $id => $p): ?>
-      <article class="project-card o-glass">
+      <article class="project-card o-glass" data-reveal>
         <button type="button" class="project-card__media" data-click="openModal('<?php echo e($id); ?>')" aria-label="Ver detalles de <?php echo e($p['title']); ?>">
           <img class="project-card__cover" src="<?php echo e($p['cover']); ?>" alt="Portada de <?php echo e($p['title']); ?>" loading="lazy" decoding="async" width="600" height="375">
           <span class="project-card__year"><?php echo e($p['year']); ?></span>
@@ -169,16 +192,16 @@ $projects = [
           <header class="project-detail__header">
           <p class="project-detail__tagline"><?php echo e($p['tagline']); ?></p>
           <ul class="project-detail__meta">
-            <li>📅 <?php echo e($p['year']); ?></li>
-            <li>👤 <?php echo e($p['role']); ?></li>
-            <li>🏷 <?php echo e($p['status']); ?></li>
-            <li>🖥 <?php echo e(implode(' · ', $p['platforms'])); ?></li>
+            <li><?php echo proj_icon('calendar'); ?><span><?php echo e($p['year']); ?></span></li>
+            <li><?php echo proj_icon('user'); ?><span><?php echo e($p['role']); ?></span></li>
+            <li><?php echo proj_icon('tag'); ?><span><?php echo e($p['status']); ?></span></li>
+            <li><?php echo proj_icon('monitor'); ?><span><?php echo e(implode(' · ', $p['platforms'])); ?></span></li>
           </ul>
         </header>
 
         <!-- Capturas (miniaturas -> galería fullscreen) -->
         <section class="project-detail__photos">
-          <h3 class="modal__subtitle">📸 Capturas</h3>
+          <h3 class="modal__subtitle"><?php echo proj_icon('image'); ?><span>Capturas</span></h3>
           <div class="project-detail__thumbs">
             <?php foreach ($p['images'] as $i => $img): ?>
             <button type="button" class="project-detail__thumb" data-click="openGallery('<?php echo e($id); ?>');currentSlide(<?php echo $i + 1; ?>, '<?php echo e($id); ?>')" aria-label="Ampliar: <?php echo e($img['thumb']); ?>">
@@ -191,19 +214,19 @@ $projects = [
         <!-- Descripción + funcionalidades -->
         <section class="project-detail__section">
           <p class="modal__text"><?php echo $p['overview']; ?></p>
-          <h3 class="modal__subtitle">🎯 Objetivo</h3>
+          <h3 class="modal__subtitle"><?php echo proj_icon('target'); ?><span>Objetivo</span></h3>
           <p class="modal__text"><?php echo e($p['objective']); ?></p>
-          <h3 class="modal__subtitle">🔑 Funcionalidades</h3>
-          <ul class="modal__list">
+          <h3 class="modal__subtitle"><?php echo proj_icon('key'); ?><span>Funcionalidades</span></h3>
+          <ul class="modal__list modal__list--icon">
             <?php foreach ($p['features'] as $feature): ?>
-            <li><?php echo $feature; ?></li>
+            <li><?php echo proj_icon('check'); ?><span><?php echo $feature; ?></span></li>
             <?php endforeach; ?>
           </ul>
         </section>
 
         <!-- Detalles técnicos -->
         <section class="project-detail__tech">
-          <h3 class="modal__subtitle">🧩 Detalles técnicos</h3>
+          <h3 class="modal__subtitle"><?php echo proj_icon('cpu'); ?><span>Detalles técnicos</span></h3>
           <dl class="spec">
             <div class="spec__row"><dt>Rol</dt><dd><?php echo e($p['role']); ?></dd></div>
             <div class="spec__row"><dt>Plataformas</dt><dd><?php echo e(implode(', ', $p['platforms'])); ?></dd></div>
@@ -219,13 +242,13 @@ $projects = [
 
         <!-- ¿Para quién? -->
         <section class="project-detail__section">
-          <h3 class="modal__subtitle">👥 ¿Para quién?</h3>
+          <h3 class="modal__subtitle"><?php echo proj_icon('users'); ?><span>¿Para quién?</span></h3>
           <p class="modal__text"><?php echo e($p['audience']); ?></p>
         </section>
 
         <!-- Roadmap -->
         <section class="project-detail__section">
-          <h3 class="modal__subtitle">🚀 Roadmap</h3>
+          <h3 class="modal__subtitle"><?php echo proj_icon('rocket'); ?><span>Roadmap</span></h3>
           <ul class="modal__list">
             <?php foreach ($p['roadmap'] as $step): ?>
             <li><?php echo e($step); ?></li>
@@ -237,7 +260,7 @@ $projects = [
 
         <?php if (!empty($p['team'])): ?>
         <div class="team-section">
-          <h3 class="modal__subtitle">👨‍💻 Equipo de Desarrollo</h3>
+          <h3 class="modal__subtitle"><?php echo proj_icon('users'); ?><span>Equipo de Desarrollo</span></h3>
           <div class="team-grid">
             <?php foreach ($team as $member): ?>
             <div class="team-member">

@@ -53,9 +53,8 @@ $CSP_NONCE = $GLOBALS['CSP_NONCE'] ?? get_csp_nonce();
   <link rel="dns-prefetch" href="//github.com">
   <link rel="dns-prefetch" href="//linkedin.com">
   <link rel="preload" href="<?php echo asset('assets/css/style.css'); ?>" as="style">
-  <link rel="preload" href="assets/fonts/Saira/static/Saira-Regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/fonts/Saira/static/Saira-Medium.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/fonts/Saira_Stencil_One/SairaStencilOne-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/inter/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/inter/inter-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
@@ -99,6 +98,8 @@ $CSP_NONCE = $GLOBALS['CSP_NONCE'] ?? get_csp_nonce();
 ?>
   <script nonce="<?php echo e(get_csp_nonce()); ?>">
     (function () {
+      // Activa el estado inicial del scroll-reveal antes del primer pintado (evita flash)
+      document.documentElement.classList.add('reveal-ready');
       var hrefs = <?php echo json_encode($__deferred_urls); ?>;
       for (var i = 0; i < hrefs.length; i++) {
         var l = document.createElement('link');

@@ -161,3 +161,26 @@
     padding: calc(var(--section-py-desktop) * 1.5) 0;
   }
 }
+
+/* ========================================
+   SCROLL REVEAL (activado por JS: html.reveal-ready)
+   Entrada suave; sin JS o con reduced-motion → siempre visible.
+   ======================================== */
+.reveal-ready [data-reveal] {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
+}
+
+.reveal-ready [data-reveal].is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-ready [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

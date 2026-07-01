@@ -8,6 +8,8 @@
             </div>
 
             <div class="intro__text">
+                <!-- EDITAR: cambia o quita el estado según tu disponibilidad -->
+                <p class="intro__status"><span class="intro__status-dot" aria-hidden="true"></span>Disponible para nuevas oportunidades</p>
                 <h1 class="intro__title">Juan Carlos <span class="intro__title--lastname">de León Silva</span></h1>
                 <p class="intro__subtitle">Desarrollador y Analista de Sistemas</p>
                 <p class="intro__description">Técnico Informático</p>
