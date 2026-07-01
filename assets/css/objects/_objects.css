@@ -11,11 +11,11 @@
   background: var(--color-bg-elevated);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 2px solid var(--color-border);
-  
+  border: 1px solid var(--color-border);
+
   /* Optimización performance */
   contain: layout paint;
-  
+
   /* Transiciones específicas */
   transition: transform var(--duration-base) var(--ease-default),
               box-shadow var(--duration-base) var(--ease-default),
@@ -24,7 +24,7 @@
 
 .o-glass:hover, .o-glass:focus-within {
   border-color: var(--color-primary);
-  box-shadow: var(--shadow-glow-lg);
+  box-shadow: var(--shadow-glow);
 }
 
 /* Transformaciones sutiles eliminadas por petición del usuario (sin descoloque vertical) */
@@ -33,7 +33,7 @@
 .o-glass--subtle {
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
-  background: rgba(13, 17, 28, 0.4);
+  background: rgba(19, 19, 22, 0.4);
 }
 
 /* Variante sin animación */

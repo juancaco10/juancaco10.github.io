@@ -34,9 +34,9 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background-color: var(--color-bg, #1a1a2e);
-  color: var(--color-text, #e6e6e6);
-  font-family: var(--font-primary, "Saira", system-ui, sans-serif);
+  background-color: var(--color-bg, #0a0a0c);
+  color: var(--color-text, #fafafa);
+  font-family: var(--font-primary, "Inter", system-ui, sans-serif);
 }
 
 /* Typography reset */

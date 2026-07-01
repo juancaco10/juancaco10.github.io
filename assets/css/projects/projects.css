@@ -161,10 +161,19 @@
 }
 
 .project-detail__meta li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
   background: var(--color-bg-card);
   padding: 4px 12px;
   border-radius: var(--radius-full);
   border: 1px solid var(--color-border);
+}
+
+.project-detail__meta .icon {
+  width: 14px;
+  height: 14px;
+  color: var(--color-text-muted);
 }
 
 .project-detail__photos,
@@ -243,8 +252,18 @@
    NOTA: La estructura general .modal se migró a components/_modals.css
    ======================================== */
 .modal__subtitle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
   margin-top: var(--space-6);
   color: var(--color-primary-light);
+}
+
+/* Icono SVG genérico (reemplaza emojis) */
+.icon {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
 }
 
 .modal__text,
@@ -260,6 +279,25 @@
 
 .modal__list li {
   margin-bottom: var(--space-2);
+}
+
+/* Lista con marcador SVG (funcionalidades) */
+.modal__list--icon {
+  padding-left: 0;
+  list-style: none;
+}
+
+.modal__list--icon li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.modal__list--icon .icon {
+  width: 16px;
+  height: 16px;
+  margin-top: 4px;
+  color: var(--color-primary);
 }
 
 .modal__quote {
